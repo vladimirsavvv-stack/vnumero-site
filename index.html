@@ -186,15 +186,6 @@
     color:var(--ivory);
   }
 
-  .sub-tagline{
-    font-size:11px;
-    letter-spacing:0.28em;
-    color:var(--ash-dim);
-    opacity:0;
-    animation: rise 1s ease forwards;
-    animation-delay:1.35s;
-  }
-
   @keyframes rise{
     from{opacity:0; transform:translateY(14px);}
     to{opacity:1; transform:translateY(0);}
@@ -210,8 +201,16 @@
     color:var(--ash-dim);
   }
 
-  @media (max-width:480px){
-    main{padding:40px 22px;}
+  @media (max-width:400px){
+    main{padding:40px 18px;}
+    .wordmark{letter-spacing:0.22em; margin-left:0.22em;}
+    .tagline{letter-spacing:0.2em;}
+    .coming-soon{gap:12px;}
+    .coming-soon .line{width:22px;}
+  }
+
+  @media (max-height:600px){
+    .monogram{font-size:clamp(44px, 10vw, 88px);}
   }
 </style>
 </head>
@@ -276,10 +275,9 @@
       <span>Coming soon</span>
       <span class="line"></span>
     </div>
-    <div class="sub-tagline">КОД ТВОГО ЖИТТЯ</div>
   </main>
 
-  <footer>© 2026 VNUMERO — КОД ТВОГО ЖИТТЯ</footer>
+  <footer>© 2026 VNUMERO</footer>
 
 </body>
 </html>
