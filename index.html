@@ -3515,6 +3515,20 @@ body{
     line-height:1.2 !important;
   }
 }
+
+/* ===== V37 — REMOVE PERIODIC MOVING LIGHT STRIPE ===== */
+/* The moving stripe was the 11s light-sweep pseudo-element on panels/cards. */
+.panel::after,
+#readings-panel .reading-card::before,
+.premium-consult::before{
+  content:none !important;
+  display:none !important;
+  animation:none !important;
+  background:none !important;
+}
+
+/* Keep the rest of the background design, wheel and subtle static decoration intact. */
+
 </style>
 </head>
 <body>
