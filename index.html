@@ -3101,6 +3101,197 @@
   }
 }
 
+
+/* ===== V26 — MOBILE HERO REVEAL BUTTON / TEXT FIX ===== */
+@media (max-width:600px){
+  #reveal-btn{
+    width:226px !important;
+    max-width:72vw !important;
+    min-width:0 !important;
+    min-height:46px !important;
+    height:46px !important;
+    padding:0 18px !important;
+    margin:0 auto !important;
+
+    border:1px solid rgba(201,169,97,.72) !important;
+    border-radius:999px !important;
+    background:rgba(201,169,97,.10) !important;
+
+    color:#d7b873 !important;
+    -webkit-text-fill-color:#d7b873 !important;
+    opacity:1 !important;
+    visibility:visible !important;
+
+    font-family:var(--sans) !important;
+    font-size:12px !important;
+    font-weight:600 !important;
+    line-height:1 !important;
+    letter-spacing:.12em !important;
+    text-transform:none !important;
+    white-space:nowrap !important;
+
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.035),
+      0 4px 14px rgba(0,0,0,.12) !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    transform:none !important;
+    filter:none !important;
+    overflow:hidden !important;
+  }
+
+  #reveal-btn::after{
+    content:"→";
+    display:inline-block;
+    color:#d7b873;
+    font-family:Arial, sans-serif;
+    font-size:13px;
+    font-weight:400;
+    line-height:1;
+    letter-spacing:0;
+    opacity:.8;
+    transform:translateY(-1px);
+  }
+
+  #reveal-btn:hover,
+  #reveal-btn:focus,
+  #reveal-btn:focus-visible{
+    color:#e0c582 !important;
+    -webkit-text-fill-color:#e0c582 !important;
+    background:rgba(201,169,97,.14) !important;
+    border-color:rgba(201,169,97,.84) !important;
+    box-shadow:0 4px 14px rgba(0,0,0,.12) !important;
+    transform:none !important;
+    filter:none !important;
+  }
+
+  #reveal-btn:active{
+    color:#e0c582 !important;
+    -webkit-text-fill-color:#e0c582 !important;
+    background:rgba(201,169,97,.16) !important;
+    transform:scale(.985) !important;
+  }
+}
+
+@media (max-width:360px){
+  #reveal-btn{
+    width:214px !important;
+    max-width:70vw !important;
+    height:44px !important;
+    min-height:44px !important;
+    font-size:11px !important;
+  }
+}
+
+
+/* ===== V27 — FINE UI ADJUSTMENTS ===== */
+
+/* 2. Slightly larger trial note */
+.try-badge-sub{
+  font-size:13px !important;
+  line-height:1.45 !important;
+}
+
+/* 3. Larger key questions under the two main readings — all versions */
+.offer-key{
+  font-size:16px !important;
+  line-height:1.42 !important;
+}
+
+@media (max-width:600px){
+  /* 1. Reveal button: a little lower and visibly narrower than DOB field */
+  #reveal-btn{
+    width:212px !important;
+    max-width:68vw !important;
+    min-height:44px !important;
+    height:44px !important;
+    margin-top:7px !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+    font-size:11.5px !important;
+  }
+
+  .try-badge-sub{
+    font-size:12.5px !important;
+    line-height:1.45 !important;
+  }
+
+  .offer-key{
+    font-size:15px !important;
+    line-height:1.42 !important;
+  }
+}
+
+@media (max-width:360px){
+  #reveal-btn{
+    width:198px !important;
+    max-width:66vw !important;
+    height:43px !important;
+    min-height:43px !important;
+  }
+}
+
+
+/* ===== V29 — REQUIRED ORDER FIELDS ===== */
+.order-field label span[aria-hidden="true"]{
+  color:var(--gold);
+  margin-left:3px;
+}
+.order-required-note{
+  margin:-4px 0 12px;
+  font-size:11px;
+  line-height:1.35;
+  letter-spacing:.04em;
+  opacity:.62;
+}
+
+
+/* ===== V30 — OPTIONAL ORDER COMMENT ===== */
+#order-comment{
+  width:100%;
+  min-height:76px;
+  padding:11px 12px;
+  box-sizing:border-box;
+  border-radius:10px;
+  font:inherit;
+  line-height:1.4;
+  resize:vertical;
+}
+@media (max-width:600px){
+  #order-comment{
+    min-height:58px !important;
+    height:58px;
+    max-height:82px;
+    padding:8px 10px !important;
+    font-size:13px !important;
+    resize:none;
+  }
+}
+
+
+/* ===== V31 — COMMENT FIELD MATCHES ORDER FORM ===== */
+#order-comment{
+  background:rgba(255,255,255,.025) !important;
+  color:var(--ivory) !important;
+  -webkit-text-fill-color:var(--ivory) !important;
+  border:1px solid rgba(201,169,97,.28) !important;
+  outline:none !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.02) !important;
+}
+#order-comment::placeholder{
+  color:rgba(239,232,216,.42) !important;
+  -webkit-text-fill-color:rgba(239,232,216,.42) !important;
+  opacity:1 !important;
+}
+#order-comment:focus{
+  background:rgba(201,169,97,.045) !important;
+  border-color:rgba(201,169,97,.62) !important;
+  box-shadow:0 0 0 1px rgba(201,169,97,.08) !important;
+}
+
 </style>
 </head>
 <body>
@@ -3149,34 +3340,40 @@
         <p class="modal-term" id="order-term" style="text-align:left;margin:-12px 0 20px;"></p>
 
         <div class="order-form">
+          <p class="order-required-note">* Обов’язкові поля</p>
           <div class="order-field">
-            <label for="order-name">ІМ'Я</label>
-            <input type="text" id="order-name" autocomplete="name" placeholder="Анна">
+            <label for="order-name">ІМ'Я <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-name" autocomplete="name" placeholder="Анна" required>
             <p class="order-hint" id="hint-name"></p>
           </div>
 
           <div class="order-field">
-            <label for="order-dob">ДАТА НАРОДЖЕННЯ</label>
-            <input type="date" id="order-dob">
+            <label for="order-dob">ДАТА НАРОДЖЕННЯ <span aria-hidden="true">*</span></label>
+            <input type="date" id="order-dob" required>
             <p class="order-hint" id="hint-dob"></p>
           </div>
 
           <div class="order-field" id="field-dob2" style="display:none;">
-            <label for="order-dob2">ДАТА НАРОДЖЕННЯ ПАРТНЕРА</label>
+            <label for="order-dob2">ДАТА НАРОДЖЕННЯ ПАРТНЕРА <span aria-hidden="true">*</span></label>
             <input type="date" id="order-dob2">
             <p class="order-hint" id="hint-dob2"></p>
           </div>
 
           <div class="order-field">
-            <label for="order-tg">TELEGRAM</label>
-            <input type="text" id="order-tg" placeholder="@username">
+            <label for="order-tg">TELEGRAM <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-tg" placeholder="@username" required>
             <p class="order-hint" id="hint-tg">Сюди я особисто надішлю твій розбір</p>
           </div>
 
           <div class="order-field">
             <label for="order-phone">ТЕЛЕФОН — ЗА БАЖАННЯМ</label>
             <input type="tel" id="order-phone" autocomplete="tel" placeholder="+380">
-            <p class="order-hint">Якщо в тебе не налаштований @username — знайду тебе за номером</p>
+            <p class="order-hint">Додатковий контакт на випадок, якщо не зможу зв’язатися в Telegram</p>
+          </div>
+
+          <div class="order-field">
+            <label for="order-comment">КОМЕНТАР АБО ПИТАННЯ — ЗА БАЖАННЯМ</label>
+            <textarea id="order-comment" rows="3" maxlength="600" placeholder="Напиши, якщо є конкретне питання або ситуація, на яку варто звернути увагу"></textarea>
           </div>
 
           <label class="order-check">
@@ -3797,6 +3994,7 @@
   const fieldDob2    = document.getElementById('field-dob2');
   const orderTg      = document.getElementById('order-tg');
   const orderPhone   = document.getElementById('order-phone');
+  const orderComment = document.getElementById('order-comment');
   const orderConfirm = document.getElementById('order-confirm');
   const orderSubmit  = document.getElementById('order-submit');
   const orderDoneTxt = document.getElementById('order-done-text');
@@ -3869,9 +4067,8 @@
       setHint('hint-dob2', 'Для розбору пари потрібні обидві дати', 'err'); ok = false;
     }
     const tg = orderTg.value.trim();
-    const phone = orderPhone.value.trim();
-    if ((!tg || tg.replace('@','').length < 3) && phone.replace(/\D/g,'').length < 9){
-      setHint('hint-tg', 'Вкажи Telegram або телефон — інакше я не зможу надіслати розбір', 'err'); ok = false;
+    if (!tg || tg.replace(/^@/,'').trim().length < 3){
+      setHint('hint-tg', 'Вкажи Telegram — сюди буде надіслано твій розбір', 'err'); ok = false;
     }
     if (!orderConfirm.checked){
       setHint('hint-confirm', 'Підтверди, що дата вказана правильно'); ok = false;
