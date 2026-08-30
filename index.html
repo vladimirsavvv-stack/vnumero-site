@@ -3380,6 +3380,72 @@ body{
   }
 }
 
+
+/* ===== V34 — MOBILE ORDER SUCCESS TABLE ===== */
+@media (max-width:600px){
+  /* Keep the success/receipt block inside the viewport */
+  .order-success,
+  .order-success *,
+  .success-modal,
+  .success-modal *,
+  .receipt,
+  .receipt *,
+  .order-confirmation,
+  .order-confirmation *{
+    box-sizing:border-box !important;
+  }
+
+  .order-success,
+  .success-modal,
+  .receipt,
+  .order-confirmation{
+    width:100% !important;
+    max-width:100% !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    overflow-x:hidden !important;
+  }
+
+  .order-success table,
+  .success-modal table,
+  .receipt table,
+  .order-confirmation table{
+    width:100% !important;
+    max-width:100% !important;
+    table-layout:fixed !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+    font-size:12px !important;
+  }
+
+  .order-success th,
+  .order-success td,
+  .success-modal th,
+  .success-modal td,
+  .receipt th,
+  .receipt td,
+  .order-confirmation th,
+  .order-confirmation td{
+    max-width:0 !important;
+    min-width:0 !important;
+    overflow-wrap:anywhere !important;
+    word-break:break-word !important;
+    white-space:normal !important;
+  }
+
+  /* Long email / Telegram values must not widen the table */
+  .order-success input,
+  .order-success textarea,
+  .success-modal input,
+  .success-modal textarea,
+  .receipt input,
+  .receipt textarea,
+  .order-confirmation input,
+  .order-confirmation textarea{
+    max-width:100% !important;
+  }
+}
+
 </style>
 </head>
 <body>
