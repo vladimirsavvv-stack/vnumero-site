@@ -3292,6 +3292,42 @@
   box-shadow:0 0 0 1px rgba(201,169,97,.08) !important;
 }
 
+
+/* ===== V32 — REMOVE HERO BACKLIGHT / GLOW ===== */
+.hero::before,
+.hero::after,
+.hero-inner::before,
+.hero-inner::after,
+.wheel-wrap::before,
+.wheel-wrap::after{
+  box-shadow:none !important;
+  filter:none !important;
+}
+
+/* Remove animated radial/light bloom behind the first screen */
+.hero{
+  background-image:none !important;
+}
+.hero .glow,
+.hero .hero-glow,
+.hero .light,
+.hero .light-bloom,
+.hero .ambient-glow,
+.hero .orb,
+.hero .flare{
+  display:none !important;
+  animation:none !important;
+  opacity:0 !important;
+}
+
+/* Prevent pseudo-elements from creating moving illumination */
+.hero::before,
+.hero::after{
+  background:none !important;
+  animation:none !important;
+  opacity:0 !important;
+}
+
 </style>
 </head>
 <body>
