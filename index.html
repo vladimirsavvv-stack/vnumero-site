@@ -4144,6 +4144,38 @@ body::before{ filter:none !important; will-change:transform, opacity; }
 @keyframes dividerX{ from{ transform:scaleX(0); opacity:0; } to{ transform:scaleX(1); opacity:1; } }
 @media (prefers-reduced-motion:reduce){ .assistant-cta::after, .divider{ animation:none !important; } .divider{ opacity:1; } }
 </style>
+<style>
+/* ═══ Перший екран займає весь екран телефона ═════════════════════════════
+   Наступний блок («Знайомо?») починається нижче краю екрана, а внизу
+   з'являється тонка золота стрілка — підказка, що далі є продовження. */
+/* вільне місце над логотипом залежить від висоти екрана — логотип і форма ближче до центру (без JS, щоб нічого не стрибало) */
+@media (max-width:600px){ main{ padding-top:clamp(46px, calc((100vh - 498px) * .42), 150px) !important; padding-top:clamp(46px, calc((100svh - 498px) * .42), 150px) !important; } }
+.hero-panel{ min-height:calc(100vh - var(--hero-top, 0px)); min-height:calc(100svh - var(--hero-top, 0px)); box-sizing:border-box; padding-bottom:64px !important; }
+.hero-cue{
+  position:absolute; left:50%; bottom:22px; width:12px; height:12px; margin-left:-6px;
+  border-right:1px solid rgba(214,182,112,.7); border-bottom:1px solid rgba(214,182,112,.7);
+  transform:rotate(45deg); opacity:0; pointer-events:none;
+  animation:heroCueIn 1s ease 2.9s forwards, heroCueBob 2.4s ease-in-out 3.9s infinite;
+}
+@keyframes heroCueIn{ to{ opacity:.85; } }
+@keyframes heroCueBob{ 0%,100%{ transform:translate3d(0,0,0) rotate(45deg); } 50%{ transform:translate3d(0,6px,0) rotate(45deg); } }
+@media (prefers-reduced-motion:reduce){ .hero-cue{ animation:none; opacity:.85; } }
+</style>
+<script>
+(function(){
+  // відстань від верху сторінки до блоку з калькулятором — щоб він дотягнувся рівно до низу екрана
+  function fit(){
+    var h = document.querySelector('.hero-panel'); if(!h) return;
+    var top = h.getBoundingClientRect().top + window.scrollY;
+    document.documentElement.style.setProperty('--hero-top', Math.round(top) + 'px');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', fit); else fit();
+  // шрифти можуть трохи змінити висоту — перераховуємо лише поки форма ще невидима
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if (performance.now() < 1000) fit(); });
+  var w = window.innerWidth;
+  window.addEventListener('resize', function(){ if (window.innerWidth !== w){ w = window.innerWidth; fit(); } }, {passive:true});
+})();
+</script>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
@@ -4317,6 +4349,7 @@ body::before{ filter:none !important; will-change:transform, opacity; }
         <button class="calc-btn" id="reveal-btn" type="button">Розкрити число</button>
       </div>
       <div class="calc-hint" id="calc-hint"></div>
+      <span class="hero-cue" aria-hidden="true"></span>
 
       <p class="bridge reveal-on-scroll" id="bridge-text" style="display:none;">
         Це лише <span class="accent">одне число</span> з твого коду.
