@@ -1,0 +1,8 @@
+# VNUMERO — дозволяємо пошуковикам індексувати весь сайт.
+# Якщо на сайті вже лежить robots.txt із рядком "Disallow: /" —
+# саме він і блокував індексацію. Цей файл його замінює.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://vnumero.life/sitemap.xml

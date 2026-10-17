@@ -37,7 +37,7 @@
   "areaServed": "UA",
   "knowsLanguage": "uk",
   "sameAs": [
-    "https://instagram.com/vnumero",
+    "https://www.instagram.com/vnumero_/",
     "https://www.tiktok.com/@v.numero",
     "https://youtube.com/@vnumero",
     "https://t.me/vnumero_bot"
@@ -95,7 +95,7 @@
       "name": "Чим онлайн помічник відрізняється від розбору?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Онлайн асистент — це щоденна навігація: короткий прогноз щоранку. Розбір — глибока робота по одній темі чи по цілому періоду життя, один раз і надовго."
+        "text": "Асистент у Telegram — це твоя щоденна подорож: перші 3 дні він розкриває твій нумерологічний код, а далі щоранку надсилає прогноз і допомагає діяти вчасно. Персональний розбір — глибока робота, яку я готую особисто по одній темі чи по цілому періоду життя, один раз і надовго."
       }
     },
     {
@@ -603,38 +603,6 @@
     margin:0 auto;
   }
 
-  /* ---- forecast mockup ---- */
-  .forecast-mock{
-    margin:32px auto 0;
-    max-width:340px;
-    text-align:left;
-    background:rgba(201,169,97,0.05);
-    border:1px solid rgba(201,169,97,0.25);
-    border-radius:14px;
-    padding:18px 20px;
-  }
-  .forecast-mock-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:10px;
-  }
-  .forecast-mock-name{
-    font-family:var(--serif);
-    font-size:15px;
-    letter-spacing:0.08em;
-    color:var(--gold);
-  }
-  .forecast-mock-time{
-    font-size:11px;
-    color:var(--ash-dim);
-    letter-spacing:0.05em;
-  }
-  .forecast-mock-text{
-    font-size:13.5px;
-    line-height:1.65;
-    color:var(--ivory);
-  }
 
   .cta-link{
     display:inline-block;
@@ -665,29 +633,12 @@
     letter-spacing:0.04em;
     color:var(--ash-dim);
   }
-  .price-highlight{
-    display:block;
-    font-family:var(--serif);
-    font-size:17px;
-    font-weight:400;
-    font-style:italic;
-    letter-spacing:0.01em;
-    color:var(--gold);
-    margin-bottom:6px;
-  }
 
   /* ---- readings cards ---- */
   /* ---- readings cascade ---- */
   #readings-panel.reveal-on-scroll{
     opacity:1;
     transform:none;
-  }
-  .readings-grid{
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:22px;
-    margin-top:36px;
-    text-align:left;
   }
   .reading-card{
     border:1px solid rgba(201,169,97,0.18);
@@ -753,36 +704,10 @@
     padding:3px 8px;
     border-radius:10px;
   }
-  .price-duration{
-    font-size:13px;
-    color:var(--ash);
-  }
   .reading-price-modal{
     display:flex;
     width:fit-content;
     margin:0 auto 22px;
-  }
-  .reading-link{
-    display:inline-block;
-    background:none;
-    border:none;
-    border-bottom:1px solid rgba(201,169,97,0.4);
-    font-family:inherit;
-    cursor:pointer;
-    font-size:11px;
-    letter-spacing:0.1em;
-    color:var(--gold-soft);
-    text-decoration:none;
-    padding:0 0 2px;
-    transition:color 0.3s ease, border-color 0.3s ease;
-  }
-  .reading-link:hover, .reading-link:focus-visible{
-    color:var(--gold);
-    border-color:var(--gold);
-  }
-  .reading-link:focus-visible{
-    outline:2px solid var(--ivory);
-    outline-offset:3px;
   }
 
   /* ---- segmenter line ---- */
@@ -1227,17 +1152,6 @@
     opacity:1;
     transform:translateY(0);
   }
-  .premium-badge{
-    display:inline-block;
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:0.2em;
-    color:var(--obsidian-0);
-    background:var(--gold);
-    padding:5px 12px;
-    border-radius:12px;
-    margin-bottom:14px;
-  }
   .premium-consult h3{
     font-family:var(--serif);
     font-weight:400;
@@ -1360,9 +1274,6 @@
     letter-spacing:0;
   }
 
-  @media (max-width:560px){
-    .readings-grid{grid-template-columns:1fr;}
-  }
 
   @media (max-width:400px){
     main{padding:60px 18px 50px;}
@@ -1371,7 +1282,6 @@
     .field-row{flex-direction:column; align-items:center;}
     input[type="date"]{max-width:none;}
     .result-overlay-number{font-size:64px;}
-    .readings-grid{grid-template-columns:1fr;}
   }
 
   @media (max-height:600px){
@@ -1387,13 +1297,11 @@
   .legal-modal-card{position:relative;max-width:760px;margin:0 auto;background:var(--obsidian-1);border:1px solid rgba(201,169,97,.25);border-radius:8px;padding:42px 34px 48px;text-align:left;box-shadow:0 24px 80px rgba(0,0,0,.45);}
   .legal-modal-close{position:sticky;top:0;float:right;margin:-18px -10px 0 20px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(201,169,97,.35);background:var(--obsidian-1);color:var(--gold);font-size:22px;cursor:pointer;z-index:2;}
   .legal-modal h1{font-family:var(--serif);font-weight:400;font-size:clamp(30px,6vw,46px);color:var(--gold);margin:0 0 8px;}
-  .legal-updated{font-size:11px;color:var(--ash-dim);margin-bottom:28px;}
   .legal-modal h2{font-family:var(--serif);font-weight:400;font-size:22px;color:var(--ivory);margin:30px 0 10px;}
   .legal-modal p,.legal-modal .notice{font-size:13px;line-height:1.78;color:var(--ash);}
   .legal-modal .notice{padding:16px 18px;border:1px solid rgba(201,169,97,.22);background:rgba(201,169,97,.05);border-radius:5px;margin-bottom:26px;}
   .legal-modal strong{color:var(--ivory);font-weight:500;}
   .legal-modal a{color:var(--gold-soft);}
-  .legal-modal .placeholder{color:var(--gold);}
   body.legal-open{overflow:hidden;}
   @media(max-width:560px){.legal-modal-card{padding:34px 20px 42px;}.legal-modal{padding:12px 8px;}}
 
@@ -1419,11 +1327,15 @@
     width:100%;
     overflow:hidden;
     border-radius:12px;
+    /* Висоту фіксує скрипт унизу за найвищим слайдом. Без цього блок
+       схлопується до 2px щоразу, коли показують ще не завантажену
+       картинку — і сторінка смикається кожні 5.5 секунди. */
   }
   .review-slide{
     display:none;
     width:100%;
   }
+  .reviews-viewport{display:flex; align-items:center;}
   .review-slide.active{
     display:block;
     animation:reviewFade .35s ease;
@@ -1521,15 +1433,6 @@
     background:rgba(201,169,97,.035);
     text-align:left;
   }
-  .assistant-benefits-title{
-    margin-bottom:15px;
-    font-family:var(--sans);
-    font-size:12px;
-    font-weight:600;
-    letter-spacing:.13em;
-    text-transform:uppercase;
-    color:var(--gold);
-  }
   .assistant-benefit{
     display:flex;
     align-items:flex-start;
@@ -1548,18 +1451,193 @@
     color:var(--ivory);
     font-weight:600;
   }
-  .assistant-weekly-bonus{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:17px;
-    padding-top:15px;
-    border-top:1px solid rgba(201,169,97,.16);
-    color:var(--gold);
-    font-family:var(--sans);
-    font-size:13px;
-    letter-spacing:.02em;
+  /* фінальний заклик: завжди два рівні рядки, і на телефоні, і на комп'ютері */
+  .final-cta .panel-title{max-width:460px;margin-left:auto;margin-right:auto;text-wrap:balance;}
+
+  /* ---- assistant: journey (I → II) ----
+     Один оркестрований момент: коли блок з'являється на екрані, золота нитка
+     «проростає» від кроку I до кроку II, пункти проявляються по черзі,
+     і крок II спалахує — це точка, куди веде шлях. */
+  .journey{
+    position:relative;
+    max-width:500px;
+    margin:38px auto 8px;
+    padding:0 4px;
+    text-align:left;
+    --mark:52px;
   }
+  .journey-thread{
+    position:absolute;
+    left:calc(4px + var(--mark) / 2);
+    top:var(--mark);
+    bottom:calc(100% - var(--thread-end, 70%));
+    width:1px;
+    background:rgba(201,169,97,.12);
+  }
+  .journey-thread span{
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(201,169,97,.75), rgba(232,201,129,1));
+    box-shadow:0 0 10px rgba(201,169,97,.55);
+    transform-origin:top;
+  }
+  .journey-step{
+    position:relative;
+    display:grid;
+    grid-template-columns:var(--mark) 1fr;
+    column-gap:22px;
+    align-items:start;
+  }
+  .journey-step + .journey-step{margin-top:40px;}
+  .journey-mark{
+    width:var(--mark); height:var(--mark);
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    border:1px solid rgba(201,169,97,.55);
+    background:radial-gradient(circle at 50% 35%, rgba(201,169,97,.14), rgba(5,4,3,.92) 70%);
+    font-family:var(--serif); font-size:22px; line-height:1;
+    color:var(--gold);
+    position:relative; z-index:1;
+  }
+  .journey-when{
+    margin:2px 0 2px;
+    font-family:var(--serif); font-style:italic;
+    font-size:17px; color:var(--gold-soft);
+  }
+  .journey-title{
+    margin:0 0 16px;
+    font-family:var(--serif); font-weight:300;
+    font-size:clamp(30px,7vw,38px); line-height:1.05;
+    letter-spacing:.01em;
+    color:var(--ivory);
+  }
+  .journey-list{list-style:none; margin:0; padding:0;}
+  .journey-list li{
+    position:relative;
+    padding:9px 0 9px 20px;
+    border-top:1px solid rgba(201,169,97,.10);
+    font-family:var(--sans); font-size:14px; line-height:1.5;
+    color:rgba(244,239,224,.72);
+  }
+  .journey-list li:first-child{border-top:0;}
+  .journey-list li::before{
+    content:""; position:absolute; left:2px; top:17px;
+    width:5px; height:5px; transform:rotate(45deg);
+    background:var(--gold);
+    box-shadow:0 0 8px rgba(201,169,97,.7);
+  }
+  .journey-list b{color:var(--ivory); font-weight:500;}
+  .journey-text{
+    margin:0;
+    font-family:var(--sans); font-size:14.5px; line-height:1.65;
+    color:rgba(244,239,224,.84);
+  }
+
+  /* Крок II — точка призначення: заповнене золото та тепле сяйво */
+  .journey-step--next .journey-mark{
+    border-color:transparent;
+    background:radial-gradient(circle at 35% 30%, #f1d699, var(--gold) 45%, #8a6c37);
+    color:var(--obsidian-0);
+    font-weight:400;
+  }
+  .journey-step--next .journey-title{
+    background:linear-gradient(100deg, var(--ivory) 0%, var(--ivory) 40%, #f1d699 50%, var(--ivory) 60%, var(--ivory) 100%);
+    background-size:250% 100%;
+    background-position:100% 0;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* ---- анімація (вмикається скриптом; без JS усе просто видно) ---- */
+  .journey.js-anim .journey-thread span{transform:scaleY(0);}
+  .journey.js-anim .journey-mark,
+  .journey.js-anim .journey-when,
+  .journey.js-anim .journey-title,
+  .journey.js-anim .journey-list li,
+  .journey.js-anim .journey-text{opacity:0;}
+  .journey.js-anim .journey-mark{transform:scale(.6);}
+  .journey.js-anim .journey-list li{transform:translateX(-8px);}
+  .journey.js-anim .journey-title,
+  .journey.js-anim .journey-text{transform:translateY(8px);}
+
+  .journey.is-lit .journey-thread span{
+    transform:scaleY(1);
+    transition:transform 1.6s cubic-bezier(.65,0,.35,1) .5s;
+  }
+  .journey.is-lit .journey-mark,
+  .journey.is-lit .journey-when,
+  .journey.is-lit .journey-title,
+  .journey.is-lit .journey-list li,
+  .journey.is-lit .journey-text{
+    opacity:1; transform:none;
+    transition:opacity .8s ease, transform .8s cubic-bezier(.22,.61,.36,1);
+  }
+  .journey.is-lit .journey-step:first-of-type .journey-when{transition-delay:.15s;}
+  .journey.is-lit .journey-step:first-of-type .journey-title{transition-delay:.25s;}
+  .journey.is-lit .journey-list li:nth-child(1){transition-delay:.55s;}
+  .journey.is-lit .journey-list li:nth-child(2){transition-delay:.75s;}
+  .journey.is-lit .journey-list li:nth-child(3){transition-delay:.95s;}
+  .journey.is-lit .journey-list li:nth-child(4){transition-delay:1.15s;}
+  .journey.is-lit .journey-step--next .journey-mark{
+    transition:opacity .5s ease 2s, transform .9s cubic-bezier(.34,1.56,.64,1) 2s;
+    animation:journeyIgnite 1.4s ease-out 2s both, journeyBreathe 4.5s ease-in-out 3.4s infinite;
+  }
+  .journey.is-lit .journey-step--next .journey-when{transition-delay:2.2s;}
+  .journey.is-lit .journey-step--next .journey-title{
+    transition:opacity .8s ease 2.3s, transform .8s cubic-bezier(.22,.61,.36,1) 2.3s;
+    animation:journeyShine 2.2s ease-in-out 2.9s both;
+  }
+  .journey.is-lit .journey-step--next .journey-text{transition-delay:2.5s;}
+
+  @keyframes journeyIgnite{
+    0%{box-shadow:0 0 0 0 rgba(241,214,153,.0);}
+    35%{box-shadow:0 0 0 10px rgba(241,214,153,.22), 0 0 46px rgba(201,169,97,.75);}
+    100%{box-shadow:0 0 0 0 rgba(241,214,153,0), 0 0 26px rgba(201,169,97,.4);}
+  }
+  @keyframes journeyBreathe{
+    0%,100%{box-shadow:0 0 22px rgba(201,169,97,.35);}
+    50%{box-shadow:0 0 36px rgba(201,169,97,.6);}
+  }
+  @keyframes journeyShine{
+    from{background-position:100% 0;}
+    to{background-position:0 0;}
+  }
+
+  /* Кнопка під блоком: тонкий відблиск, що проходить раз на кілька секунд */
+  .assistant-cta{margin-top:34px;}
+  .assistant-cta::after{
+    content:""; position:absolute; top:0; bottom:0; left:-60%;
+    width:45%;
+    background:linear-gradient(100deg, transparent, rgba(255,250,235,.55), transparent);
+    transform:skewX(-20deg);
+    animation:ctaGlint 6.5s ease-in-out 3.5s infinite;
+    pointer-events:none;
+  }
+  @keyframes ctaGlint{
+    0%{left:-60%;}
+    18%,100%{left:130%;}
+  }
+  .assistant-cta + .price-note{line-height:1.7;}
+
+  @media(max-width:560px){
+    .journey{--mark:44px; margin-top:30px; padding:0 0 0 12px;}
+    .journey-thread{left:calc(12px + var(--mark) / 2);}
+    .journey-step{column-gap:16px;}
+    .journey-mark{font-size:19px;}
+    .journey-list li{font-size:13.5px;}
+    .journey-text{font-size:14px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .journey *, .journey *::before,
+    .assistant-cta::after{
+      animation:none !important; transition:none !important;
+    }
+    .journey .journey-thread span{transform:none !important;}
+    .journey .journey-mark, .journey .journey-when, .journey .journey-title,
+    .journey .journey-list li, .journey .journey-text{opacity:1 !important; transform:none !important;}
+    .journey-step--next .journey-title{background-position:0 0;}
+  }
+
   @media(max-width:560px){
     .assistant-benefits{
       margin-top:25px;
@@ -2849,41 +2927,9 @@
 /* ===== MOBILE ORDER FORM: FIT ONE SCREEN ===== */
 @media (max-width:600px){
 
-  /* Modal itself */
-  #order-modal .modal-box,
-  #order-modal .modal-card,
-  #order-modal .modal-content{
-    width:min(94vw, 430px) !important;
-    max-width:94vw !important;
-    max-height:94dvh !important;
-    height:auto !important;
-    padding:14px 14px 12px !important;
-    margin:3dvh auto !important;
-    overflow-y:auto !important;
-    box-sizing:border-box !important;
-  }
 
-  /* Header spacing */
-  #order-modal h2,
-  #order-modal .modal-title{
-    margin:0 0 6px !important;
-    font-size:24px !important;
-    line-height:1.05 !important;
-  }
 
-  #order-modal .modal-subtitle,
-  #order-modal .order-intro,
-  #order-modal > div > p{
-    margin:0 0 8px !important;
-    font-size:12px !important;
-    line-height:1.3 !important;
-  }
 
-  /* Form density */
-  #order-modal form,
-  #order-form{
-    gap:7px !important;
-  }
 
   #order-modal .form-group,
   #order-modal .field,
@@ -2975,35 +3021,12 @@
     line-height:42px !important;
   }
 
-  /* Close button tighter */
-  #order-modal .modal-close,
-  #order-modal .close{
-    top:8px !important;
-    right:9px !important;
-  }
 }
 
 /* Extra compression for shorter phone screens */
 @media (max-width:600px) and (max-height:760px){
-  #order-modal .modal-box,
-  #order-modal .modal-card,
-  #order-modal .modal-content{
-    max-height:96dvh !important;
-    margin:2dvh auto !important;
-    padding:10px 12px 9px !important;
-  }
 
-  #order-modal h2,
-  #order-modal .modal-title{
-    font-size:21px !important;
-    margin-bottom:4px !important;
-  }
 
-  #order-modal .modal-subtitle,
-  #order-modal .order-intro{
-    margin-bottom:5px !important;
-    font-size:11px !important;
-  }
 
   #order-modal .form-group,
   #order-modal .field,
@@ -3411,29 +3434,7 @@
   filter:none !important;
 }
 
-/* Remove animated radial/light bloom behind the first screen */
-.hero{
-  background-image:none !important;
-}
-.hero .glow,
-.hero .hero-glow,
-.hero .light,
-.hero .light-bloom,
-.hero .ambient-glow,
-.hero .orb,
-.hero .flare{
-  display:none !important;
-  animation:none !important;
-  opacity:0 !important;
-}
 
-/* Prevent pseudo-elements from creating moving illumination */
-.hero::before,
-.hero::after{
-  background:none !important;
-  animation:none !important;
-  opacity:0 !important;
-}
 
 
 /* ===== V33 — MOBILE HORIZONTAL OVERFLOW HARD FIX ===== */
@@ -3488,70 +3489,6 @@ body{
 }
 
 
-/* ===== V34 — MOBILE ORDER SUCCESS TABLE ===== */
-@media (max-width:600px){
-  /* Keep the success/receipt block inside the viewport */
-  .order-success,
-  .order-success *,
-  .success-modal,
-  .success-modal *,
-  .receipt,
-  .receipt *,
-  .order-confirmation,
-  .order-confirmation *{
-    box-sizing:border-box !important;
-  }
-
-  .order-success,
-  .success-modal,
-  .receipt,
-  .order-confirmation{
-    width:100% !important;
-    max-width:100% !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-    overflow-x:hidden !important;
-  }
-
-  .order-success table,
-  .success-modal table,
-  .receipt table,
-  .order-confirmation table{
-    width:100% !important;
-    max-width:100% !important;
-    table-layout:fixed !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-    font-size:12px !important;
-  }
-
-  .order-success th,
-  .order-success td,
-  .success-modal th,
-  .success-modal td,
-  .receipt th,
-  .receipt td,
-  .order-confirmation th,
-  .order-confirmation td{
-    max-width:0 !important;
-    min-width:0 !important;
-    overflow-wrap:anywhere !important;
-    word-break:break-word !important;
-    white-space:normal !important;
-  }
-
-  /* Long email / Telegram values must not widen the table */
-  .order-success input,
-  .order-success textarea,
-  .success-modal input,
-  .success-modal textarea,
-  .receipt input,
-  .receipt textarea,
-  .order-confirmation input,
-  .order-confirmation textarea{
-    max-width:100% !important;
-  }
-}
 
 
 /* ===== V36 — MOBILE ORDER CONFIRMATION / DATE FIT ===== */
@@ -3657,12 +3594,435 @@ body{
     animation-play-state:paused !important;
   }
 
-  /* 3. Ізолюємо перемальовування секцій одна від одної. */
-  .panel{ contain:layout paint; }
+  /* `contain:layout paint` тут теж НЕ ставимо: воно робить .panel новим
+     containing block для абсолютних нащадків і може непередбачувано зсунути
+     макет у реальних мобільних браузерах. Виграш мізерний, ризик реальний. */
 
+</style>
+<style>
+  .inapp-veil{
+    position:fixed; inset:0; z-index:940;
+    background:rgba(3,2,1,.62);
+    -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px);
+    opacity:0; visibility:hidden;
+    transition:opacity .4s ease, visibility 0s linear .4s;
+  }
+  .inapp-veil.open{opacity:1; visibility:visible; transition:opacity .4s ease;}
+
+  .inapp-sheet{
+    position:fixed; left:0; right:0; bottom:0; z-index:950;
+    max-width:460px; margin:0 auto;
+    padding:34px 24px calc(26px + env(safe-area-inset-bottom));
+    border-radius:22px 22px 0 0;
+    background:
+      radial-gradient(120% 60% at 50% 0%, rgba(201,169,97,.16), transparent 60%),
+      linear-gradient(180deg, #17120b 0%, #0b0906 100%);
+    box-shadow:0 -20px 70px rgba(0,0,0,.7);
+    font-family:var(--sans); color:rgba(244,239,224,.86);
+    text-align:center;
+    transform:translateY(105%);
+    transition:transform .55s cubic-bezier(.22,.61,.36,1);
+  }
+  /* золотий кант, що згасає до країв */
+  .inapp-sheet::before{
+    content:""; position:absolute; left:0; right:0; top:0; height:1px;
+    border-radius:22px 22px 0 0;
+    background:linear-gradient(90deg, transparent, rgba(241,214,153,.9) 50%, transparent);
+  }
+  .inapp-sheet.open{transform:none;}
+
+  .inapp-x{
+    position:absolute; top:12px; right:12px;
+    width:34px; height:34px; padding:0; border-radius:50%;
+    background:rgba(255,255,255,.04); border:1px solid rgba(201,169,97,.22);
+    color:var(--gold-soft); font-size:18px; line-height:1; cursor:pointer;
+  }
+  .inapp-mark{
+    width:58px; height:58px; margin:0 auto 16px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #f1d699, var(--gold) 45%, #8a6c37);
+    box-shadow:0 0 0 6px rgba(201,169,97,.08), 0 0 34px rgba(201,169,97,.45);
+  }
+  .inapp-mark svg{width:24px; height:24px; margin-left:-2px;}
+  .inapp-sheet.open .inapp-mark{animation:inappGlow 1.6s ease-out .35s both;}
+  @keyframes inappGlow{
+    0%{box-shadow:0 0 0 0 rgba(241,214,153,.0), 0 0 0 rgba(201,169,97,0);}
+    40%{box-shadow:0 0 0 12px rgba(241,214,153,.14), 0 0 50px rgba(201,169,97,.7);}
+    100%{box-shadow:0 0 0 6px rgba(201,169,97,.08), 0 0 34px rgba(201,169,97,.45);}
+  }
+  .inapp-title{
+    margin:0 0 8px;
+    font-family:var(--serif); font-weight:300;
+    font-size:30px; line-height:1.1; color:var(--ivory);
+  }
+  .inapp-lead{
+    margin:0 auto 22px; max-width:320px; text-wrap:balance;
+    font-size:13.5px; line-height:1.6; color:rgba(244,239,224,.66);
+  }
+
+  /* iPhone: три кроки */
+  .inapp-steps{
+    list-style:none; margin:0 0 22px; padding:0; text-align:left;
+    counter-reset:st;
+  }
+  .inapp-steps li{
+    counter-increment:st;
+    display:grid; grid-template-columns:30px 1fr; gap:12px; align-items:center;
+    padding:11px 0;
+    border-top:1px solid rgba(201,169,97,.12);
+    font-size:14px; line-height:1.45; color:rgba(244,239,224,.86);
+  }
+  .inapp-steps li:first-child{border-top:0;}
+  .inapp-steps li::before{
+    content:counter(st);
+    width:30px; height:30px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(201,169,97,.55);
+    font-family:var(--serif); font-size:17px; color:var(--gold);
+  }
+  .inapp-steps b{color:var(--ivory); font-weight:600;}
+  .inapp-dots{
+    display:inline-block; padding:0 6px; border-radius:4px;
+    background:rgba(201,169,97,.14); color:var(--gold); font-weight:700; letter-spacing:.08em;
+  }
+
+  /* Android: одна головна дія */
+  .inapp-main{
+    display:block; width:100%;
+    padding:16px 20px; border-radius:3px;
+    background:linear-gradient(180deg, #d9bb78, var(--gold));
+    color:var(--obsidian-0); text-decoration:none;
+    font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.14em;
+    box-shadow:0 8px 26px rgba(201,169,97,.28);
+  }
+  .inapp-main-note{margin:10px 0 22px; font-size:12px; color:rgba(244,239,224,.5);}
+
+  .inapp-or{
+    display:flex; align-items:center; gap:12px; margin:0 0 14px;
+    font-family:var(--serif); font-style:italic; font-size:15px; color:var(--gold-soft);
+  }
+  .inapp-or::before, .inapp-or::after{
+    content:""; flex:1; height:1px; background:rgba(201,169,97,.18);
+  }
+  .inapp-copy{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    width:100%; padding:13px 14px 13px 18px; border-radius:3px;
+    background:rgba(255,255,255,.025);
+    border:1px solid rgba(201,169,97,.32);
+    cursor:pointer; text-align:left;
+  }
+  .inapp-handle{
+    font-family:var(--sans); font-size:15px; font-weight:500; color:var(--ivory);
+    user-select:all; -webkit-user-select:all;
+  }
+  .inapp-copy-label{
+    font-family:var(--sans); font-size:11px; font-weight:600; letter-spacing:.12em;
+    color:var(--gold);
+  }
+  .inapp-copy.done{border-color:rgba(201,169,97,.7);}
+  .inapp-copy-hint{margin:10px 0 0; font-size:12px; color:rgba(244,239,224,.5);}
+
+  @media (prefers-reduced-motion:reduce){
+    .inapp-sheet, .inapp-veil{transition:none;}
+    .inapp-sheet.open .inapp-mark{animation:none;}
+  }
+</style>
+<style>
+  .vn-tg-focus{animation:vnTgFocus 1.5s ease-in-out 3;}
+  @keyframes vnTgFocus{
+    0%,100%{box-shadow:0 0 0 0 rgba(241,214,153,0), 0 0 0 rgba(201,169,97,0);}
+    50%{box-shadow:0 0 0 7px rgba(241,214,153,.18), 0 0 38px rgba(201,169,97,.65);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .vn-tg-focus{animation:none; box-shadow:0 0 0 3px rgba(241,214,153,.5);}
+  }
+</style>
+<style>
+  /* 1. Плівкове зерно: прибирає «пластиковість» темного фону */
+  .vn-grain{
+    position:fixed; inset:0; z-index:60; pointer-events:none;
+    opacity:.07;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 .92  0 0 0 0 .75  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* 2. Роздільник секцій: згасаюча золота лінія з ромбом посередині */
+  main > .panel{
+    border-top:0 !important;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11'%3E%3Crect x='2.2' y='2.2' width='6.6' height='6.6' transform='rotate(45 5.5 5.5)' fill='%23c9a961'/%3E%3C/svg%3E"),
+      linear-gradient(90deg, transparent, rgba(201,169,97,.38) 30%, rgba(201,169,97,.38) 70%, transparent);
+    background-repeat:no-repeat;
+    background-position:center 0, center 5px;
+    background-size:11px 11px, 100% 1px;
+    transition:background-size 1.6s cubic-bezier(.65,0,.35,1) .15s;
+  }
+  /* лінія «розходиться» від ромба, коли секція з'являється */
+  main > .panel.vn-reveal-ready:not(.vn-reveal-show){ background-size:11px 11px, 0% 1px; }
+  @media (prefers-reduced-motion:reduce){ main > .panel{ transition:none; background-size:11px 11px, 100% 1px !important; } }
+
+  /* 3. Кнопки: металеве золото замість пласкої заливки */
+  .cta-link{
+    background:linear-gradient(180deg, #e6cc8f 0%, #c9a961 48%, #a9894b 100%) !important;
+    box-shadow:inset 0 1px 0 rgba(255,248,225,.45), inset 0 -1px 0 rgba(60,40,10,.35), 0 8px 24px rgba(201,169,97,.18) !important;
+    border-radius:3px !important;
+    text-shadow:0 1px 0 rgba(255,240,200,.35);
+  }
+  .cta-link:hover{ box-shadow:inset 0 1px 0 rgba(255,248,225,.55), 0 10px 34px rgba(201,169,97,.38) !important; }
+  .calc-btn{ border-color:rgba(201,169,97,.75) !important; background:linear-gradient(180deg, rgba(201,169,97,.10), rgba(201,169,97,.02)) !important; }
+
+  /* 4. «Знайомо?»: замість сірих плашок — тепла золота підсвітка від лінії */
+  #pain-panel .pain-item{
+    background:linear-gradient(90deg, rgba(201,169,97,.16) 0%, rgba(201,169,97,.05) 45%, rgba(201,169,97,0) 100%) !important;
+    border-radius:0 3px 3px 0 !important;
+    color:rgba(244,239,224,.9);
+    padding-left:20px;
+  }
+  #pain-panel .pain-item::before{ height:100% !important; width:2px; background:linear-gradient(180deg,#f1d699,var(--gold)) !important; box-shadow:0 0 12px rgba(201,169,97,.7); }
+
+  /* 5. Головні розбори: золота «фольга» по краю картки */
+  .offer-card{
+    position:relative;
+    border:1px solid transparent !important;
+    background:
+      linear-gradient(180deg, #15110b, #0c0a07) padding-box,
+      linear-gradient(140deg, rgba(241,214,153,.85), rgba(201,169,97,.14) 32%, rgba(201,169,97,.10) 62%, rgba(241,214,153,.6)) border-box !important;
+    box-shadow:0 18px 50px rgba(0,0,0,.35);
+  }
+  .offer-card:hover, .offer-card:focus-visible{
+    background:
+      linear-gradient(180deg, #1a140c, #0f0c08) padding-box,
+      linear-gradient(140deg, rgba(241,214,153,1), rgba(201,169,97,.3) 32%, rgba(201,169,97,.2) 62%, rgba(241,214,153,.85)) border-box !important;
+    box-shadow:0 18px 50px rgba(0,0,0,.35), 0 0 40px rgba(201,169,97,.12);
+  }
+  .offer-card h3{
+    background:linear-gradient(100deg, #f1d699, var(--gold) 55%, #a9894b);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    font-weight:300 !important; font-size:28px !important;
+  }
+  @media (max-width:560px){ .offer-card h3{ font-size:26px !important; } }
+
+  /* 7. Колесо на першому екрані: один повільний оберт за 110 с — однаково
+        на телефоні й комп'ютері. Внутрішнє додаткове обертання вимкнено,
+        щоб рух був один, рівний. */
+  .wheel-wrap{ animation-duration:110s !important; }
+  .wheel-wrap svg{ animation:none !important; }
+
+  /* 6. Заголовки секцій: тонше й більше — як у логотипі */
+  main > .panel > .panel-title{ font-weight:300 !important; letter-spacing:.005em; }
+</style>
+<style>
+  /* ═══ Форма замовлення: надійна прокрутка на телефонах ══════════════════
+     Раніше форму «втискали» в один екран: вікно мало фіксовану висоту, а
+     прокручувалась лише внутрішня панель. На iPhone після відкриття
+     клавіатури нижні поля опинялись під нею і доскролити до них було
+     неможливо. Тепер прокручується все вікно, як звичайна сторінка. */
+  @media (max-width:600px){
+    #order-modal{
+      overflow-y:auto !important;
+      -webkit-overflow-scrolling:touch;
+      overscroll-behavior:contain;
+      align-items:flex-start !important;
+      padding:56px 0 calc(40px + env(safe-area-inset-bottom)) !important;
+      /* розмиття фону робить «fixed»-хрестик прокручуваним разом з формою;
+         фон і так майже непрозорий, тож розмиття тут не потрібне */
+      -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+      background:#060504 !important;
+      transform:none !important; filter:none !important;
+    }
+    #order-modal .reading-modal-inner{
+      max-height:none !important;
+      overflow:visible !important;
+      margin:0 auto !important;
+    }
+    #order-modal #order-close{ position:fixed !important; top:10px !important; right:10px !important; z-index:100 !important; background:rgba(12,10,7,.92) !important; }
+    #order-modal textarea{ height:76px !important; min-height:76px !important; max-height:none !important; }
+  }
+  /* 16px — інакше iPhone автоматично збільшує сторінку при натисканні на поле */
+  #order-modal input[type="text"], #order-modal input[type="tel"],
+  #order-modal input[type="date"], #order-modal textarea{ font-size:16px !important; }
+  /* поки відкрита форма, сторінка позаду не прокручується */
+  html.vn-modal-lock, html.vn-modal-lock body{ overflow:hidden !important; }
+</style>
+<style>
+/* ═══ ПЕРШИЙ ЕКРАН: поле дати і кнопка ════════════════════════════════════
+   Поле було прозорим — крізь нього просвічувалось і рухалось колесо.
+   Тепер: темна «підкладка» під формою, щільне поле з золотою рамкою,
+   великі цифри, і кнопка — металеве золото, як головна дія сторінки.
+   Через секунду після завантаження поле один раз м'яко світиться,
+   щоб око одразу його знайшло. */
+main .field-row{ position:relative; isolation:isolate; }
+main .field-row::before{
+  content:""; position:absolute; inset:-40px -70px; z-index:-1; pointer-events:none;
+  background:radial-gradient(closest-side, rgba(5,4,3,.94), rgba(5,4,3,.78) 55%, rgba(5,4,3,0));
+}
+main .field-row #dob-input{
+  flex:0 0 auto !important;
+  width:300px !important; max-width:86vw !important; min-width:0 !important;
+  height:58px !important; min-height:58px !important; max-height:58px !important;
+  line-height:58px !important; padding:0 18px !important;
+  background:linear-gradient(180deg, #1a150e 0%, #0d0b07 100%) !important;
+  border:1px solid rgba(214,182,112,.75) !important; border-radius:3px !important;
+  color:var(--ivory) !important; caret-color:var(--gold);
+  font-family:var(--sans) !important; font-size:19px !important; font-weight:500 !important;
+  letter-spacing:.16em !important; text-align:center !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,240,200,.07),
+    inset 0 -12px 24px rgba(0,0,0,.35),
+    0 12px 34px rgba(0,0,0,.55) !important;
+  animation:dobInvite 2.6s ease-out 1.5s 1 both;
+}
+main .field-row #dob-input::placeholder{ color:rgba(214,182,112,.55); letter-spacing:.2em; font-weight:400; text-align:center !important; }
+main .field-row #dob-input{ text-align:center !important; text-indent:0 !important; }
+main .field-row #dob-input:focus, main .field-row #dob-input:focus-visible{
+  outline:none !important; border-color:#ecd49a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,240,200,.08),
+    0 0 0 4px rgba(201,169,97,.16),
+    0 0 34px rgba(201,169,97,.28) !important;
+}
+@keyframes dobInvite{
+  0%,100%{ box-shadow:inset 0 1px 0 rgba(255,240,200,.07), inset 0 -12px 24px rgba(0,0,0,.35), 0 12px 34px rgba(0,0,0,.55); }
+  40%{ box-shadow:inset 0 1px 0 rgba(255,240,200,.07), 0 0 0 5px rgba(201,169,97,.18), 0 0 40px rgba(201,169,97,.45); }
+}
+main .field-row #reveal-btn{
+  width:300px !important; max-width:86vw !important; min-width:0 !important;
+  height:56px !important; min-height:56px !important; padding:0 22px !important; margin:0 auto !important;
+  border:0 !important; border-radius:3px !important;
+  background:linear-gradient(180deg, #e8cf93 0%, #c9a961 48%, #a6864a 100%) !important;
+  color:#0c0a07 !important; -webkit-text-fill-color:#0c0a07 !important;
+  font-size:12.5px !important; font-weight:700 !important; letter-spacing:.16em !important;
+  box-shadow:inset 0 1px 0 rgba(255,248,225,.5), inset 0 -1px 0 rgba(60,40,10,.35), 0 10px 30px rgba(201,169,97,.25) !important;
+}
+main .field-row #reveal-btn::after{ color:#0c0a07 !important; opacity:.7 !important; }
+main .field-row #reveal-btn:focus, main .field-row #reveal-btn:focus-visible, main .field-row #reveal-btn:active{
+  color:#0c0a07 !important; -webkit-text-fill-color:#0c0a07 !important;
+  background:linear-gradient(180deg, #efd9a3 0%, #d1b26b 48%, #ad8d50 100%) !important;
+  outline:2px solid rgba(236,212,154,.6) !important; outline-offset:3px;
+}
+main .field-row #reveal-btn:hover{ filter:brightness(1.07); box-shadow:inset 0 1px 0 rgba(255,248,225,.55), 0 12px 38px rgba(201,169,97,.42) !important; }
+main .calc-hint{ position:relative; }
+@media (min-width:700px){
+  main .field-row{ flex-direction:row !important; gap:12px !important; }
+  main .field-row #dob-input{ width:260px !important; flex:0 0 260px !important; }
+  main .field-row #reveal-btn{ flex:0 0 auto !important; }
+  main .field-row #reveal-btn{ width:auto !important; margin:0 !important; }
+}
+@media (prefers-reduced-motion:reduce){ main .field-row #dob-input{ animation:none; } }
+</style>
+<style>
+/* «Безкоштовно» — явно, але елегантно: золота мітка біля кроку I
+   і золотий рядок під кнопкою */
+.journey-free{
+  display:inline-flex; align-items:center; vertical-align:middle;
+  margin:-2px 0 0 10px; padding:3px 10px 3px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+  font-family:var(--sans); font-style:normal; font-size:11px; font-weight:500; line-height:1.4; letter-spacing:.05em;
+  color:rgba(244,239,224,.78);
+}
+/* «Перші три дні» + мітка — один рівний рядок з відступом до заголовка */
+.journey-step:first-of-type .journey-when{ display:flex; align-items:center; flex-wrap:wrap; row-gap:6px; margin-bottom:6px; }
+.journey-step:first-of-type .journey-when .journey-free{ margin:0 0 0 10px; }
+.assistant-price{ line-height:1.8 !important; }
+.assistant-free{ color:#ecd49a; font-size:13px; font-weight:500; letter-spacing:.03em; }
+</style>
+<style>
+/* ═══ ШИРОКА ВЕРСІЯ ДЛЯ КОМП'ЮТЕРА (від 1024 px) ════════════════════════════
+   На телефоні нічого не змінюється. На великому екрані сторінка займає
+   ширину до 1120 px, а блоки, яким тісно в одній колонці, стають у дві. */
+@media (min-width:1024px){
+  main{ max-width:1120px !important; padding-left:48px !important; padding-right:48px !important; }
+  main > .panel{ margin-top:96px !important; padding-top:72px !important; }
+  main > .panel > .panel-title{ font-size:38px !important; margin-bottom:22px !important; }
+  .panel-eyebrow{ margin-bottom:14px; }
+
+  /* Знайомо? — чотири болі сіткою 2×2 */
+  #pain-panel .pain-list{ max-width:900px !important; display:grid !important; grid-template-columns:1fr 1fr; gap:14px !important; }
+  #pain-panel .pain-item{ padding:18px 22px 18px 24px !important; font-size:15px !important; display:flex; align-items:center; }
+
+  /* Про мене — фото ліворуч, текст праворуч */
+  #founder-panel{
+    display:grid !important; grid-template-columns:340px 1fr; column-gap:72px;
+    align-items:center; text-align:left; max-width:1000px; margin-left:auto; margin-right:auto;
+  }
+  #founder-panel > .panel-eyebrow{ grid-column:1 / -1; text-align:center; margin-bottom:34px; }
+  #founder-panel .author-photo{ grid-column:1; grid-row:2 / span 3; width:320px !important; height:320px !important; margin:0 auto !important; }
+  #founder-panel .author-quote{ grid-column:2; margin:0 !important; max-width:600px !important; font-size:21px !important; }
+  #founder-panel .systems-label{ grid-column:2; text-align:left; margin-top:28px; }
+  #founder-panel .system-tags{ grid-column:2; justify-content:flex-start !important; }
+
+  /* Асистент — кроки ліворуч, «почни з першого кроку» праворуч, відгуки нижче */
+  #assistant-panel{
+    display:grid !important; grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr); column-gap:64px;
+    max-width:1040px; margin-left:auto; margin-right:auto;
+  }
+  #assistant-panel > .panel-eyebrow, #assistant-panel > .panel-title, #assistant-panel > .panel-body{ grid-column:1 / -1; }
+  #assistant-panel > .journey{ grid-column:1; grid-row:4; margin:48px 0 0 !important; max-width:none !important; }
+  #assistant-panel > .assistant-start{
+    grid-column:2; grid-row:4; align-self:center; margin-top:48px;
+    padding:40px 34px 34px; border-radius:8px; text-align:center;
+    border:1px solid transparent;
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgba(201,169,97,.14), transparent 60%) padding-box,
+      linear-gradient(180deg, #16120b, #0c0a07) padding-box,
+      linear-gradient(140deg, rgba(241,214,153,.85), rgba(201,169,97,.14) 35%, rgba(201,169,97,.10) 65%, rgba(241,214,153,.6)) border-box;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  #assistant-panel .assistant-start-title{ display:block !important; }
+  #assistant-panel .assistant-start .assistant-cta{ margin-top:22px !important; display:block !important; }
+  #assistant-panel > .reviews-slider{ grid-column:1 / -1; grid-row:5; max-width:620px !important; margin:72px auto 0 !important; }
+
+  /* Розбори — ширші картки, малі розбори в три колонки */
+  #readings-panel .segmenter{ max-width:680px !important; }
+  #readings-panel .offer-grid{ max-width:960px; margin-left:auto; margin-right:auto; gap:28px !important; }
+  #readings-panel .offer-card{ padding:38px 36px 34px !important; }
+  #readings-panel .readings-list{ max-width:960px; margin-left:auto; margin-right:auto; grid-template-columns:repeat(3, 1fr) !important; }
+
+  /* Питання — комфортна ширина для читання */
+  .faq-list{ max-width:760px; margin-left:auto !important; margin-right:auto !important; }
+}
+
+/* заголовок картки «Почни з першого кроку» — лише на комп'ютері */
+.assistant-start-title{ display:none; margin:0; font-family:var(--serif); font-weight:300; font-size:30px; line-height:1.15; color:var(--ivory); }
+</style>
+<style>
+/* ═══ Блок «Подорож»: охайніший ритм ════════════════════════════════════ */
+.reviews-label{
+  margin:64px 0 4px; font-family:var(--serif); font-style:italic; font-size:19px;
+  color:var(--gold-soft); text-align:center;
+}
+#assistant-panel .reviews-slider{ margin-top:18px !important; }
+.assistant-start{ margin-top:44px; }
+.assistant-start .assistant-cta{ margin-top:0 !important; }
+.assistant-start .price-note{ margin-top:16px !important; }
+
+@media (max-width:600px){
+  #assistant-panel > .panel-body{ max-width:320px; margin-left:auto; margin-right:auto; }
+  #assistant-panel .journey{ margin-top:40px !important; padding:0 6px 0 16px !important; }
+  #assistant-panel .journey-thread{ left:calc(16px + var(--mark) / 2) !important; }
+  .journey-step + .journey-step{ margin-top:52px !important; }
+  .journey-title{ margin-bottom:18px !important; }
+  /* список кроку I: без ліній-розділювачів, більше повітря */
+  .journey-list li{ border-top:0 !important; padding:7px 0 7px 20px !important; font-size:14px !important; line-height:1.55 !important; }
+  .journey-list li::before{ top:15px !important; }
+  .journey-text{ font-size:14px !important; line-height:1.7 !important; }
+  .reviews-label{ margin-top:56px; font-size:18px; }
+  #assistant-panel .reviews-slider{ padding-left:40px !important; padding-right:40px !important; }
+  .assistant-start{ margin-top:40px; }
+}
+/* на комп'ютері підпис над відгуками займає весь рядок під кроками */
+@media (min-width:1024px){
+  #assistant-panel > .reviews-label{ grid-column:1 / -1; grid-row:5; margin-top:80px; }
+  #assistant-panel > .reviews-slider{ grid-row:6 !important; margin-top:18px !important; }
+}
 </style>
 </head>
 <body>
+<div class="vn-grain" aria-hidden="true"></div>
 <div class="vn-mystic-bg" aria-hidden="true">
   <span class="vn-num n1">7</span>
   <span class="vn-num n2">11</span>
@@ -3710,20 +4070,26 @@ body{
         <div class="order-form">
           <p class="order-required-note">* Обов’язкові поля</p>
           <div class="order-field">
-            <label for="order-name">ІМ'Я <span aria-hidden="true">*</span></label>
+            <label for="order-name"><span id="label-name">ТВОЄ ІМ'Я</span> <span aria-hidden="true">*</span></label>
             <input type="text" id="order-name" autocomplete="name" placeholder="Анна" required>
             <p class="order-hint" id="hint-name"></p>
           </div>
 
-          <div class="order-field">
-            <label for="order-dob">ДАТА НАРОДЖЕННЯ <span aria-hidden="true">*</span></label>
-            <input type="date" id="order-dob" required>
+          <div class="order-field" id="field-dob">
+            <label for="order-dob"><span id="label-dob">ДАТА НАРОДЖЕННЯ</span> <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-dob" class="vn-date" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="ДД.ММ.РРРР" required>
             <p class="order-hint" id="hint-dob"></p>
           </div>
 
+          <div class="order-field" id="field-name2" style="display:none;">
+            <label for="order-name2"><span id="label-name2">ІМ'Я ПАРТНЕРА</span> <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-name2" autocomplete="off" placeholder="Олександр">
+            <p class="order-hint" id="hint-name2"></p>
+          </div>
+
           <div class="order-field" id="field-dob2" style="display:none;">
-            <label for="order-dob2">ДАТА НАРОДЖЕННЯ ПАРТНЕРА <span aria-hidden="true">*</span></label>
-            <input type="date" id="order-dob2">
+            <label for="order-dob2"><span id="label-dob2">ДАТА НАРОДЖЕННЯ ПАРТНЕРА</span> <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-dob2" class="vn-date" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="ДД.ММ.РРРР">
             <p class="order-hint" id="hint-dob2"></p>
           </div>
 
@@ -3746,11 +4112,11 @@ body{
 
           <label class="order-check">
             <input type="checkbox" id="order-confirm">
-            <span>Я перевірив/-ла правильність дати народження</span>
+            <span id="label-confirm">Я перевірив/-ла правильність дати народження</span>
           </label>
           <p class="order-hint err" id="hint-confirm" style="margin:-16px 0 16px;"></p>
 
-          <button class="cta-link" id="order-submit" type="button" style="width:100%;">Перейти до оплати</button>
+          <button class="cta-link" id="order-submit" type="button" style="width:100%;">Надіслати заявку</button>
           <p class="legal-inline">Оплачуючи послугу, ви погоджуєтесь з <a href="#terms" data-legal="terms">Публічною офертою</a> та <a href="#privacy" data-legal="privacy">Політикою конфіденційності</a>. <a href="#refund" data-legal="refund">Умови оплати та повернення коштів</a>.</p>
           <p class="price-note" style="text-align:center;margin-top:12px;">Після початку роботи над розбором повернення оплати неможливе, крім випадків, передбачених законодавством України.</p>
         </div>
@@ -3852,11 +4218,12 @@ body{
     <section class="panel reveal-on-scroll" id="founder-panel">
       <div class="panel-eyebrow">МЕТОД, ЩО ПОЄДНАВ 5 СИСТЕМ</div>
       <div class="author-photo">
-        <img src="images/author.webp" loading="lazy" decoding="async" alt="Володимир, автор VNUMERO" width="230" height="230" loading="lazy">
+        <img src="images/author-2.webp" loading="lazy" decoding="async" alt="Володимир, творець VNUMERO" width="230" height="230">
       </div>
       <blockquote class="author-quote">
-        <p>Я — Володимир, автор VNUMERO та методу <em>«Код нового етапу»</em>. 5+ років практики. 5 систем нумерології. Сотні персональних розборів і консультацій.</p>
-        <p>За цей час я побачив головне: за багатьма подіями в житті стоять певні закономірності. Я допоможу тобі побачити їх у власному житті та зрозуміти, куди рухатися далі.</p>
+        <p>Я — Володимир, творець <em>VNUMERO</em>. Усе почалося з простого інтересу до чисел і того, як вони можуть бути пов’язані з нашим життям.</p>
+        <p>Я дослідив 5 нумерологічних систем і зрозумів, що ці знання можна подати набагато простіше й цікавіше. Так з’явився VNUMERO — простір, де нумерологія допомагає по-новому поглянути на себе та своє життя.</p>
+        <p>Моя мета — допомогти тобі краще пізнати себе, помітити закономірності у власному житті та впевненіше обирати свій шлях.</p>
       </blockquote>
 
       <p class="systems-label">СИСТЕМИ, З ЯКИМИ ПРАЦЮЮ</p>
@@ -3869,43 +4236,56 @@ body{
       </div>
     </section>
 
-    <section class="panel reveal-on-scroll">
-      <div class="panel-eyebrow">ЩОДНЯ В TELEGRAM</div>
-      <h2 class="panel-title">Персональний прогноз щоранку</h2>
+    <section class="panel reveal-on-scroll" id="assistant-panel">
+      <div class="panel-eyebrow">ТВІЙ АСИСТЕНТ У TELEGRAM</div>
+      <h2 class="panel-title">Подорож до себе починається тут</h2>
       <p class="panel-body">
-        Твій онлайн асистент аналізує нумерологічний код і щоранку надсилає короткий
-        прогноз на день — без зайвої води, тільки те, що дійсно варто знати просто зараз.
-      </p>
-      <p class="panel-body">
-        Він працює лише на тебе — за твоїм <b class="hl">ім'ям</b> і твоєю
-        <b class="hl">датою народження</b>. Тому поради, які ти отримуєш,
-        персоналізовані саме під тебе, а не написані для всіх одразу.
+        Асистент працює лише за твоїм <b class="hl">ім'ям</b> і
+        <b class="hl">датою народження</b> — кожне повідомлення написане саме для тебе.
       </p>
 
-      
-      <div class="assistant-benefits">
-        <div class="assistant-benefits-title">Що ти отримуєш щодня:</div>
-        <div class="assistant-benefit"><span>⚡</span><div><strong>Енергія дня</strong> — чого очікувати саме сьогодні</div></div>
-        <div class="assistant-benefit"><span>🎯</span><div><strong>На чому сфокусуватись</strong> — куди краще направити свою увагу</div></div>
-        <div class="assistant-benefit"><span>⚠️</span><div><strong>Чого уникати</strong> — де сьогодні краще не ризикувати</div></div>
-        <div class="assistant-benefit"><span>✨</span><div><strong>Персональна порада</strong> — що допоможе використати день на максимум</div></div>
-        <div class="assistant-weekly-bonus"><span>📅</span><strong>+ Спеціальний прогноз щонеділі</strong></div>
+      <div class="journey" id="journey">
+        <div class="journey-thread" aria-hidden="true"><span></span></div>
+
+        <div class="journey-step">
+          <div class="journey-mark" aria-hidden="true">I</div>
+          <div class="journey-body">
+            <p class="journey-when">Перші три дні <span class="journey-free">безкоштовно</span></p>
+            <h3 class="journey-title">Зрозумій себе</h3>
+            <ul class="journey-list">
+              <li><b>Число душі</b> — чого ти насправді прагнеш</li>
+              <li><b>Число долі</b> — твій шлях і сильні сторони</li>
+              <li><b>Сфера, яка тебе зараз хвилює</b></li>
+              <li><b>Твій особистий період</b> і його можливості</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="journey-step journey-step--next">
+          <div class="journey-mark" aria-hidden="true">II</div>
+          <div class="journey-body">
+            <p class="journey-when">Далі</p>
+            <h3 class="journey-title">Зміни своє життя</h3>
+            <p class="journey-text">Щоранку прогноз, глибші розбори й підтримка — щоб діяти вчасно і не повторювати старих помилок.</p>
+          </div>
+        </div>
       </div>
 
+      <p class="reviews-label">Що кажуть ті, хто вже почав</p>
       <div class="reviews-slider" id="reviews-slider" aria-label="Відгуки користувачів VNUMERO">
         <div class="reviews-viewport">
           <div class="review-slide active" data-review-slide="0" aria-hidden="false">
-          <img src="images/review-1.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 1" draggable="false">
+          <img src="images/review-1.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 1" width="1028" height="290" draggable="false">
         </div><div class="review-slide" data-review-slide="1" aria-hidden="true">
-          <img src="images/review-2.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 2" draggable="false">
+          <img src="images/review-2.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 2" width="1400" height="484" draggable="false">
         </div><div class="review-slide" data-review-slide="2" aria-hidden="true">
-          <img src="images/review-3.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 3" draggable="false">
+          <img src="images/review-3.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 3" width="1400" height="617" draggable="false">
         </div><div class="review-slide" data-review-slide="3" aria-hidden="true">
-          <img src="images/review-4.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 4" draggable="false">
+          <img src="images/review-4.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 4" width="1400" height="552" draggable="false">
         </div><div class="review-slide" data-review-slide="4" aria-hidden="true">
-          <img src="images/review-5.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 5" draggable="false">
+          <img src="images/review-5.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 5" width="1400" height="468" draggable="false">
         </div><div class="review-slide" data-review-slide="5" aria-hidden="true">
-          <img src="images/review-6.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 6" draggable="false">
+          <img src="images/review-6.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 6" width="1400" height="468" draggable="false">
         </div>
         </div>
         <button class="reviews-arrow reviews-prev" type="button" aria-label="Попередній відгук">‹</button>
@@ -3915,12 +4295,11 @@ body{
         </div>
       </div>
 
-      <div class="try-badge">
-        <span class="try-badge-main">Спробуй безкоштовно!</span>
-        <span class="try-badge-sub">3 дні · без картки · скасувати можна будь-коли</span>
+      <div class="assistant-start">
+        <p class="assistant-start-title">Почни з першого кроку</p>
+        <a class="cta-link assistant-cta" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Почати подорож у Telegram</a>
+        <p class="price-note assistant-price"><span class="assistant-free">Перші 3 дні — безкоштовно, без картки</span><br>далі 399 грн / місяць</p>
       </div>
-      <a class="cta-link" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Почати в Telegram</a>
-      <p class="price-note">Далі — 399 грн / місяць.</p>
     </section>
 
     <section class="panel reveal-on-scroll" id="readings-panel">
@@ -3977,7 +4356,7 @@ body{
         </details>
         <details class="faq-item">
           <summary>Чим онлайн помічник відрізняється від розбору?</summary>
-          <p>Онлайн асистент — це щоденна навігація: короткий прогноз щоранку. Розбір — глибока робота по одній темі чи по цілому періоду життя, один раз і надовго.</p>
+          <p>Асистент у Telegram — це твоя щоденна подорож: перші 3 дні він розкриває твій нумерологічний код, а далі щоранку надсилає прогноз і допомагає діяти вчасно. Персональний розбір — глибока робота, яку я готую особисто по одній темі чи по цілому періоду життя, один раз і надовго.</p>
         </details>
         <details class="faq-item">
           <summary>Чи можна повернути оплату?</summary>
@@ -3987,7 +4366,7 @@ body{
     </section>
 
     <section class="panel reveal-on-scroll final-cta">
-      <h2 class="panel-title">Почни користуватись онлайн асистентом<br>уже зараз — безкоштовно</h2>
+      <h2 class="panel-title">Почни користуватись онлайн асистентом уже зараз</h2>
       <div class="try-badge">
         <span class="try-badge-main">3 дні безкоштовно</span>
         <span class="try-badge-sub">Без картки. Скасувати можна будь-коли.</span>
@@ -4000,7 +4379,7 @@ body{
     <div class="footer-inner">
       <p class="footer-label">МОЇ СОЦІАЛЬНІ МЕРЕЖІ</p>
       <div class="socials">
-        <a href="https://instagram.com/vnumero" target="_blank" rel="noopener" aria-label="Instagram">
+        <a href="https://www.instagram.com/vnumero_/" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/>
             <circle cx="12" cy="12" r="4.2"/>
@@ -4159,7 +4538,7 @@ body{
         'Що чекає по фінансах, стосунках і можливостях',
         'Як обійти складнощі, які закладені в цьому періоді'
       ],
-      price: { old: '4000 грн', new: '2777 грн', note: 'до 7 робочих днів', until: 'Спеціальна ціна до 30.09' },
+      price: { old: '4000 грн', new: '2777 грн', note: 'до 7 робочих днів', until: 'Спеціальна ціна до 06.11' },
       format: 'PDF + персональне відео з поясненнями',
       ctaText: 'Замовити розбір',
       orderMessage: 'Вітаю! Хочу замовити розбір «Код нового етапу» — 2777 грн.'
@@ -4231,7 +4610,7 @@ body{
         'Розбір кожної сфери життя на рік: гроші, реалізація, стосунки',
         'Сприятливі періоди для важливих рішень протягом року'
       ],
-      price: { old: '3000 грн', new: '1999 грн', note: 'до 5 робочих днів', until: 'Спеціальна ціна до 30.09' },
+      price: { old: '3000 грн', new: '1999 грн', note: 'до 5 робочих днів', until: 'Спеціальна ціна до 06.11' },
       format: 'Аудіо + PDF',
       ctaText: 'Замовити розбір',
       orderMessage: 'Вітаю! Хочу замовити розбір «Соляр» — 1999 грн.'
@@ -4360,6 +4739,9 @@ body{
   const orderDob     = document.getElementById('order-dob');
   const orderDob2    = document.getElementById('order-dob2');
   const fieldDob2    = document.getElementById('field-dob2');
+  const fieldDob     = document.getElementById('field-dob');
+  const fieldName2   = document.getElementById('field-name2');
+  const orderName2   = document.getElementById('order-name2');
   const orderTg      = document.getElementById('order-tg');
   const orderPhone   = document.getElementById('order-phone');
   const orderComment = document.getElementById('order-comment');
@@ -4378,6 +4760,45 @@ body{
     el.className = 'order-hint' + (cls ? ' ' + cls : '');
   }
 
+  // Текст кнопки: «Перейти до оплати» лише коли для продукту є платіжний лінк.
+  function submitLabel(){
+    return PAYMENT_LINKS[orderKey] ? 'Перейти до оплати' : 'Надіслати заявку';
+  }
+
+  // Які поля потрібні для кожного розбору.
+  //  partners — обидва імені й обидві дати;
+  //  child    — ім'я того, хто замовляє, + ім'я і дата народження дитини.
+  const ORDER_FORMS = {
+    partners: { name:"ТВОЄ ІМ'Я", dob:'ТВОЯ ДАТА НАРОДЖЕННЯ', showDob:true,
+                name2:"ІМ'Я ПАРТНЕРА", name2ph:'Олександр', dob2:'ДАТА НАРОДЖЕННЯ ПАРТНЕРА',
+                confirm:'Я перевірив/-ла правильність обох дат народження',
+                who2:'партнера', datesWord:'вказаними датами народження' },
+    child:    { name:"ТВОЄ ІМ'Я", showDob:false,
+                name2:"ІМ'Я ДИТИНИ", name2ph:'Марія', dob2:'ДАТА НАРОДЖЕННЯ ДИТИНИ',
+                confirm:'Я перевірив/-ла правильність дати народження дитини',
+                who2:'дитини', datesWord:'датою народження дитини' }
+  };
+  const ORDER_FORM_DEFAULT = { name:"ТВОЄ ІМ'Я", dob:'ДАТА НАРОДЖЕННЯ', showDob:true,
+                confirm:'Я перевірив/-ла правильність дати народження',
+                datesWord:'вказаною датою народження' };
+  function formCfg(){ return ORDER_FORMS[orderKey] || ORDER_FORM_DEFAULT; }
+
+  function applyOrderForm(){
+    const c = formCfg();
+    document.getElementById('label-name').textContent = c.name;
+    if (c.dob) document.getElementById('label-dob').textContent = c.dob;
+    fieldDob.style.display = c.showDob ? 'block' : 'none';
+    const two = !!c.name2;
+    fieldName2.style.display = two ? 'block' : 'none';
+    fieldDob2.style.display  = two ? 'block' : 'none';
+    if (two){
+      document.getElementById('label-name2').textContent = c.name2;
+      document.getElementById('label-dob2').textContent = c.dob2;
+      orderName2.placeholder = c.name2ph;
+    }
+    document.getElementById('label-confirm').textContent = c.confirm;
+  }
+
   function openOrderModal(key){
     const data = readingDetails[key];
     if (!data) return;
@@ -4385,19 +4806,23 @@ body{
     orderProduct.textContent = data.title;
     orderPriceEl.textContent = data.price.new;
     orderTermEl.textContent = data.price.note ? 'Термін виконання: ' + data.price.note : '';
-    fieldDob2.style.display = (key === 'partners') ? 'block' : 'none';
+    applyOrderForm();
 
+    orderSubmit.textContent = submitLabel();
     orderStepForm.style.display = 'block';
     orderStepDone.style.display = 'none';
-    ['hint-name','hint-dob','hint-dob2','hint-confirm'].forEach(id => setHint(id, ''));
+    ['hint-name','hint-dob','hint-name2','hint-dob2','hint-confirm'].forEach(id => setHint(id, ''));
     setHint('hint-tg', 'Сюди я особисто надішлю твій розбір');
 
     orderModal.classList.add('open');
     orderModal.setAttribute('aria-hidden', 'false');
-    setTimeout(() => orderName.focus(), 120);
+    document.documentElement.classList.add('vn-modal-lock');
+    orderModal.scrollTop = 0;
+    if (!window.matchMedia('(pointer:coarse)').matches) setTimeout(() => orderName.focus(), 120);
   }
 
   function closeOrderModal(){
+    document.documentElement.classList.remove('vn-modal-lock');
     orderModal.classList.remove('open');
     orderModal.setAttribute('aria-hidden', 'true');
   }
@@ -4408,12 +4833,40 @@ body{
     if (e.key === 'Escape' && orderModal.classList.contains('open')) closeOrderModal();
   });
 
+  // Дати у формі — українським форматом ДД.ММ.РРРР незалежно від мови телефона
+  // (системний вибір дати показував би мм/дд/рррр на англомовних телефонах).
+  function maskDate(el){
+    el.addEventListener('input', function(){
+      const d = this.value.replace(/\D/g, '').slice(0, 8);
+      this.value = d.length <= 2 ? d : d.length <= 4 ? d.slice(0,2) + '.' + d.slice(2)
+                 : d.slice(0,2) + '.' + d.slice(2,4) + '.' + d.slice(4);
+    });
+  }
+  maskDate(orderDob); maskDate(orderDob2);
+  // ДД.ММ.РРРР → чи справжня дата і не в майбутньому
+  function dateOk(v){
+    if (!window.isValidVnumeroDate || !window.isValidVnumeroDate(v)) return false;
+    const p = v.split('.');
+    return new Date(+p[2], +p[1]-1, +p[0]) <= new Date();
+  }
+  // для скрипта й таблиці — у форматі РРРР-ММ-ДД, як і раніше
+  function toIso(v){ const p = (v||'').split('.'); return p.length === 3 ? p[2]+'-'+p[1]+'-'+p[0] : ''; }
+
   // показуємо число долі — щоб людина сама помітила помилку в даті
-  orderDob.addEventListener('change', () => {
-    if (!orderDob.value) { setHint('hint-dob',''); return; }
+  orderDob.addEventListener('input', () => {
+    if (orderDob.value.length < 10) { setHint('hint-dob',''); return; }
+    if (!dateOk(orderDob.value)) { setHint('hint-dob','Перевір дату: день.місяць.рік, наприклад 14.03.1990','err'); return; }
     const n = lifePathNumber(orderDob.value);
     setHint('hint-dob', 'Твоє число долі: ' + n + '. Якщо дата невірна — виправ.', 'ok');
   });
+
+  orderDob2.addEventListener('input', () => {
+    if (orderDob2.value.length < 10) { setHint('hint-dob2',''); return; }
+    if (!dateOk(orderDob2.value)) { setHint('hint-dob2','Перевір дату: день.місяць.рік, наприклад 12.05.2018','err'); return; }
+    const n = lifePathNumber(orderDob2.value);
+    setHint('hint-dob2', 'Число долі ' + (formCfg().who2 || '') + ': ' + n + '. Якщо дата невірна — виправ.', 'ok');
+  });
+  orderName2.addEventListener('input', () => setHint('hint-name2',''));
 
   [orderName, orderTg].forEach(el => {
     el.addEventListener('input', () => {
@@ -4428,20 +4881,35 @@ body{
     if (!orderName.value.trim()){
       setHint('hint-name', 'Вкажи, як до тебе звертатись', 'err'); ok = false;
     }
-    if (!orderDob.value){
-      setHint('hint-dob', 'Обери дату народження', 'err'); ok = false;
+    const c = formCfg();
+    if (c.showDob && !dateOk(orderDob.value)){
+      setHint('hint-dob', orderDob.value ? 'Перевір дату: день.місяць.рік, наприклад 14.03.1990' : 'Вкажи дату народження', 'err'); ok = false;
     }
-    if (orderKey === 'partners' && !orderDob2.value){
-      setHint('hint-dob2', 'Для розбору пари потрібні обидві дати', 'err'); ok = false;
+    if (c.name2 && !orderName2.value.trim()){
+      setHint('hint-name2', orderKey === 'child' ? 'Вкажи ім\'я дитини' : 'Вкажи ім\'я партнера', 'err'); ok = false;
+    }
+    if (c.name2 && !dateOk(orderDob2.value)){
+      setHint('hint-dob2', orderDob2.value ? 'Перевір дату: день.місяць.рік, наприклад 12.05.2018'
+        : (orderKey === 'child' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
     }
     const tg = orderTg.value.trim();
     if (!tg || tg.replace(/^@/,'').trim().length < 3){
       setHint('hint-tg', 'Вкажи Telegram — сюди буде надіслано твій розбір', 'err'); ok = false;
     }
     if (!orderConfirm.checked){
-      setHint('hint-confirm', 'Підтверди, що дата вказана правильно'); ok = false;
+      setHint('hint-confirm', c.name2 && c.showDob ? 'Підтверди, що дати вказані правильно' : 'Підтверди, що дата вказана правильно'); ok = false;
     }
     return ok;
+  }
+
+  // Один читабельний рядок з усіма даними — щоб у таблиці й у Telegram
+  // було зрозуміло, чий це розбір, навіть якщо окремих колонок ще немає.
+  function fmtDate(v){ return v || ''; }   // у формі дата вже ДД.ММ.РРРР
+  function orderDetails(){
+    const name = orderName.value.trim(), n2 = orderName2.value.trim();
+    if (orderKey === 'partners') return name + ' (' + fmtDate(orderDob.value) + ') + ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
+    if (orderKey === 'child')    return 'Замовник: ' + name + '; дитина: ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
+    return name + ' (' + fmtDate(orderDob.value) + ')';
   }
 
   orderSubmit.addEventListener('click', async () => {
@@ -4454,12 +4922,20 @@ body{
       productKey: orderKey,
       price: data.price.new,
       name: orderName.value.trim(),
-      dob: orderDob.value,
-      dob2: orderKey === 'partners' ? orderDob2.value : '',
+      dob: formCfg().showDob ? toIso(orderDob.value) : '',
+      name2: formCfg().name2 ? orderName2.value.trim() : '',
+      dob2: formCfg().name2 ? toIso(orderDob2.value) : '',
+      details: orderDetails(),
       telegram: tg ? '@' + tg.replace(/^@/, '') : '',
       phone: orderPhone.value.trim(),
+      comment: orderComment ? orderComment.value.trim() : '',
       createdAt: new Date().toISOString()
     };
+
+    // Вікно оплати відкриваємо одразу по кліку — інакше Safari на iPhone
+    // блокує його, бо після очікування відповіді скрипта це вже не «клік людини».
+    const pay = PAYMENT_LINKS[orderKey];
+    const payWin = pay ? window.open('', '_blank') : null;
 
     orderSubmit.disabled = true;
     orderSubmit.textContent = 'Обробляю…';
@@ -4478,17 +4954,17 @@ body{
     }
 
     orderSubmit.disabled = false;
-    orderSubmit.textContent = 'Перейти до оплати';
+    orderSubmit.textContent = submitLabel();
 
-    const msg = 'Вітаю! Я замовив/-ла «' + data.title + '». Моє ім\'я — ' + payload.name + '.';
-    orderDoneTxt.textContent = 'Я особисто підготую твій розбір за вказаною датою народження. Ти отримаєш карту та мій аудіокоментар у Telegram — ' + (data.price.note || 'найближчим часом') + '.';
+    const msg = 'Вітаю! Я замовив/-ла «' + data.title + '». ' + payload.details + '.';
+    orderDoneTxt.textContent = 'Я особисто підготую твій розбір за ' + formCfg().datesWord + '. Ти отримаєш карту та мій аудіокоментар у Telegram — ' + (data.price.note || 'найближчим часом') + '.';
     orderDoneTg.href = 'https://t.me/' + MANAGER_TELEGRAM + '?text=' + encodeURIComponent(msg);
 
-    const pay = PAYMENT_LINKS[orderKey];
     if (pay){
       orderStepForm.style.display = 'none';
       orderStepDone.style.display = 'block';
-      window.open(pay, '_blank', 'noopener');
+      if (payWin){ payWin.opener = null; payWin.location.href = pay; }
+      else { window.location.href = pay; }
     } else {
       orderStepForm.style.display = 'none';
       orderStepDone.style.display = 'block';
@@ -4979,48 +5455,6 @@ body{
 
 <script>
 (function(){
-  function clampDateYear(input){
-    if (!input || input.type !== 'date') return;
-
-    input.addEventListener('input', function(){
-      var v = this.value;
-      if (!v) return;
-
-      var parts = v.split('-');
-      if (parts[0] && parts[0].length > 4){
-        parts[0] = parts[0].slice(0,4);
-        this.value = parts.join('-');
-      }
-    });
-
-    input.addEventListener('change', function(){
-      if (!this.value) return;
-      var parts = this.value.split('-');
-      if (parts[0] && parts[0].length !== 4){
-        this.value = '';
-      }
-    });
-  }
-
-  function initDateLimits(){
-    document.querySelectorAll('input[type="date"]').forEach(function(input){
-      input.setAttribute('min', '1900-01-01');
-      input.setAttribute('max', '2099-12-31');
-      clampDateYear(input);
-    });
-  }
-
-  if (document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initDateLimits, {once:true});
-  } else {
-    initDateLimits();
-  }
-})();
-</script>
-
-
-<script>
-(function(){
   const input = document.getElementById('dob-input');
   if (!input) return;
 
@@ -5107,6 +5541,305 @@ body{
   }
 })();
 </script>
+
+
+<script>
+/* ── Карусель відгуків: прибираємо стрибки ───────────────────────────────────
+   ПРИЧИНА. Слайди перемикаються через display:none, а картинки мають
+   loading="lazy". Браузер не вантажить те, що приховане, тож картинка
+   починає завантажуватись лише В МОМЕНТ показу слайда. Виходить так:
+   блок схлопується до висоти порожнього <img> (≈2px) → сторінка підстрибує
+   → картинка догрузилась → блок різко розтягнувся назад. І так кожні 5.5с.
+
+   ЛІКУЄМО ДВОМА КРОКАМИ.
+   1) Коли карусель наближається до екрана — довантажуємо ВСІ шість картинок
+      одразу. Далі перемикання миттєве, бо все вже в кеші.
+   2) Фіксуємо мінімальну висоту вікна каруселі за найвищим слайдом, щоб
+      блок не міг схлопнутись навіть поки щось вантажиться.
+
+   Це працює без знання розмірів файлів — висота міряється по факту.        */
+(function(){
+  var слайдер = document.getElementById('reviews-slider');
+  if(!слайдер) return;
+  var вікно = слайдер.querySelector('.reviews-viewport');
+  var картинки = Array.prototype.slice.call(слайдер.querySelectorAll('img'));
+  if(!вікно || !картинки.length) return;
+
+  var найвища = 0;
+
+  function перерахувати(){
+    // Міряємо кожен слайд за реальними пропорціями картинки, не показуючи його.
+    var ширина = вікно.clientWidth;
+    if(!ширина) return;
+    картинки.forEach(function(img){
+      // пропорції беремо з атрибутів width/height — вони відомі одразу,
+      // ще до завантаження картинки, тож висота фіксується без стрибка
+      var w0 = img.naturalWidth || +img.getAttribute('width');
+      var h0 = img.naturalHeight || +img.getAttribute('height');
+      if(!w0 || !h0) return;
+      var h = ширина * (h0 / w0);
+      if(h > найвища) найвища = h;
+    });
+    if(найвища > 0) вікно.style.minHeight = Math.round(найвища) + 'px';
+  }
+
+  function довантажити(){
+    картинки.forEach(function(img){
+      if(img.loading === 'lazy') img.loading = 'eager';
+      if(img.complete && img.naturalWidth) return;
+      // Окремий Image() змушує браузер витягти файл навіть для display:none слайда.
+      var p = new Image();
+      p.onload = перерахувати;
+      p.src = img.currentSrc || img.src;
+    });
+    перерахувати();
+  }
+
+  картинки.forEach(function(img){
+    if(img.complete) return;
+    img.addEventListener('load', перерахувати, {once:true});
+  });
+  перерахувати();
+  // стилі, що стоять нижче в документі, можуть змінити ширину каруселі —
+  // перераховуємо, щойно сторінка повністю розібрана (ще до першого показу)
+  function наново(){ найвища = 0; перерахувати(); останняШирина = вікно.clientWidth; }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', наново, {once:true});
+
+  if('IntersectionObserver' in window){
+    var o = new IntersectionObserver(function(зап){
+      if(зап[0].isIntersecting){ довантажити(); o.disconnect(); }
+    }, {rootMargin:'600px 0px'});   // із запасом, щоб встигло до показу
+    o.observe(слайдер);
+  } else {
+    довантажити();
+  }
+
+  var t;
+  // На телефоні адресний рядок ховається/з'являється під час скролу — це теж
+  // подія resize, але змінюється лише ВИСОТА. Раніше тут щоразу скидалась висота
+  // каруселі → блок схлопувався й розтягувався, сторінка смикалась. Тепер
+  // перераховуємо тільки коли реально змінилась ширина (поворот екрана тощо),
+  // і без скидання в нуль — нова висота просто замінює стару.
+  var останняШирина = вікно.clientWidth;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(function(){
+      var w = вікно.clientWidth;
+      if (w === останняШирина) return;
+      останняШирина = w;
+      найвища = 0; перерахувати();
+    }, 200);
+  }, {passive:true});
+})();
+</script>
+
+
+<script>
+/* ── Блок «Подорож»: запускаємо анімацію, коли він з'являється на екрані ── */
+(function(){
+  var j = document.getElementById('journey');
+  if(!j) return;
+  // Нитка закінчується точно в центрі кружка «II» — міряємо по факту.
+  function fitThread(){
+    var marks = j.querySelectorAll('.journey-mark');
+    if(marks.length < 2) return;
+    var jr = j.getBoundingClientRect(), m2 = marks[1].getBoundingClientRect();
+    var end = (m2.top + m2.height/2 - jr.top) / jr.height * 100;
+    j.style.setProperty('--thread-end', end.toFixed(2) + '%');
+  }
+  fitThread();
+  window.addEventListener('resize', fitThread, {passive:true});
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitThread);
+
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)){ j.classList.add('is-lit'); return; }
+
+  j.classList.add('js-anim');
+  var io = new IntersectionObserver(function(e){
+    if(e[0].isIntersecting){
+      fitThread();
+      requestAnimationFrame(function(){ j.classList.add('is-lit'); });
+      io.disconnect();
+    }
+  }, {threshold:.3});
+  io.observe(j);
+})();
+</script>
+
+
+<!-- ═══ Вбудований браузер TikTok / Instagram ═══════════════════════════════
+     Ці застосунки відкривають сайт у власному браузері, який часто не пускає
+     в Telegram. Якщо після натискання на кнопку Telegram людина лишилась на
+     сторінці — показуємо підказку, що робити. Самі посилання не змінюються.
+     У звичайному Safari/Chrome цей код нічого не робить.
+     Перевірити вигляд у звичайному браузері: додай до адреси ?inapp=ios
+     або ?inapp=android і натисни будь-яку кнопку Telegram.                 -->
+<script>
+(function(){
+  var ua = navigator.userAgent || '';
+  var force = (location.search.match(/[?&]inapp=(ios|android)/) || [])[1];
+  var inApp = force || /musical_ly|BytedanceWebview|Bytedance|TikTok|trill_|aweme|Instagram|FBAN|FBAV|FB_IAB/i.test(ua);
+  if(!inApp) return;
+
+  var android = force ? force === 'android' : /Android/i.test(ua);
+  var BOT = '@vnumero_bot';
+  var where = /Instagram/i.test(ua) ? 'Instagram' : 'TikTok';
+
+  // Android: та сама сторінка (з усіма utm-мітками), але в системному браузері.
+  // vn_tg=N — номер кнопки Telegram, яку натиснули: у браузері сторінка
+  // відкриється одразу на ній.
+  function browserIntent(idx){
+    var u = new URL(location.href);
+    u.searchParams.delete('inapp');
+    u.searchParams.delete('vn_tg');
+    if(idx >= 0) u.searchParams.set('vn_tg', String(idx));
+    return 'intent://' + u.href.replace(/^https?:\/\//, '') + '#Intent;scheme=https;end';
+  }
+  // Рахуємо лише кнопки бота: вони завжди на сторінці в тому самому порядку
+  // (посилання на менеджера у вікнах замовлення з'являються динамічно).
+  function tgLinks(){ return Array.prototype.slice.call(document.querySelectorAll('a[href*="t.me/vnumero_bot"]')); }
+  var lastIdx = -1;
+
+  var plane = '<svg viewBox="0 0 24 24" fill="none" stroke="#0c0a07" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M21.5 3.5 2.8 10.7c-.7.3-.7 1.3.1 1.5l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.3l2.6-2.7 4.7 3.5c.6.4 1.4.1 1.6-.6L22.7 4.7c.2-.8-.5-1.5-1.2-1.2Z"/><path d="m7.5 13.6 9.8-6.4-7.4 8.2"/></svg>';
+
+  var body = android
+    ? '<a class="inapp-main" href="' + browserIntent(-1) + '">Відкрити в браузері</a>' +
+      '<p class="inapp-main-note">Звідти Telegram відкриється одразу</p>'
+    : '<ol class="inapp-steps">' +
+        '<li><span>Натисни <span class="inapp-dots">···</span> у правому верхньому куті</span></li>' +
+        '<li><span>Обери <b>«Відкрити в браузері»</b></span></li>' +
+        '<li><span>Натисни <b>«Почати подорож у Telegram»</b> ще раз</span></li>' +
+      '</ol>';
+
+  var veil = document.createElement('div');
+  veil.className = 'inapp-veil';
+  var sheet = document.createElement('div');
+  sheet.className = 'inapp-sheet';
+  sheet.setAttribute('role', 'dialog');
+  sheet.setAttribute('aria-modal', 'true');
+  sheet.setAttribute('aria-labelledby', 'inapp-title');
+  sheet.innerHTML =
+    '<button class="inapp-x" type="button" aria-label="Закрити">×</button>' +
+    '<div class="inapp-mark">' + plane + '</div>' +
+    '<h4 class="inapp-title" id="inapp-title">Telegram не відкрився?</h4>' +
+    '<p class="inapp-lead">' + where + ' іноді блокує переходи в Telegram. Це легко обійти:</p>' +
+    body +
+    '<div class="inapp-or">або</div>' +
+    '<button class="inapp-copy" type="button">' +
+      '<span class="inapp-handle">' + BOT + '</span>' +
+      '<span class="inapp-copy-label">Скопіювати</span>' +
+    '</button>' +
+    '<p class="inapp-copy-hint">і встав у пошук Telegram</p>';
+  document.body.appendChild(veil);
+  document.body.appendChild(sheet);
+
+  function openSheet(){
+    var main = sheet.querySelector('.inapp-main');
+    if(main) main.href = browserIntent(lastIdx);
+    veil.classList.add('open'); sheet.classList.add('open');
+  }
+  function closeSheet(){ veil.classList.remove('open'); sheet.classList.remove('open'); }
+  veil.addEventListener('click', closeSheet);
+  sheet.querySelector('.inapp-x').addEventListener('click', closeSheet);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeSheet(); });
+
+  var copyBtn = sheet.querySelector('.inapp-copy');
+  var copyLabel = sheet.querySelector('.inapp-copy-label');
+  copyBtn.addEventListener('click', function(){
+    function done(){ copyLabel.textContent = 'Скопійовано ✓'; copyBtn.classList.add('done'); }
+    function manual(){
+      var h = sheet.querySelector('.inapp-handle');
+      var r = document.createRange(); r.selectNodeContents(h);
+      var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      copyLabel.textContent = 'Скопіюй виділене';
+    }
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(BOT).then(done, manual);
+      } else {
+        var t = document.createElement('textarea'); t.value = BOT;
+        t.style.position = 'fixed'; t.style.opacity = '0';
+        document.body.appendChild(t); t.select();
+        var ok = document.execCommand && document.execCommand('copy');
+        t.remove(); ok ? done() : manual();
+      }
+    }catch(e){ manual(); }
+  });
+
+  // Якщо після натискання на Telegram людина лишилась на сторінці —
+  // значить, перехід заблоковано. Показуємо, що робити далі.
+  var timer;
+  // Якщо TikTok відкрив t.me прямо поверх сторінки, а людина повернулась назад —
+  // теж показуємо підказку.
+  window.addEventListener('pageshow', function(){
+    try{
+      if(sessionStorage.getItem('vn_tg_tried')){
+        lastIdx = parseInt(sessionStorage.getItem('vn_tg_idx') || '-1', 10);
+        sessionStorage.removeItem('vn_tg_tried'); openSheet();
+      }
+    }catch(e){}
+  });
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href*="t.me/"]');
+    if(!a) return;
+    lastIdx = tgLinks().indexOf(a);
+    try{
+      sessionStorage.setItem('vn_tg_tried', '1');
+      sessionStorage.setItem('vn_tg_idx', String(lastIdx));
+    }catch(err){}
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      if(!document.hidden){
+        try{ sessionStorage.removeItem('vn_tg_tried'); }catch(err){}
+        openSheet();
+      }
+    }, 1300);
+  }, true);
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden) clearTimeout(timer);
+  });
+})();
+</script>
+
+
+<script>
+/* ── Прийшли з TikTok у браузер: одразу показуємо ту кнопку Telegram, яку
+   людина натискала (параметр vn_tg у адресі), і м'яко підсвічуємо її. ── */
+(function(){
+  var m = location.search.match(/[?&]vn_tg=(\d+)/);
+  if(!m) return;
+  var idx = parseInt(m[1], 10);
+  // прибираємо параметр з адреси, щоб оновлення сторінки не повторювало це
+  try{
+    var u = new URL(location.href); u.searchParams.delete('vn_tg');
+    history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }catch(e){}
+  function go(){
+    var a = document.querySelectorAll('a[href*="t.me/vnumero_bot"]')[idx];
+    if(!a || !a.offsetParent) return;          // кнопка прихована — нічого не робимо
+    a.scrollIntoView({block:'center', behavior:'smooth'});
+    setTimeout(function(){
+      a.classList.add('vn-tg-focus');
+      setTimeout(function(){ a.classList.remove('vn-tg-focus'); }, 4700);
+    }, 700);
+  }
+  if(document.readyState === 'complete') setTimeout(go, 300);
+  else window.addEventListener('load', function(){ setTimeout(go, 300); });
+})();
+</script>
+
+
+<!-- ═══ PREMIUM LAYER ═══════════════════════════════════════════════════════
+     Тонкі покращення візуалу поверх існуючих стилів. Щоб відкотити —
+     достатньо видалити цей блок і <div class="vn-grain">.               -->
+
+
+
+
+
+
+
+
 
 </body>
 </html>
