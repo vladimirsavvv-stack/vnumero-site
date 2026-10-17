@@ -2613,8 +2613,8 @@
   transform:translate3d(0,30px,0) !important;
   filter:none !important;
   transition:
-    opacity 1.05s cubic-bezier(.22,.61,.36,1),
-    transform 1.05s cubic-bezier(.22,.61,.36,1) !important;
+    opacity .75s cubic-bezier(.22,.61,.36,1),
+    transform .75s cubic-bezier(.22,.61,.36,1) !important;
   will-change:opacity,transform,filter;
 }
 
@@ -2629,8 +2629,8 @@
   opacity:0 !important;
   transform:translate3d(0,16px,0) !important;
   transition:
-    opacity .78s cubic-bezier(.22,.61,.36,1),
-    transform .78s cubic-bezier(.22,.61,.36,1) !important;
+    opacity .55s cubic-bezier(.22,.61,.36,1),
+    transform .55s cubic-bezier(.22,.61,.36,1) !important;
   transition-delay:var(--vn-delay, 0ms) !important;
 }
 
@@ -2643,12 +2643,12 @@
 @media (max-width:600px){
   .vn-reveal-ready{
     transform:translate3d(0,22px,0) !important;
-    transition-duration:.9s !important;
+    transition-duration:.7s !important;
   }
 
   .vn-child-ready{
     transform:translate3d(0,12px,0) !important;
-    transition-duration:.68s !important;
+    transition-duration:.5s !important;
   }
 }
 
@@ -3249,7 +3249,6 @@
 
     color:#d7b873 !important;
     -webkit-text-fill-color:#d7b873 !important;
-    opacity:1 !important;
     visibility:visible !important;
 
     font-family:var(--sans) !important;
@@ -4020,6 +4019,131 @@ main .calc-hint{ position:relative; }
   #assistant-panel > .reviews-slider{ grid-row:6 !important; margin-top:18px !important; }
 }
 </style>
+<style>
+/* ═══ ПЕРШИЙ ЕКРАН: послідовна поява і пропорції ═════════════════════════
+   1) V → VNUMERO → лінія → «Твій персональний асистент» (як і було)
+   2) лінія з ромбом розходиться → «Спробуй зараз»
+   3) «Дізнайся своє число долі» → поле дати → кнопка
+   4) поле один раз м'яко світиться — запрошує ввести дату */
+.hero-panel{ opacity:1 !important; transform:none !important; position:relative;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11'%3E%3Crect x='2.2' y='2.2' width='6.6' height='6.6' transform='rotate(45 5.5 5.5)' fill='%23c9a961'/%3E%3C/svg%3E") !important;
+  background-size:11px 11px !important; background-position:center 0 !important; background-repeat:no-repeat !important; }
+.hero-line{ position:absolute; left:0; right:0; top:5px; height:1px; pointer-events:none;
+  background:linear-gradient(90deg, transparent, rgba(201,169,97,.38) 30%, rgba(201,169,97,.38) 70%, transparent);
+  transform-origin:center; will-change:transform;
+  animation:heroLineX 1.4s cubic-bezier(.65,0,.35,1) 1.0s both; }
+@keyframes heroLineX{ from{ transform:scaleX(0); } to{ transform:scaleX(1); } }
+.hero-panel .panel-eyebrow{ animation:heroIn 1s cubic-bezier(.22,.61,.36,1) 1.25s both; }
+.hero-panel .panel-title{ animation:heroIn 1.1s cubic-bezier(.22,.61,.36,1) 1.45s both; }
+main .field-row #dob-input{ animation:heroIn 1s cubic-bezier(.22,.61,.36,1) 1.7s both, dobInvite 2.6s ease-out 3s 1 both !important; }
+main .field-row #reveal-btn{ animation:heroIn 1s cubic-bezier(.22,.61,.36,1) 1.85s both; }
+main .field-row::before{ animation:heroFade 1.2s ease 1.6s both; will-change:opacity; }
+@keyframes heroFade{ from{ opacity:0; } to{ opacity:1; } }
+/* поки йде вступ, наступний блок («Знайомо?») не з'являється раніше за форму */
+html.vn-intro main > .panel.vn-reveal-ready{ transition-delay:2.1s !important; }
+html.vn-intro #pain-panel .pain-title, html.vn-intro #pain-panel .pain-item{ opacity:0 !important; }
+html.vn-intro main > .panel:not(.hero-panel){ background-size:11px 11px, 0% 1px !important; }
+#pain-panel .pain-title{ transition:opacity .8s ease; }
+html.vn-intro main > .panel .vn-child-ready{ transition-delay:calc(2.1s + var(--vn-delay, 0ms)) !important; }
+
+/* ═══ Логотип: золоте сяйво ═══════════════════════════════════════════════
+   V — тепле ореольне сяйво, що повільно «дихає».
+   VNUMERO — багате золото з м'яким світінням; під час вступу по літерах
+   проходить світловий відблиск, далі — рідко й ледь помітно. */
+.monogram{
+  position:relative; isolation:isolate;
+  color:#e2c682 !important;
+  text-shadow:0 0 14px rgba(236,206,140,.55), 0 0 38px rgba(201,169,97,.38), 0 0 80px rgba(201,169,97,.18) !important;
+  animation:rise 1.1s cubic-bezier(.22,.61,.36,1) .1s forwards !important;
+}
+.monogram::before{
+  content:""; position:absolute; left:50%; top:50%; z-index:-1;
+  width:2.4em; height:2.4em; transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(214,182,112,.22) 0%, rgba(201,169,97,.08) 40%, transparent 70%);
+  animation:haloIn 2s ease .3s both, haloBreath 5.5s ease-in-out 2.3s infinite;
+  will-change:opacity, transform;
+  pointer-events:none;
+}
+@keyframes monoGlow{
+  0%,100%{ text-shadow:0 0 12px rgba(236,206,140,.45), 0 0 34px rgba(201,169,97,.30), 0 0 70px rgba(201,169,97,.14); }
+  50%{ text-shadow:0 0 18px rgba(246,222,160,.75), 0 0 48px rgba(214,182,112,.50), 0 0 110px rgba(201,169,97,.26); }
+}
+@keyframes haloIn{ from{ opacity:0; transform:translate(-50%,-50%) scale(.6); } to{ opacity:1; transform:translate(-50%,-50%) scale(1); } }
+@keyframes haloBreath{ 0%,100%{ opacity:.75; } 50%{ opacity:1; } }
+
+.wordmark{
+  background:linear-gradient(100deg, #9c7f47 0%, #e6cb8a 18%, #c9a961 36%, #fff4d6 50%, #c9a961 64%, #e6cb8a 82%, #9c7f47 100%) !important;
+  background-size:300% 100% !important;
+  background-position:0% 0;
+  -webkit-background-clip:text !important; background-clip:text !important; color:transparent !important;
+  position:relative;
+  animation:rise 1.1s cubic-bezier(.22,.61,.36,1) .3s forwards, wmShine 2.6s ease-in-out 1.2s 1 both !important;
+}
+@keyframes wmShine{ from{ background-position:100% 0; } to{ background-position:0% 0; } }
+/* м'яке сяйво навколо VNUMERO — розмита копія позаду, малюється один раз */
+.wordmark::after{
+  content:"VNUMERO"; position:absolute; left:0; top:0; right:0; z-index:-1;
+  color:rgba(214,182,112,.55); -webkit-text-fill-color:rgba(214,182,112,.55);
+  background:none; filter:blur(10px); pointer-events:none;
+}
+@media (prefers-reduced-motion:reduce){
+  .monogram, .monogram::before, .wordmark, .hero-line{ animation:none !important; opacity:1 !important; }
+}
+@keyframes heroIn{ from{ opacity:0; transform:translate3d(0,14px,0); } to{ opacity:1; transform:translate3d(0,0,0); } }
+
+/* Пропорції на телефоні: менше і охайніше */
+@media (max-width:600px){
+  main{ padding-top:46px !important; }
+  .monogram{ font-size:54px !important; }
+  .wordmark{ font-size:31px !important; letter-spacing:.24em !important; margin-left:.24em !important; margin-top:4px !important; }
+  .divider{ margin:22px auto 18px !important; }
+  .tagline{ font-size:10.5px !important; letter-spacing:.22em !important; }
+  .hero-panel{ margin-top:42px !important; padding-top:36px !important; }
+  .hero-panel .panel-eyebrow{ font-size:10px !important; letter-spacing:.32em !important; margin-bottom:10px !important; }
+  .hero-panel .panel-title{ font-size:23px !important; line-height:1.2 !important; margin-bottom:22px !important; }
+  main .field-row{ gap:10px !important; }
+  main .field-row::before{ inset:-26px -40px !important; }
+  main .field-row #dob-input{
+    width:236px !important; height:44px !important; min-height:44px !important; max-height:44px !important;
+    line-height:44px !important; font-size:16px !important; letter-spacing:.12em !important; padding:0 12px !important;
+  }
+  main .field-row #reveal-btn{
+    width:236px !important; height:46px !important; min-height:46px !important;
+    font-size:11px !important; letter-spacing:.18em !important;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-panel, .hero-panel .panel-eyebrow, .hero-panel .panel-title, main .field-row::before,
+  main .field-row #dob-input, main .field-row #reveal-btn{ animation:none !important; }
+  html.vn-intro main > .panel.vn-reveal-ready, html.vn-intro main > .panel .vn-child-ready{ transition-delay:0s !important; }
+}
+</style>
+<script>document.documentElement.classList.add('vn-intro');setTimeout(function(){document.documentElement.classList.remove('vn-intro')},3000);</script>
+<style>
+/* ═══ ФОН: плавність ═══════════════════════════════════════════════════════
+   Зоряний пил рухався через background-position — браузер перемальовував
+   увесь екран (ще й з маскою) на КОЖНОМУ кадрі, через що анімації вступу й
+   скрол ішли ривками. Тепер шар рухається через transform — це робить
+   відеокарта, без перемальовування. Теплі плями світла вже м'які самі по
+   собі, тому важке розмиття (filter: blur) на весь екран прибрано. */
+body::after{ inset:-60px 0 0 0 !important; animation:vnDust 30s ease-in-out infinite alternate !important; will-change:transform; }
+@keyframes vnDust{ from{ transform:translate3d(0,0,0); } to{ transform:translate3d(0,-56px,0); } }
+body::before{ filter:none !important; will-change:transform, opacity; }
+@media (prefers-reduced-motion:reduce){ body::after{ animation:none !important; } }
+</style>
+<style>
+/* прихований результат числа не анімується (раніше filter-анімація
+   перемальовувалась постійно, навіть коли вікно закрите) */
+.result-overlay:not(.open) .result-overlay-number{ animation:none !important; }
+/* відблиск на кнопці — через transform замість left */
+.assistant-cta::after{ left:0 !important; transform:translateX(-140%) skewX(-20deg); animation:ctaGlintX 6.5s ease-in-out 3.5s infinite !important; will-change:transform; }
+@keyframes ctaGlintX{ 0%{ transform:translateX(-140%) skewX(-20deg); } 18%,100%{ transform:translateX(330%) skewX(-20deg); } }
+/* лінія під VNUMERO — через transform замість width */
+.divider{ width:180px !important; transform-origin:center; animation:dividerX 1.1s ease .75s both !important; }
+@keyframes dividerX{ from{ transform:scaleX(0); opacity:0; } to{ transform:scaleX(1); opacity:1; } }
+@media (prefers-reduced-motion:reduce){ .assistant-cta::after, .divider{ animation:none !important; } .divider{ opacity:1; } }
+</style>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
@@ -4184,7 +4308,8 @@ main .calc-hint{ position:relative; }
     <div class="divider"></div>
     <div class="tagline">ТВІЙ ПЕРСОНАЛЬНИЙ АСИСТЕНТ</div>
 
-    <section class="panel reveal-on-scroll">
+    <section class="panel reveal-on-scroll hero-panel">
+      <span class="hero-line" aria-hidden="true"></span>
       <div class="panel-eyebrow">СПРОБУЙ ЗАРАЗ</div>
       <h1 class="panel-title">Дізнайся своє число долі</h1>
       <div class="field-row">
@@ -5342,7 +5467,7 @@ main .calc-hint{ position:relative; }
 (function(){
   function initVNumeroMotion(){
     var sections = Array.prototype.slice.call(
-      document.querySelectorAll('main > .panel')
+      document.querySelectorAll('main > .panel:not(.hero-panel)')
     );
 
     if (!sections.length) return;
@@ -5380,7 +5505,7 @@ main .calc-hint{ position:relative; }
 
       children.forEach(function(el, index){
         el.classList.add('vn-child-ready');
-        el.style.setProperty('--vn-delay', Math.min(index * 75, 450) + 'ms');
+        el.style.setProperty('--vn-delay', Math.min(index * 45, 240) + 'ms');
       });
     });
 
@@ -5400,8 +5525,8 @@ main .calc-hint{ position:relative; }
           }
         });
       }, {
-        threshold:0.12,
-        rootMargin:'0px 0px -12% 0px'
+        threshold:0,
+        rootMargin:'0px 0px 8% 0px'
       });
 
       sections.forEach(function(section){
@@ -5416,7 +5541,7 @@ main .calc-hint{ position:relative; }
             reveal(section);
           }
         });
-      }, 1200);
+      }, 200);
     } else {
       /* Old-browser fallback */
       function onScroll(){
