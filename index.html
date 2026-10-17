@@ -4301,7 +4301,7 @@ body::before{ filter:none !important; will-change:transform, opacity; }
       </div>
 
       <div id="order-step-done" class="order-done" style="display:none;">
-        <h3>Замовлення прийнято</h3>
+        <h3 id="order-done-title">Замовлення прийнято</h3>
         <p id="order-done-text"></p>
         <a class="cta-link" id="order-done-tg" href="#" target="_blank" rel="noopener">Написати мені в Telegram →</a>
       </div>
@@ -4839,6 +4839,11 @@ body::before{ filter:none !important; will-change:transform, opacity; }
   // 2. Посилання на оплату для кожного продукту.
   //    Постав сюди платіжні лінки (LiqPay / Fondy / WayForPay / monobank).
   //    Якщо для продукту лінка немає — людину відправить у чат.
+  // 3. Оплата через monobank: скрипт створює рахунок і повертає посилання
+  //    на сторінку оплати. Якщо скрипт посилання не повернув (наприклад,
+  //    токен ще не додано) — заявка просто приймається, як раніше.
+  const MONO_PAY = true;
+
   const PAYMENT_LINKS = {
     karma:        '',
     period:       '',
@@ -4942,7 +4947,7 @@ body::before{ filter:none !important; will-change:transform, opacity; }
 
   // Текст кнопки: «Перейти до оплати» лише коли для продукту є платіжний лінк.
   function submitLabel(){
-    return PAYMENT_LINKS[orderKey] ? 'Перейти до оплати' : 'Надіслати заявку';
+    return (MONO_PAY || PAYMENT_LINKS[orderKey]) ? 'Перейти до оплати' : 'Надіслати заявку';
   }
 
   // Які поля потрібні для кожного розбору.
@@ -5112,25 +5117,37 @@ body::before{ filter:none !important; will-change:transform, opacity; }
       createdAt: new Date().toISOString()
     };
 
-    // Вікно оплати відкриваємо одразу по кліку — інакше Safari на iPhone
-    // блокує його, бо після очікування відповіді скрипта це вже не «клік людини».
-    const pay = PAYMENT_LINKS[orderKey];
+    // Статичне посилання (якщо задане і mono вимкнено) відкриваємо одразу по кліку —
+    // інакше Safari на iPhone блокує нове вікно.
+    const pay = !MONO_PAY ? PAYMENT_LINKS[orderKey] : '';
     const payWin = pay ? window.open('', '_blank') : null;
 
     orderSubmit.disabled = true;
-    orderSubmit.textContent = 'Обробляю…';
+    orderSubmit.textContent = MONO_PAY ? 'Готуємо оплату…' : 'Обробляю…';
 
+    let pageUrl = '';
     if (ORDER_ENDPOINT){
+      const ctrl = ('AbortController' in window) ? new AbortController() : null;
+      const timer = ctrl ? setTimeout(() => ctrl.abort(), 25000) : null;
       try {
-        await fetch(ORDER_ENDPOINT, {
+        const res = await fetch(ORDER_ENDPOINT, {
           method: 'POST',
-          mode: 'no-cors',
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify(payload),
+          signal: ctrl ? ctrl.signal : undefined
         });
+        const answer = await res.json();
+        pageUrl = (answer && answer.pageUrl) || '';
       } catch (err) {
-        // заявку все одно не втрачаємо — контакт лишається через Telegram
+        // відповідь не прочиталась — заявка все одно дійшла, контакт лишається через Telegram
       }
+      if (timer) clearTimeout(timer);
+    }
+
+    if (MONO_PAY && /^https:\/\//.test(pageUrl)){
+      orderSubmit.textContent = 'Переходимо до оплати…';
+      window.location.href = pageUrl;   // та сама вкладка — ніяких блокувань вікон
+      return;
     }
 
     orderSubmit.disabled = false;
@@ -5140,16 +5157,70 @@ body::before{ filter:none !important; will-change:transform, opacity; }
     orderDoneTxt.textContent = 'Я особисто підготую твій розбір за ' + formCfg().datesWord + '. Ти отримаєш карту та мій аудіокоментар у Telegram — ' + (data.price.note || 'найближчим часом') + '.';
     orderDoneTg.href = 'https://t.me/' + MANAGER_TELEGRAM + '?text=' + encodeURIComponent(msg);
 
+    document.getElementById('order-done-title').textContent = 'Замовлення прийнято';
+    orderDoneTg.style.display = '';
     if (pay){
       orderStepForm.style.display = 'none';
       orderStepDone.style.display = 'block';
       if (payWin){ payWin.opener = null; payWin.location.href = pay; }
       else { window.location.href = pay; }
     } else {
+      if (payWin) payWin.close();
       orderStepForm.style.display = 'none';
       orderStepDone.style.display = 'block';
     }
   });
+
+  /* ── Повернення зі сторінки оплати monobank ────────────────────────────────
+     monobank повертає людину на vnumero.life/?order=12&pay=return.
+     Питаємо скрипт про статус і показуємо результат у тому ж вікні. */
+  (function(){
+    const q = new URLSearchParams(location.search);
+    const order = parseInt(q.get('order'), 10);
+    if (q.get('pay') !== 'return' || !order || !ORDER_ENDPOINT) return;
+    try {
+      q.delete('pay'); q.delete('order');
+      history.replaceState(null, '', location.pathname + (q.toString() ? '?' + q : '') + location.hash);
+    } catch (e) {}
+
+    const title = document.getElementById('order-done-title');
+    const tgMsg = 'Вітаю! Я щойно оплатив/-ла замовлення №' + order + '.';
+    function show(head, text, withTg){
+      title.textContent = head;
+      orderDoneTxt.textContent = text;
+      orderDoneTg.style.display = withTg ? '' : 'none';
+      orderDoneTg.href = 'https://t.me/' + MANAGER_TELEGRAM + '?text=' + encodeURIComponent(tgMsg);
+    }
+    orderStepForm.style.display = 'none';
+    orderStepDone.style.display = 'block';
+    show('Перевіряємо оплату…', 'Це займе кілька секунд.', false);
+    orderModal.classList.add('open');
+    orderModal.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('vn-modal-lock');
+
+    let tries = 0;
+    (function check(){
+      tries++;
+      fetch(ORDER_ENDPOINT + '?order=' + order)
+        .then(r => r.json())
+        .then(a => {
+          const st = a && a.status;
+          if (st === 'оплачено'){
+            show('Оплату отримано ✓', 'Дякую! Я особисто підготую твій розбір і надішлю його тобі в Telegram. Номер замовлення — ' + order + '.', true);
+          } else if (st === 'не вдалася' || st === 'прострочено'){
+            show('Оплата не пройшла', 'Гроші не списано. Спробуй оформити ще раз або напиши мені — допоможу.', true);
+          } else if (tries < 8){
+            setTimeout(check, 2000);
+          } else {
+            show('Оплата обробляється', 'Щойно банк підтвердить платіж, я напишу тобі в Telegram. Номер замовлення — ' + order + '.', true);
+          }
+        })
+        .catch(() => {
+          if (tries < 8) setTimeout(check, 2000);
+          else show('Не вдалося перевірити оплату', 'Якщо гроші списано — все гаразд, я напишу тобі в Telegram. Номер замовлення — ' + order + '.', true);
+        });
+    })();
+  })();
 
   document.querySelectorAll('.reading-detail-btn').forEach(btn => {
 
