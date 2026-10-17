@@ -4177,6 +4177,27 @@ body::before{ filter:none !important; will-change:transform, opacity; }
   window.addEventListener('resize', function(){ if (window.innerWidth !== w){ w = window.innerWidth; fit(); } }, {passive:true});
 })();
 </script>
+<style>
+/* ═══ Хрестики закриття — рівно по центру на будь-якому телефоні ═════════════
+   Символ «×» у різних шрифтах сидить по-різному (на iPhone — зміщений),
+   тому малюємо хрестик двома тонкими лініями, а символ ховаємо. */
+.result-close, .legal-modal-close, .inapp-x{
+  position:relative; display:inline-flex !important; align-items:center; justify-content:center;
+  padding:0 !important; font-size:0 !important; line-height:0 !important; color:transparent !important;
+  -webkit-appearance:none; appearance:none;
+}
+.result-close::before, .result-close::after,
+.legal-modal-close::before, .legal-modal-close::after,
+.inapp-x::before, .inapp-x::after{
+  content:""; position:absolute; left:50%; top:50%;
+  width:14px; height:1.5px; margin:-.75px 0 0 -7px; border-radius:1px;
+  background:rgba(214,190,140,.9);
+}
+.result-close::before, .legal-modal-close::before, .inapp-x::before{ transform:rotate(45deg); }
+.result-close::after,  .legal-modal-close::after,  .inapp-x::after{ transform:rotate(-45deg); }
+.result-close:hover::before, .result-close:hover::after,
+.legal-modal-close:hover::before, .legal-modal-close:hover::after{ background:#ecd49a; }
+</style>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
