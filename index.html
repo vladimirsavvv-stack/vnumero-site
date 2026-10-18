@@ -3846,6 +3846,14 @@ body{
     }
     #order-modal #order-close{ position:fixed !important; top:10px !important; right:10px !important; z-index:100 !important; background:rgba(12,10,7,.92) !important; }
     #order-modal textarea{ height:76px !important; min-height:76px !important; max-height:none !important; }
+    /* iPhone: висота вікна = видима частина екрана (без панелей Safari), тож низ форми
+       не ховається під нижньою панеллю браузера; знизу — запас, щоб кнопку було видно повністю */
+    #order-modal{
+      top:0 !important; bottom:auto !important;
+      height:100vh !important; height:100dvh !important;
+      padding-top:52px !important;
+      padding-bottom:calc(110px + env(safe-area-inset-bottom)) !important;
+    }
   }
   /* 16px — інакше iPhone автоматично збільшує сторінку при натисканні на поле */
   #order-modal input[type="text"], #order-modal input[type="tel"],
