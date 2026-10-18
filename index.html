@@ -4280,7 +4280,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           </div>
 
           <div class="order-field" id="field-dob">
-            <label for="order-dob"><span id="label-dob">ДАТА НАРОДЖЕННЯ</span> <span aria-hidden="true">*</span></label>
+            <label for="order-dob"><span id="label-dob">ДАТА НАРОДЖЕННЯ</span> <span aria-hidden="true" id="req-dob">*</span></label>
             <input type="text" id="order-dob" class="vn-date" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="ДД.ММ.РРРР" required>
             <p class="order-hint" id="hint-dob"></p>
           </div>
@@ -5009,7 +5009,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
                 name2:"ІМ'Я ПАРТНЕРА", name2ph:'Олександр', dob2:'ДАТА НАРОДЖЕННЯ ПАРТНЕРА',
                 confirm:'Я перевірив/-ла правильність обох дат народження',
                 who2:'партнера', datesWord:'вказаними датами народження' },
-    child:    { name:"ТВОЄ ІМ'Я", showDob:false,
+    child:    { name:"ТВОЄ ІМ'Я", showDob:true, dobOptional:true, dobAfter:true,
+                dob:'ТВОЯ ДАТА НАРОДЖЕННЯ — ЗА БАЖАННЯМ',
+                dobHint:'Допоможе мені підготувати персональні рекомендації: як саме тобі взаємодіяти зі своєю дитиною',
                 name2:"ІМ'Я ДИТИНИ", name2ph:'Марія', dob2:'ДАТА НАРОДЖЕННЯ ДИТИНИ',
                 confirm:'Я перевірив/-ла правильність дати народження дитини',
                 who2:'дитини', datesWord:'датою народження дитини' }
@@ -5024,6 +5026,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     document.getElementById('label-name').textContent = c.name;
     if (c.dob) document.getElementById('label-dob').textContent = c.dob;
     fieldDob.style.display = c.showDob ? 'block' : 'none';
+    document.getElementById('req-dob').style.display = c.dobOptional ? 'none' : '';
+    orderDob.required = !c.dobOptional;
+    // у розборі дитини твоя дата (необов'язкова) — після даних дитини; в інших формах — одразу після імені
+    if (c.dobAfter) fieldDob2.parentNode.insertBefore(fieldDob, fieldDob2.nextSibling);
+    else fieldName2.parentNode.insertBefore(fieldDob, fieldName2);
     const two = !!c.name2;
     fieldName2.style.display = two ? 'block' : 'none';
     fieldDob2.style.display  = two ? 'block' : 'none';
@@ -5050,6 +5057,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     orderStepForm.style.display = 'block';
     orderStepDone.style.display = 'none';
     ['hint-name','hint-dob','hint-name2','hint-dob2','hint-confirm'].forEach(id => setHint(id, ''));
+    if (formCfg().dobHint && !orderDob.value) setHint('hint-dob', formCfg().dobHint);
     setHint('hint-tg', 'Не знаєш свій нік? Не страшно — знайду тебе за номером телефону');
     setHint('hint-phone', 'За цим номером я знайду тебе в месенджері');
 
@@ -5093,7 +5101,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
   // показуємо число долі — щоб людина сама помітила помилку в даті
   orderDob.addEventListener('input', () => {
-    if (orderDob.value.length < 10) { setHint('hint-dob',''); return; }
+    if (orderDob.value.length < 10) { setHint('hint-dob', orderDob.value ? '' : (formCfg().dobHint || '')); return; }
     if (!dateOk(orderDob.value)) { setHint('hint-dob','Перевір дату: день.місяць.рік, наприклад 14.03.1990','err'); return; }
     const n = lifePathNumber(orderDob.value);
     setHint('hint-dob', 'Твоє число долі: ' + n + '. Якщо дата невірна — виправ.', 'ok');
@@ -5122,7 +5130,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-name', 'Вкажи, як до тебе звертатись', 'err'); ok = false;
     }
     const c = formCfg();
-    if (c.showDob && !dateOk(orderDob.value)){
+    if (c.showDob && !(c.dobOptional && !orderDob.value.trim()) && !dateOk(orderDob.value)){
       setHint('hint-dob', orderDob.value ? 'Перевір дату: день.місяць.рік, наприклад 14.03.1990' : 'Вкажи дату народження', 'err'); ok = false;
     }
     if (c.name2 && !orderName2.value.trim()){
@@ -5152,7 +5160,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   function orderDetails(){
     const name = orderName.value.trim(), n2 = orderName2.value.trim();
     if (orderKey === 'partners') return name + ' (' + fmtDate(orderDob.value) + ') + ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
-    if (orderKey === 'child')    return 'Замовник: ' + name + '; дитина: ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
+    if (orderKey === 'child')    return 'Замовник: ' + name + (orderDob.value ? ' (' + fmtDate(orderDob.value) + ')' : '') + '; дитина: ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
     return name + ' (' + fmtDate(orderDob.value) + ')';
   }
 
