@@ -3855,6 +3855,25 @@ body{
       padding-bottom:calc(110px + env(safe-area-inset-bottom)) !important;
     }
   }
+  /* Комп'ютер: форма вища за екран — прокручується все вікно, як сторінка
+     (раніше форма стояла по центру і верх та низ обрізались без прокрутки) */
+  @media (min-width:601px){
+    #order-modal{
+      overflow-y:auto !important;
+      overscroll-behavior:contain;
+      align-items:flex-start !important;
+      padding:56px 28px 72px !important;
+      /* розмиття фону «прив'язує» хрестик до вікна, і він прокручувався б разом з формою */
+      -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+      background:#060504 !important;
+      transform:none !important; filter:none !important;
+    }
+    #order-modal .reading-modal-inner{ margin:0 auto !important; max-height:none !important; overflow:visible !important; }
+    #order-modal #order-close{ position:fixed !important; top:18px !important; right:22px !important; z-index:100 !important; }
+    /* опис розбору: на невисоких екранах ноутбука теж прокручується, а не обрізається */
+    #reading-modal{ overflow-y:auto !important; overscroll-behavior:contain; -webkit-backdrop-filter:none !important; backdrop-filter:none !important; background:#060504 !important; }
+    #reading-modal .reading-modal-inner{ margin:auto !important; max-height:none !important; }
+  }
   /* 16px — інакше iPhone автоматично збільшує сторінку при натисканні на поле */
   #order-modal input[type="text"], #order-modal input[type="tel"],
   #order-modal input[type="date"], #order-modal textarea{ font-size:16px !important; }
