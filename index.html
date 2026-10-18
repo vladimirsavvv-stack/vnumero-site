@@ -71,7 +71,7 @@
       "name": "У якому вигляді я отримаю розбір?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Персональну карту та мій аудіокоментар — у Telegram. Аудіо можна переслухати будь-коли, тому нічого записувати не треба."
+        "text": "Персональну карту та мій аудіокоментар — у Telegram, Viber або WhatsApp, як тобі зручніше. Аудіо можна переслухати будь-коли, тому нічого записувати не треба."
       }
     },
     {
@@ -889,6 +889,15 @@
   }
   /* ---- order form ---- */
   .order-form{ text-align:left; }
+  /* вибір месенджера — три «таблетки» */
+  .vn-msg{ display:flex; gap:8px; flex-wrap:wrap; margin-top:2px; }
+  .order-form .vn-msg-opt{ position:relative; flex:1 1 0; min-width:92px; margin:0 !important; padding:0 !important; letter-spacing:normal !important; cursor:pointer; }
+  .vn-msg-opt input{ position:absolute; opacity:0; width:1px; height:1px; pointer-events:none; }
+  .vn-msg-opt span{ display:flex; align-items:center; justify-content:center; height:42px; border-radius:3px;
+    border:1px solid rgba(201,169,97,.32); background:rgba(255,255,255,.02); color:var(--ivory, #efe6d2);
+    font:500 14px/1 var(--sans, sans-serif); letter-spacing:.04em; text-transform:none; transition:border-color .2s, background .2s, color .2s; }
+  .vn-msg-opt input:checked + span{ border-color:#d6b670; background:rgba(214,182,112,.14); color:#f2dca4; box-shadow:inset 0 0 0 1px rgba(214,182,112,.35); }
+  .vn-msg-opt input:focus-visible + span{ outline:2px solid rgba(236,212,154,.6); outline-offset:2px; }
   .vn-hp{ position:absolute !important; left:-10000px !important; top:auto !important; width:1px !important; height:1px !important; overflow:hidden !important; opacity:0 !important; pointer-events:none !important; }
   .order-form label{
     display:block;
@@ -4289,15 +4298,24 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           </div>
 
           <div class="order-field">
-            <label for="order-tg">TELEGRAM <span aria-hidden="true">*</span></label>
-            <input type="text" id="order-tg" placeholder="@username" required>
-            <p class="order-hint" id="hint-tg">Сюди я особисто надішлю твій розбір</p>
+            <label for="order-phone">ТЕЛЕФОН <span aria-hidden="true">*</span></label>
+            <input type="tel" id="order-phone" autocomplete="tel" inputmode="tel" placeholder="+380" required>
+            <p class="order-hint" id="hint-phone">За цим номером я знайду тебе в месенджері</p>
           </div>
 
           <div class="order-field">
-            <label for="order-phone">ТЕЛЕФОН — ЗА БАЖАННЯМ</label>
-            <input type="tel" id="order-phone" autocomplete="tel" placeholder="+380">
-            <p class="order-hint">Додатковий контакт на випадок, якщо не зможу зв’язатися в Telegram</p>
+            <label id="label-msg">КУДИ НАДІСЛАТИ РОЗБІР? <span aria-hidden="true">*</span></label>
+            <div class="vn-msg" role="radiogroup" aria-labelledby="label-msg">
+              <label class="vn-msg-opt"><input type="radio" name="order-msg" value="Telegram" checked><span>Telegram</span></label>
+              <label class="vn-msg-opt"><input type="radio" name="order-msg" value="Viber"><span>Viber</span></label>
+              <label class="vn-msg-opt"><input type="radio" name="order-msg" value="WhatsApp"><span>WhatsApp</span></label>
+            </div>
+          </div>
+
+          <div class="order-field" id="field-tg">
+            <label for="order-tg">TELEGRAM-НІК — ЯКЩО ЗНАЄШ</label>
+            <input type="text" id="order-tg" placeholder="@username" autocomplete="off" autocapitalize="off" spellcheck="false">
+            <p class="order-hint" id="hint-tg">Не знаєш свій нік? Не страшно — знайду тебе за номером телефону</p>
           </div>
 
           <div class="order-field">
@@ -4547,7 +4565,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         </details>
         <details class="faq-item">
           <summary>У якому вигляді я отримаю розбір?</summary>
-          <p>Персональну карту та мій аудіокоментар — у Telegram. Аудіо можна переслухати будь-коли, тому нічого записувати не треба.</p>
+          <p>Персональну карту та мій аудіокоментар — у Telegram, Viber або WhatsApp, як тобі зручніше. Аудіо можна переслухати будь-коли, тому нічого записувати не треба.</p>
         </details>
         <details class="faq-item">
           <summary>Скільки чекати після оплати?</summary>
@@ -4952,6 +4970,16 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   const orderName2   = document.getElementById('order-name2');
   const orderTg      = document.getElementById('order-tg');
   const orderPhone   = document.getElementById('order-phone');
+  const fieldTg      = document.getElementById('field-tg');
+  function orderMessenger(){
+    const el = document.querySelector('input[name="order-msg"]:checked');
+    return el ? el.value : 'Telegram';
+  }
+  // поле нікa Telegram показуємо лише коли обрано Telegram
+  document.querySelectorAll('input[name="order-msg"]').forEach(r => r.addEventListener('change', () => {
+    if (fieldTg) fieldTg.style.display = orderMessenger() === 'Telegram' ? '' : 'none';
+    setHint('hint-tg', 'Не знаєш свій нік? Не страшно — знайду тебе за номером телефону');
+  }));
   const orderComment = document.getElementById('order-comment');
   const orderConfirm = document.getElementById('order-confirm');
   const orderSubmit  = document.getElementById('order-submit');
@@ -5022,7 +5050,8 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     orderStepForm.style.display = 'block';
     orderStepDone.style.display = 'none';
     ['hint-name','hint-dob','hint-name2','hint-dob2','hint-confirm'].forEach(id => setHint(id, ''));
-    setHint('hint-tg', 'Сюди я особисто надішлю твій розбір');
+    setHint('hint-tg', 'Не знаєш свій нік? Не страшно — знайду тебе за номером телефону');
+    setHint('hint-phone', 'За цим номером я знайду тебе в месенджері');
 
     orderModal.classList.add('open');
     orderModal.setAttribute('aria-hidden', 'false');
@@ -5078,10 +5107,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   });
   orderName2.addEventListener('input', () => setHint('hint-name2',''));
 
-  [orderName, orderTg].forEach(el => {
+  [orderName, orderTg, orderPhone].forEach(el => {
     el.addEventListener('input', () => {
       if (el === orderName) setHint('hint-name','');
-      if (el === orderTg) setHint('hint-tg','Сюди я особисто надішлю твій розбір');
+      if (el === orderTg) setHint('hint-tg','Не знаєш свій нік? Не страшно — знайду тебе за номером телефону');
+      if (el === orderPhone) setHint('hint-phone','За цим номером я знайду тебе в месенджері');
     });
   });
   orderConfirm.addEventListener('change', () => setHint('hint-confirm',''));
@@ -5102,9 +5132,13 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-dob2', orderDob2.value ? 'Перевір дату: день.місяць.рік, наприклад 12.05.2018'
         : (orderKey === 'child' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
     }
-    const tg = orderTg.value.trim();
-    if (!tg || tg.replace(/^@/,'').trim().length < 3){
-      setHint('hint-tg', 'Вкажи Telegram — сюди буде надіслано твій розбір', 'err'); ok = false;
+    const digits = orderPhone.value.replace(/\D/g, '');
+    if (digits.length < 9 || digits.length > 15){
+      setHint('hint-phone', orderPhone.value.trim() ? 'Перевір номер, наприклад +380 67 123 45 67' : 'Вкажи номер телефону — так я точно зможу з тобою зв’язатися', 'err'); ok = false;
+    }
+    const tg = orderTg.value.trim().replace(/^@/, '');
+    if (orderMessenger() === 'Telegram' && tg && !/^[A-Za-z0-9_]{3,32}$/.test(tg)){
+      setHint('hint-tg', 'Нік пишеться латиницею без пробілів, наприклад @anna_k. Або залиш поле порожнім', 'err'); ok = false;
     }
     if (!orderConfirm.checked){
       setHint('hint-confirm', c.name2 && c.showDob ? 'Підтверди, що дати вказані правильно' : 'Підтверди, що дата вказана правильно'); ok = false;
@@ -5126,7 +5160,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     if (!validateOrder()) return;
 
     const data = readingDetails[orderKey];
-    const tg = orderTg.value.trim().replace(/^@/, '');
+    const messenger = orderMessenger();
+    const tg = messenger === 'Telegram' ? orderTg.value.trim().replace(/^@/, '') : '';
+    try { sessionStorage.setItem('vn_messenger', messenger); } catch (e) {}
     const payload = {
       product: data.title,
       productKey: orderKey,
@@ -5138,6 +5174,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       details: orderDetails(),
       telegram: tg ? '@' + tg.replace(/^@/, '') : '',
       phone: orderPhone.value.trim(),
+      messenger: messenger,
       comment: orderComment ? orderComment.value.trim() : '',
       createdAt: new Date().toISOString(),
       website: (document.getElementById('order-website') || {}).value || '',
@@ -5191,7 +5228,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     orderSubmit.textContent = submitLabel();
 
     const msg = 'Вітаю! Я замовив/-ла «' + data.title + '». ' + payload.details + '.';
-    orderDoneTxt.textContent = 'Я особисто підготую твій розбір за ' + formCfg().datesWord + '. Ти отримаєш карту та мій аудіокоментар у Telegram — ' + (data.price.note || 'найближчим часом') + '.';
+    orderDoneTxt.textContent = 'Я особисто підготую твій розбір за ' + formCfg().datesWord + '. Ти отримаєш карту та мій аудіокоментар у ' + messenger + ' — ' + (data.price.note || 'найближчим часом') + '.';
     orderDoneTg.href = 'https://t.me/' + MANAGER_TELEGRAM + '?text=' + encodeURIComponent(msg);
 
     document.getElementById('order-done-title').textContent = 'Замовлення прийнято';
@@ -5221,6 +5258,8 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     } catch (e) {}
 
     const title = document.getElementById('order-done-title');
+    let via = 'Telegram';
+    try { via = sessionStorage.getItem('vn_messenger') || 'Telegram'; } catch (e) {}
     const tgMsg = 'Вітаю! Я щойно оплатив/-ла замовлення ' + order + '.';
     function show(head, text, withTg){
       title.textContent = head;
@@ -5243,18 +5282,18 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         .then(a => {
           const st = a && a.status;
           if (st === 'оплачено'){
-            show('Оплату отримано ✓', 'Дякую! Я особисто підготую твій розбір і надішлю його тобі в Telegram. Номер замовлення — ' + order + '.', true);
+            show('Оплату отримано ✓', 'Дякую! Я особисто підготую твій розбір і надішлю його тобі в ' + via + '. Номер замовлення — ' + order + '.', true);
           } else if (st === 'не вдалася' || st === 'прострочено'){
             show('Оплата не пройшла', 'Гроші не списано. Спробуй оформити ще раз або напиши мені — допоможу.', true);
           } else if (tries < 8){
             setTimeout(check, 2000);
           } else {
-            show('Оплата обробляється', 'Щойно банк підтвердить платіж, я напишу тобі в Telegram. Номер замовлення — ' + order + '.', true);
+            show('Оплата обробляється', 'Щойно банк підтвердить платіж, я напишу тобі в ' + via + '. Номер замовлення — ' + order + '.', true);
           }
         })
         .catch(() => {
           if (tries < 8) setTimeout(check, 2000);
-          else show('Не вдалося перевірити оплату', 'Якщо гроші списано — все гаразд, я напишу тобі в Telegram. Номер замовлення — ' + order + '.', true);
+          else show('Не вдалося перевірити оплату', 'Якщо гроші списано — все гаразд, я напишу тобі в ' + via + '. Номер замовлення — ' + order + '.', true);
         });
     })();
   })();
