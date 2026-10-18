@@ -4224,6 +4224,18 @@ main .field-row #dob-input:focus, main .field-row #dob-input:focus-visible{
 }
 main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), inset 0 -1px 0 rgba(60,40,10,.35), 0 8px 22px rgba(201,169,97,.18) !important; }
 </style>
+<style id="vn-greet-css">
+/* Привітання на першому екрані: м'яко з'являється після «Твій персональний асистент» */
+.vn-greet{ margin:22px 0 0; font-family:var(--serif); font-style:italic; font-weight:400;
+  font-size:22px; line-height:1.3; letter-spacing:.01em; color:#dcc287;
+  text-shadow:0 0 18px rgba(214,182,112,.25);
+  opacity:0; animation:heroIn 1.2s cubic-bezier(.22,.61,.36,1) 1.05s both; }
+@media (max-width:600px){
+  .vn-greet{ font-size:19px; margin-top:18px; }
+  html body main > section.panel.hero-panel{ margin-top:30px !important; }
+}
+@media (prefers-reduced-motion:reduce){ .vn-greet{ animation:none; opacity:1; } }
+</style>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
@@ -4402,6 +4414,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     <div class="wordmark">VNUMERO</div>
     <div class="divider"></div>
     <div class="tagline">ТВІЙ ПЕРСОНАЛЬНИЙ АСИСТЕНТ</div>
+    <p class="vn-greet">Вітаю. Ти тут не випадково.</p>
 
     <section class="panel reveal-on-scroll hero-panel">
       <span class="hero-line" aria-hidden="true"></span>
