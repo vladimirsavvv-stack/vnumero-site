@@ -4331,7 +4331,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
           <label class="order-check">
             <input type="checkbox" id="order-confirm">
-            <span id="label-confirm">Я перевірив/-ла правильність дати народження</span>
+            <span id="label-confirm">Я перевірив/-ла дату народження і телефон — дані правильні</span>
           </label>
           <p class="order-hint err" id="hint-confirm" style="margin:-16px 0 16px;"></p>
 
@@ -5007,17 +5007,17 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   const ORDER_FORMS = {
     partners: { name:"ТВОЄ ІМ'Я", dob:'ТВОЯ ДАТА НАРОДЖЕННЯ', showDob:true,
                 name2:"ІМ'Я ПАРТНЕРА", name2ph:'Олександр', dob2:'ДАТА НАРОДЖЕННЯ ПАРТНЕРА',
-                confirm:'Я перевірив/-ла правильність обох дат народження',
+                confirm:'Я перевірив/-ла обидві дати народження і телефон — дані правильні',
                 who2:'партнера', datesWord:'вказаними датами народження' },
     child:    { name:"ТВОЄ ІМ'Я", showDob:true, dobOptional:true, dobAfter:true,
                 dob:'ТВОЯ ДАТА НАРОДЖЕННЯ — ЗА БАЖАННЯМ',
                 dobHint:'Допоможе мені підготувати персональні рекомендації: як саме тобі взаємодіяти зі своєю дитиною',
                 name2:"ІМ'Я ДИТИНИ", name2ph:'Марія', dob2:'ДАТА НАРОДЖЕННЯ ДИТИНИ',
-                confirm:'Я перевірив/-ла правильність дати народження дитини',
+                confirm:'Я перевірив/-ла дату народження дитини і телефон — дані правильні',
                 who2:'дитини', datesWord:'датою народження дитини' }
   };
   const ORDER_FORM_DEFAULT = { name:"ТВОЄ ІМ'Я", dob:'ДАТА НАРОДЖЕННЯ', showDob:true,
-                confirm:'Я перевірив/-ла правильність дати народження',
+                confirm:'Я перевірив/-ла дату народження і телефон — дані правильні',
                 datesWord:'вказаною датою народження' };
   function formCfg(){ return ORDER_FORMS[orderKey] || ORDER_FORM_DEFAULT; }
 
@@ -5149,7 +5149,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-tg', 'Нік пишеться латиницею без пробілів, наприклад @anna_k. Або залиш поле порожнім', 'err'); ok = false;
     }
     if (!orderConfirm.checked){
-      setHint('hint-confirm', c.name2 && c.showDob ? 'Підтверди, що дати вказані правильно' : 'Підтверди, що дата вказана правильно'); ok = false;
+      setHint('hint-confirm', 'Підтверди, що дані вказані правильно'); ok = false;
     }
     return ok;
   }
