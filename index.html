@@ -889,6 +889,7 @@
   }
   /* ---- order form ---- */
   .order-form{ text-align:left; }
+  .vn-hp{ position:absolute !important; left:-10000px !important; top:auto !important; width:1px !important; height:1px !important; overflow:hidden !important; opacity:0 !important; pointer-events:none !important; }
   .order-form label{
     display:block;
     font-size:11px;
@@ -4304,6 +4305,12 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
             <textarea id="order-comment" rows="3" maxlength="600" placeholder="Напиши, якщо є конкретне питання або ситуація, на яку варто звернути увагу"></textarea>
           </div>
 
+          <!-- пастка для ботів: людина цього поля не бачить і не заповнює -->
+          <div class="vn-hp" aria-hidden="true">
+            <label for="order-website">Website</label>
+            <input type="text" id="order-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
+
           <label class="order-check">
             <input type="checkbox" id="order-confirm">
             <span id="label-confirm">Я перевірив/-ла правильність дати народження</span>
@@ -5000,9 +5007,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     document.getElementById('label-confirm').textContent = c.confirm;
   }
 
+  let orderOpenedAt = 0;   // коли вперше відкрили форму (захист від ботів: людина не заповнить її за мить)
   function openOrderModal(key){
     const data = readingDetails[key];
     if (!data) return;
+    if (!orderOpenedAt) orderOpenedAt = Date.now();
     orderKey = key;
     orderProduct.textContent = data.title;
     orderPriceEl.textContent = data.price.new;
@@ -5130,7 +5139,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       telegram: tg ? '@' + tg.replace(/^@/, '') : '',
       phone: orderPhone.value.trim(),
       comment: orderComment ? orderComment.value.trim() : '',
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      website: (document.getElementById('order-website') || {}).value || '',
+      fillMs: orderOpenedAt ? Date.now() - orderOpenedAt : 999999
     };
 
     // Статичне посилання (якщо задане і mono вимкнено) відкриваємо одразу по кліку —
@@ -5154,6 +5165,16 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         });
         const answer = await res.json();
         pageUrl = (answer && answer.pageUrl) || '';
+        if (answer && (answer.error === 'busy' || answer.error === 'invalid')) {
+          if (timer) clearTimeout(timer);
+          if (payWin) payWin.close();
+          orderSubmit.disabled = false;
+          orderSubmit.textContent = submitLabel();
+          setHint('hint-confirm', answer.error === 'busy'
+            ? 'Забагато заявок за короткий час. Спробуй, будь ласка, за кілька хвилин або напиши мені в Telegram.'
+            : 'Перевір, будь ласка, ім’я та Telegram і спробуй ще раз.', 'err');
+          return;
+        }
       } catch (err) {
         // відповідь не прочиталась — заявка все одно дійшла, контакт лишається через Telegram
       }
