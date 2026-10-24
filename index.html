@@ -4265,6 +4265,17 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   #order-modal .iti__dial-code{ color:var(--gold-soft); }
   #order-modal .iti__divider{ border-bottom-color:rgba(201,169,97,.25); }
   #order-done-text strong{ color:var(--ivory); font-weight:600; }
+  /* На телефоні список країн відкривається на весь екран поза формою — стилізуємо і його */
+  .iti--container{ z-index:100000 !important; }
+  .iti--fullscreen-popup.iti--container{ background:rgba(8,7,5,.82); padding:24px 14px; }
+  .iti--container .iti__country-list{ background:#16130e; border:1px solid rgba(201,169,97,.35); color:#f3eee2;
+    font-family:var(--sans); font-size:15px; }
+  .iti--container .iti__country{ padding:10px 12px; }
+  .iti--container .iti__country-name{ color:#f3eee2; }
+  .iti--container .iti__dial-code{ color:#c9a961; }
+  .iti--container .iti__country.iti__highlight{ background:rgba(201,169,97,.18); }
+  .iti--container .iti__divider{ border-bottom-color:rgba(201,169,97,.25); }
+  #order-modal .iti__country-name{ color:#f3eee2; }
   /* Помилки форми — помітним червоним */
   .order-hint.err, #order-modal .order-hint.err{ color:#ff6b6b !important; font-weight:500; }
   #order-modal .order-form input.vn-invalid{ border-color:#ff6b6b !important; box-shadow:0 0 0 1px #ff6b6b !important; }
