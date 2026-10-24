@@ -4251,6 +4251,25 @@ main .field-row #dob-input:focus, main .field-row #dob-input:focus-visible{
 }
 main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), inset 0 -1px 0 rgba(60,40,10,.35), 0 8px 22px rgba(201,169,97,.18) !important; }
 </style>
+<link rel="stylesheet" href="/vendor/iti/css/intlTelInput.min.css">
+<style>
+  /* Телефон із вибором країни (intl-tel-input), у стилі сайту */
+  #order-modal .iti{ width:100%; display:block; }
+  #order-modal .iti__selected-flag{ background:rgba(201,169,97,.08); border-right:1px solid rgba(201,169,97,.25); padding:0 10px 0 12px; }
+  #order-modal .iti__selected-dial-code{ color:var(--ivory); font-family:var(--sans); font-size:14px; }
+  #order-modal .iti__arrow{ border-top-color:var(--gold); }
+  #order-modal .iti__arrow--up{ border-bottom-color:var(--gold); border-top-color:transparent; }
+  #order-modal .iti__country-list{ background:#16130e; border:1px solid rgba(201,169,97,.35); color:var(--ivory);
+    font-family:var(--sans); font-size:13px; max-height:240px; width:min(320px, 82vw); white-space:normal; z-index:30; }
+  #order-modal .iti__country.iti__highlight{ background:rgba(201,169,97,.18); }
+  #order-modal .iti__dial-code{ color:var(--gold-soft); }
+  #order-modal .iti__divider{ border-bottom-color:rgba(201,169,97,.25); }
+  /* Помилки форми — помітним червоним */
+  .order-hint.err, #order-modal .order-hint.err{ color:#ff6b6b !important; font-weight:500; }
+  #order-modal .order-form input.vn-invalid{ border-color:#ff6b6b !important; box-shadow:0 0 0 1px #ff6b6b !important; }
+  #order-modal .order-check.vn-invalid{ outline:1px solid #ff6b6b; outline-offset:4px; border-radius:6px; }
+  #order-modal .order-check.vn-invalid span{ color:#ff9b9b; }
+</style>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
@@ -4326,7 +4345,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
           <div class="order-field">
             <label for="order-phone">ТЕЛЕФОН <span aria-hidden="true">*</span></label>
-            <input type="tel" id="order-phone" autocomplete="tel" inputmode="tel" placeholder="+380" required>
+            <input type="tel" id="order-phone" autocomplete="tel" inputmode="tel" required>
             <p class="order-hint" id="hint-phone">За цим номером я знайду тебе в месенджері</p>
           </div>
 
@@ -4664,6 +4683,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     </div>
   </footer>
 
+<script src="/vendor/iti/js/intlTelInput.min.js"></script>
 <script>
   const meanings = {
       1: "Тобі важливо самостійно вирішувати, що і як робити. Ти не любиш, коли тобою керують, нав’язують свою думку або вказують, як правильно жити. Навіть якщо всі йдуть в один бік, ти можеш обрати свій. Головний урок твого шляху — слухати свою <span class='destiny-key'>інтуїцію</span> та <span class='destiny-key'>внутрішній голос</span>. Десь всередині ти майже завжди знаєш, яке рішення правильне саме для тебе. Головне — не заглушати це відчуття чужими порадами та сумнівами.",
@@ -4997,6 +5017,31 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   const orderName2   = document.getElementById('order-name2');
   const orderTg      = document.getElementById('order-tg');
   const orderPhone   = document.getElementById('order-phone');
+  // Телефон із вибором країни. Росії в списку немає.
+  const iti = window.intlTelInput ? window.intlTelInput(orderPhone, {
+    initialCountry: 'ua',
+    preferredCountries: ['ua', 'pl', 'de', 'cz', 'sk', 'md', 'ro', 'it', 'es', 'gb', 'us', 'ca', 'il', 'lt', 'lv', 'ee', 'ge', 'kz'],
+    excludeCountries: ['ru'],
+    separateDialCode: true,
+    autoPlaceholder: 'aggressive',
+    utilsScript: '/vendor/iti/js/utils.js'
+  }) : null;
+  // поле має стиль з !important — відступ під код країни виставляємо так само
+  function fitPhonePadding(){
+    const flag = orderPhone.parentNode.querySelector('.iti__selected-flag');
+    if (flag && flag.offsetWidth) orderPhone.style.setProperty('padding-left', (flag.offsetWidth + 12) + 'px', 'important');
+  }
+  if (iti){
+    orderPhone.addEventListener('countrychange', () => { fitPhonePadding(); setHint('hint-phone','За цим номером я знайду тебе в месенджері'); orderPhone.classList.remove('vn-invalid'); });
+    setTimeout(fitPhonePadding, 0);
+  }
+  function phoneValue(){ return iti ? (iti.getNumber() || orderPhone.value.trim()) : orderPhone.value.trim(); }
+  function phoneValid(){
+    if (iti && window.intlTelInputUtils) return iti.isValidNumber();
+    // утиліти ще не довантажились — проста перевірка кількості цифр
+    const d = phoneValue().replace(/\D/g, '');
+    return d.length >= 10 && d.length <= 15;
+  }
   const fieldTg      = document.getElementById('field-tg');
   function orderMessenger(){
     const el = document.querySelector('input[name="order-msg"]:checked');
@@ -5021,6 +5066,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     if (!el) return;
     el.textContent = text || '';
     el.className = 'order-hint' + (cls ? ' ' + cls : '');
+    // підсвічуємо саме поле червоною рамкою, поки є помилка
+    const field = el.closest('.order-field');
+    const target = id === 'hint-confirm' ? document.querySelector('#order-modal .order-check')
+                 : field ? field.querySelector('input, textarea') : null;
+    if (target) target.classList.toggle('vn-invalid', cls === 'err');
   }
 
   // Текст кнопки: «Перейти до оплати» лише коли для продукту є платіжний лінк.
@@ -5167,16 +5217,22 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-dob2', orderDob2.value ? 'Перевір дату: день.місяць.рік, наприклад 12.05.2018'
         : (orderKey === 'child' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
     }
-    const digits = orderPhone.value.replace(/\D/g, '');
-    if (digits.length < 9 || digits.length > 15){
-      setHint('hint-phone', orderPhone.value.trim() ? 'Перевір номер, наприклад +380 67 123 45 67' : 'Вкажи номер телефону — так я точно зможу з тобою зв’язатися', 'err'); ok = false;
+    if (!orderPhone.value.trim()){
+      setHint('hint-phone', 'Вкажи номер телефону — так я точно зможу з тобою зв’язатися', 'err'); ok = false;
+    } else if (!phoneValid()){
+      setHint('hint-phone', 'Перевір номер: схоже, не вистачає або забагато цифр. Країну можна обрати зліва', 'err'); ok = false;
     }
     const tg = orderTg.value.trim().replace(/^@/, '');
     if (orderMessenger() === 'Telegram' && tg && !/^[A-Za-z0-9_]{3,32}$/.test(tg)){
       setHint('hint-tg', 'Нік пишеться латиницею без пробілів, наприклад @anna_k. Або залиш поле порожнім', 'err'); ok = false;
     }
     if (!orderConfirm.checked){
-      setHint('hint-confirm', 'Підтверди, що дані вказані правильно'); ok = false;
+      setHint('hint-confirm', 'Підтверди, що дані вказані правильно', 'err'); ok = false;
+    }
+    if (!ok){
+      // прокручуємо до першої помилки — на телефоні її інакше легко не помітити
+      const first = document.querySelector('#order-modal .vn-invalid');
+      if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     return ok;
   }
@@ -5208,7 +5264,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       dob2: formCfg().name2 ? toIso(orderDob2.value) : '',
       details: orderDetails(),
       telegram: tg ? '@' + tg.replace(/^@/, '') : '',
-      phone: orderPhone.value.trim(),
+      phone: phoneValue(),
       messenger: messenger,
       comment: orderComment ? orderComment.value.trim() : '',
       createdAt: new Date().toISOString(),
@@ -5244,7 +5300,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           orderSubmit.textContent = submitLabel();
           setHint('hint-confirm', answer.error === 'busy'
             ? 'Забагато заявок за короткий час. Спробуй, будь ласка, за кілька хвилин або напиши мені в Telegram.'
-            : 'Перевір, будь ласка, ім’я та Telegram і спробуй ще раз.', 'err');
+            : 'Перевір, будь ласка, ім’я, номер телефону та Telegram і спробуй ще раз.', 'err');
           return;
         }
       } catch (err) {
