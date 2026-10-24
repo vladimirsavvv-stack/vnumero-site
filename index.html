@@ -4373,11 +4373,38 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   @keyframes vnSpin{ to{ transform:rotate(360deg); } }
   @keyframes vnBob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-2.6px); } }
   @keyframes vnTyping{ 0%,60%,100%{ opacity:.15; transform:translateY(0); } 30%{ opacity:1; transform:translateY(-2px); } }
+
+  /* ── Дві головні картки: велика анімована іконка ── */
+  #readings-panel .vn-big{ position:relative; overflow:hidden; }
+  #readings-panel .vn-big-ico{ display:grid; place-items:center; width:76px; height:76px; border-radius:50%; margin:0 0 18px;
+    color:var(--gold); border:1px solid rgba(201,169,97,.45);
+    background:radial-gradient(circle, rgba(201,169,97,.18), transparent 70%); }
+  #readings-panel .vn-big-ico svg{ width:46px; height:46px; overflow:visible; }
+  #readings-panel .vn-big .b-spark{ filter:drop-shadow(0 0 3px rgba(255,225,150,1)) drop-shadow(0 0 6px rgba(233,190,100,.8)); }
+  #readings-panel .vn-big [data-reading] path.b-draw, #readings-panel .vn-big path.b-draw:not(.b-q){ stroke-opacity:.75; }
+  #readings-panel .vn-big .b-q{ opacity:.55; }
+  #readings-panel .vn-big .b-now{ opacity:1; stroke-width:1.8; }
+  #readings-panel .vn-big::after{ content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(110deg, transparent 35%, rgba(233,205,140,.14) 50%, transparent 65%); transform:translateX(-120%); }
+  @media (prefers-reduced-motion: no-preference){
+    #readings-panel .vn-big{ opacity:0; transform:translateY(24px); }
+    #readings-panel .vn-big.vn-in{ opacity:1; transform:none; transition:opacity .8s ease, transform .8s ease; }
+    #readings-panel .vn-big.vn-in::after{ animation:vnSheen 1.8s ease both; animation-delay:var(--d, .4s); }
+    #readings-panel .vn-big .b-draw{ stroke-dasharray:1; stroke-dashoffset:1; }
+    #readings-panel .vn-big.vn-in .b-draw{ animation:vnDraw 1.8s ease forwards; animation-delay:calc(var(--d, 0s) + .3s); }
+    #readings-panel .vn-big .b-spark{ opacity:0; }
+    #readings-panel .vn-big.vn-in .b-spark{ animation:vnFadeIn .8s ease forwards; animation-delay:calc(var(--d, 0s) + 1.9s); }
+    #readings-panel .vn-big.vn-in .b-now{ animation:vnDraw 1.8s ease forwards calc(var(--d, 0s) + .3s), vnNow 3s ease-in-out calc(var(--d, 0s) + 2.2s) infinite; }
+    #readings-panel .vn-big.vn-in .vn-big-ico{ animation:vnGlow 4.5s ease-in-out infinite; }
+  }
+  @media (prefers-reduced-motion: reduce){ #readings-panel .vn-big .b-spark{ display:none; } }
+  @keyframes vnFadeIn{ to{ opacity:1; } }
+  @keyframes vnNow{ 0%,100%{ opacity:1; } 50%{ opacity:.45; } }
 </style>
 <script>
   // картки з'являються по черзі, коли людина до них догортає
   document.addEventListener('DOMContentLoaded', function(){
-    var cards = [].slice.call(document.querySelectorAll('#readings-panel .vn-req'));
+    var cards = [].slice.call(document.querySelectorAll('#readings-panel .vn-big, #readings-panel .vn-req'));
     cards.forEach(function(c, i){ c.style.setProperty('--d', (i * 0.12) + 's'); c.style.transitionDelay = (i * 0.09) + 's'; });
     if (!('IntersectionObserver' in window)){ cards.forEach(function(c){ c.classList.add('vn-in'); }); return; }
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('vn-in'); io.unobserve(e.target); } }); }, { threshold: .15 });
@@ -4689,13 +4716,15 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       <p class="segmenter">Онлайн асистент працює з тобою щодня. Але коли потрібна відповідь на важливий період життя — є окремі розбори. Кожен готую особисто: розрахунок, карта і мій аудіокоментар.</p>
 
       <div class="offer-grid">
-        <button class="offer-card reading-detail-btn" type="button" data-reading="karma">
+        <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="karma">
+          <span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path class="b-draw" pathLength="1" d="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="5s" repeatCount="indefinite" path="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/></circle></svg></span>
           <h3>Карта кармічних уроків</h3>
           <p class="offer-key">«Чому те саме повторюється знову і знову?»</p>
           <p>Кармічні задачі, закладені у твоїй даті народження: повторювані сценарії у виборі, грошах, коханні та стосунках — і уроки, які важливо пройти.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
-        <button class="offer-card reading-detail-btn" type="button" data-reading="period">
+        <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="period">
+          <span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path class="b-draw b-q" pathLength="1" d="M13.2 3.6A8.5 8.5 0 0 1 20.4 10.8"/><path class="b-draw b-q b-now" pathLength="1" d="M20.4 13.2A8.5 8.5 0 0 1 13.2 20.4"/><path class="b-draw b-q" pathLength="1" d="M10.8 20.4A8.5 8.5 0 0 1 3.6 13.2"/><path class="b-draw b-q" pathLength="1" d="M3.6 10.8A8.5 8.5 0 0 1 10.8 3.6"/><circle class="b-draw" pathLength="1" cx="12" cy="12" r="2.2"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="9s" repeatCount="indefinite" path="M12 3.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17"/></circle></svg></span>
           <h3>Код нового етапу</h3>
           <p class="offer-key">«Де я зараз і куди рухатись далі?»</p>
           <p>Твоя дата народження показує 4 великі цикли життя. Ти побачиш, який проживаєш зараз, що досі тримає тебе в минулому — і де твоя точка росту.</p>
