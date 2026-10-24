@@ -5048,6 +5048,16 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     excludeCountries: ['ru'],
     separateDialCode: true,
     autoPlaceholder: 'aggressive',
+    // підказка-приклад без коду країни і без «0» на початку: для +380 — «50 123 4567»
+    customPlaceholder: function(ph, c){
+      try {
+        const U = window.intlTelInputUtils;
+        const ex = U.getExampleNumber(c.iso2, false, U.numberType.MOBILE);
+        const cut = ex.replace('+' + c.dialCode, '').trim();
+        if (cut) return cut;
+      } catch (e) {}
+      return ph;
+    },
     utilsScript: '/iti-utils.js'
   }) : null;
   // поле має стиль з !important — відступ під код країни виставляємо так само
@@ -5066,6 +5076,24 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       if (flagEl) new ResizeObserver(fitPhonePadding).observe(flagEl);
     }
   }
+  // Людина могла ввести номер разом з кодом країни (380…, +380…, 00380…) —
+  // прибираємо повтор коду, щоб номер зарахувався правильно
+  function tidyPhone(){
+    if (!iti) return;
+    const raw = orderPhone.value.trim();
+    if (!raw) return;
+    const c = iti.getSelectedCountryData() || {};
+    const dial = String(c.dialCode || '');
+    let d = raw.replace(/\D/g, '');
+    if (/^\s*\+/.test(raw) || /^00/.test(d)) return; // повний міжнародний номер — бібліотека розбере сама
+    if (dial && d.indexOf(dial) === 0 && d.length - dial.length >= 6){
+      const rest = d.slice(dial.length);
+      if (!window.intlTelInputUtils || window.intlTelInputUtils.isValidNumber('+' + dial + rest, c.iso2) || !iti.isValidNumber()){
+        orderPhone.value = rest;
+      }
+    }
+  }
+  orderPhone.addEventListener('blur', tidyPhone);
   function phoneValue(){ return iti ? (iti.getNumber() || orderPhone.value.trim()) : orderPhone.value.trim(); }
   function phoneValid(){
     if (iti && window.intlTelInputUtils) return iti.isValidNumber();
@@ -5248,10 +5276,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-dob2', orderDob2.value ? 'Перевір дату: день.місяць.рік, наприклад 12.05.2018'
         : (orderKey === 'child' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
     }
+    tidyPhone();
     if (!orderPhone.value.trim()){
       setHint('hint-phone', 'Вкажи номер телефону — так я точно зможу з тобою зв’язатися', 'err'); ok = false;
     } else if (!phoneValid()){
-      setHint('hint-phone', 'Перевір номер: схоже, не вистачає або забагато цифр. Країну можна обрати зліва', 'err'); ok = false;
+      setHint('hint-phone', 'Перевір номер: схоже, не вистачає або забагато цифр. Приклад — у сірій підказці в полі, країну можна обрати зліва', 'err'); ok = false;
     }
     const tg = orderTg.value.trim().replace(/^@/, '');
     if (orderMessenger() === 'Telegram' && tg && !/^[A-Za-z0-9_]{3,32}$/.test(tg)){
