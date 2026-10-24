@@ -4400,6 +4400,29 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   @media (prefers-reduced-motion: reduce){ #readings-panel .vn-big .b-spark{ display:none; } }
   @keyframes vnFadeIn{ to{ opacity:1; } }
   @keyframes vnNow{ 0%,100%{ opacity:1; } 50%{ opacity:.45; } }
+
+  /* Головні картки: іконка і назва в один рядок, питання крупніше */
+  #readings-panel .vn-big-head{ display:flex; align-items:center; gap:18px; margin:0 0 16px; }
+  #readings-panel .vn-big-head .vn-big-ico{ margin:0; flex:0 0 76px; }
+  #readings-panel .vn-big-head h3{ margin:0 !important; flex:1; }
+  #readings-panel .vn-big .offer-key{ font-size:19px !important; line-height:1.4 !important; }
+  @media (max-width: 560px){
+    #readings-panel .vn-big-head{ gap:14px; }
+    #readings-panel .vn-big-head .vn-big-ico{ flex-basis:64px; width:64px; height:64px; }
+    #readings-panel .vn-big-head .vn-big-ico svg{ width:40px; height:40px; }
+    #readings-panel .vn-big-head h3{ font-size:24px !important; line-height:1.15 !important; text-align:center; }
+    #readings-panel .vn-big .offer-key{ font-size:18px !important; }
+  }
+  /* «Тоді ось як це працює» + стрілка вниз до розділу про метод */
+  .vn-next{ display:inline-flex; flex-direction:column; align-items:center; gap:14px; text-decoration:none; color:var(--gold); cursor:pointer; }
+  .vn-next-txt{ font-family:var(--serif); font-style:italic; font-size:19px; color:var(--gold-soft, #e3c98a); }
+  .vn-next-arrow{ width:52px; height:52px; border-radius:50%; display:grid; place-items:center;
+    border:1px solid rgba(201,169,97,.5); background:radial-gradient(circle, rgba(201,169,97,.14), transparent 70%);
+    transition:background .3s ease, transform .3s ease; }
+  .vn-next-arrow svg{ width:22px; height:22px; }
+  .vn-next:hover .vn-next-arrow{ background:rgba(201,169,97,.2); }
+  @media (prefers-reduced-motion: no-preference){ .vn-next-arrow svg{ animation:vnArrow 2s ease-in-out infinite; } }
+  @keyframes vnArrow{ 0%,100%{ transform:translateY(-3px); opacity:.7; } 50%{ transform:translateY(4px); opacity:1; } }
 </style>
 <script>
   // картки з'являються по черзі, коли людина до них догортає
@@ -4618,8 +4641,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
       <div class="yes-block">
         <p class="yes-question">Хочеш побачити закономірності власного життя?</p>
-        <button class="calc-btn yes-btn" id="yes-btn" type="button">Так, хочу</button>
-        <p class="yes-confirm" id="yes-confirm" style="display:none;">Тоді ось як це працює.</p>
+        <a class="vn-next" id="yes-btn" href="#founder-panel">
+          <span class="vn-next-txt">Тоді ось як це працює</span>
+          <span class="vn-next-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
+        </a>
       </div>
     </section>
 
@@ -4717,15 +4742,13 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
       <div class="offer-grid">
         <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="karma">
-          <span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path class="b-draw" pathLength="1" d="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="5s" repeatCount="indefinite" path="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/></circle></svg></span>
-          <h3>Карта кармічних уроків</h3>
+          <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path class="b-draw" pathLength="1" d="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="5s" repeatCount="indefinite" path="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/></circle></svg></span><h3>Карта кармічних уроків</h3></span>
           <p class="offer-key">«Чому те саме повторюється знову і знову?»</p>
           <p>Кармічні задачі, закладені у твоїй даті народження: повторювані сценарії у виборі, грошах, коханні та стосунках — і уроки, які важливо пройти.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
         <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="period">
-          <span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path class="b-draw b-q" pathLength="1" d="M13.2 3.6A8.5 8.5 0 0 1 20.4 10.8"/><path class="b-draw b-q b-now" pathLength="1" d="M20.4 13.2A8.5 8.5 0 0 1 13.2 20.4"/><path class="b-draw b-q" pathLength="1" d="M10.8 20.4A8.5 8.5 0 0 1 3.6 13.2"/><path class="b-draw b-q" pathLength="1" d="M3.6 10.8A8.5 8.5 0 0 1 10.8 3.6"/><circle class="b-draw" pathLength="1" cx="12" cy="12" r="2.2"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="9s" repeatCount="indefinite" path="M12 3.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17"/></circle></svg></span>
-          <h3>Код нового етапу</h3>
+          <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path class="b-draw b-q" pathLength="1" d="M13.2 3.6A8.5 8.5 0 0 1 20.4 10.8"/><path class="b-draw b-q b-now" pathLength="1" d="M20.4 13.2A8.5 8.5 0 0 1 13.2 20.4"/><path class="b-draw b-q" pathLength="1" d="M10.8 20.4A8.5 8.5 0 0 1 3.6 13.2"/><path class="b-draw b-q" pathLength="1" d="M3.6 10.8A8.5 8.5 0 0 1 10.8 3.6"/><circle class="b-draw" pathLength="1" cx="12" cy="12" r="2.2"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="9s" repeatCount="indefinite" path="M12 3.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17"/></circle></svg></span><h3>Код нового етапу</h3></span>
           <p class="offer-key">«Де я зараз і куди рухатись далі?»</p>
           <p>Твоя дата народження показує 4 великі цикли життя. Ти побачиш, який проживаєш зараз, що досі тримає тебе в минулому — і де твоя точка росту.</p>
           <span class="offer-cta">Детальніше →</span>
@@ -5724,18 +5747,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   });
 
   const yesBtn = document.getElementById('yes-btn');
-  const yesConfirm = document.getElementById('yes-confirm');
-
-  yesBtn.addEventListener('click', () => {
-    yesBtn.textContent = '✓ Так, хочу';
-    yesBtn.classList.add('answered');
-    yesConfirm.style.display = 'block';
-    requestAnimationFrame(() => yesConfirm.classList.add('show'));
-
+  if (yesBtn) yesBtn.addEventListener('click', (e) => {
     const founderSection = document.getElementById('founder-panel');
-    if (founderSection){
-      setTimeout(() => founderSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 900);
-    }
+    if (founderSection){ e.preventDefault(); founderSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 
   dobInput.addEventListener('keydown', (e) => {
