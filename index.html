@@ -4305,6 +4305,24 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   /* Відступ під прапорець і код країни — сильніший за всі інші правила полів */
   #order-modal .order-form .iti input#order-phone,
   #order-modal .iti input#order-phone{ padding-left:var(--iti-pad, 104px) !important; }
+  /* Автозаповнення браузера (Chrome/Safari) ставить свій світлий фон —
+     перебиваємо внутрішньою тінню, щоб поле лишалось темним, а текст світлим */
+  #order-modal input:-webkit-autofill,
+  #order-modal input:-webkit-autofill:hover,
+  #order-modal input:-webkit-autofill:focus,
+  #order-modal input:-webkit-autofill:active,
+  #order-modal textarea:-webkit-autofill{
+    -webkit-box-shadow:0 0 0 1000px #1c1915 inset !important;
+    box-shadow:0 0 0 1000px #1c1915 inset !important;
+    -webkit-text-fill-color:var(--ivory) !important;
+    caret-color:var(--ivory) !important;
+    transition:background-color 99999s ease-in-out 0s !important;
+  }
+  #order-modal input:-webkit-autofill.vn-invalid{
+    -webkit-box-shadow:0 0 0 1000px #1c1915 inset, 0 0 0 1px #ff6b6b !important;
+    box-shadow:0 0 0 1000px #1c1915 inset, 0 0 0 1px #ff6b6b !important;
+  }
+  #order-modal input:autofill{ background:#1c1915 !important; color:var(--ivory) !important; }
   /* Помилки форми — помітним червоним */
   .order-hint.err, #order-modal .order-hint.err{ color:#ff6b6b !important; font-weight:500; }
   #order-modal .order-form input.vn-invalid{ border-color:#ff6b6b !important; box-shadow:0 0 0 1px #ff6b6b !important; }
