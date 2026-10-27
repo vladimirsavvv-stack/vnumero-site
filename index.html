@@ -6547,10 +6547,12 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   var ua = navigator.userAgent || '';
   if(/musical_ly|BytedanceWebview|Bytedance|TikTok|trill_|aweme|Instagram|FBAN|FBAV|FB_IAB/i.test(ua)) return;
   if(/[?&]inapp=/.test(location.search)) return;
-  var src = '';
-  try{ src = ((window.VNUMERO_ATTRIBUTION || {}).utm_source || new URLSearchParams(location.search).get('utm_source') || '').toLowerCase(); }catch(e){}
-  if(!/tiktok|instagram/.test(src)) return;
-  try{ if(sessionStorage.getItem('vn_tgready_closed')) return; }catch(e){}
+  // Лише за міткою В САМІЙ АДРЕСІ (так браузер відкриває сторінку з TikTok),
+  // а не за збереженою атрибуцією: інакше вікно вилазило б при кожному
+  // наступному візиті й поверх «Оплату отримано».
+  var q = new URLSearchParams(location.search);
+  var src = (q.get('utm_source') || '').toLowerCase();
+  if(!/tiktok|instagram/.test(src) || q.get('pay') || q.get('order')) return;
 
   function show(){
     var a = document.querySelector('a[href*="t.me/vnumero_bot"]');
@@ -6572,7 +6574,6 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     function close(){
       box.classList.remove('show');
       document.documentElement.classList.remove('vn-modal-lock');
-      try{ sessionStorage.setItem('vn_tgready_closed', '1'); }catch(e){}
       setTimeout(function(){ box.remove(); }, 400);
     }
     box.querySelector('.vn-tgready-x').addEventListener('click', close);
