@@ -4216,7 +4216,26 @@ body::before{ filter:none !important; will-change:transform, opacity; }
 @keyframes heroCueIn{ to{ opacity:.85; } }
 @keyframes heroCueBob{ 0%,100%{ transform:translate3d(0,0,0) rotate(45deg); } 50%{ transform:translate3d(0,6px,0) rotate(45deg); } }
 @media (prefers-reduced-motion:reduce){ .hero-cue{ animation:none; opacity:.85; } }
+/* Стрілка вниз — клікабельна: велика невидима зона натискання поверх неї */
+.hero-cue-hit{ position:absolute; left:50%; bottom:2px; width:56px; height:52px; margin-left:-28px;
+  background:transparent; border:0; padding:0; cursor:pointer; -webkit-tap-highlight-color:transparent; z-index:2; }
+.hero-cue-hit:focus-visible{ outline:1px solid rgba(214,182,112,.7); outline-offset:2px; border-radius:50%; }
 </style>
+<script>
+(function(){
+  // натискання на стрілку — плавно до наступного розділу («Знайомо?»)
+  // скрипт стоїть у <head>, тож слухаємо кліки на документі — кнопки ще немає
+  document.addEventListener('click', function(e){
+    if(!(e.target.closest && e.target.closest('.hero-cue-hit'))) return;
+    var hero = document.querySelector('.hero-panel');
+    var next = document.getElementById('pain-panel');
+    if(!next && hero){ next = hero.nextElementSibling; }
+    if(!next) return;
+    var y = next.getBoundingClientRect().top + window.scrollY - 40;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  });
+})();
+</script>
 <script>
 (function(){
   // відстань від верху сторінки до блоку з калькулятором — щоб він дотягнувся рівно до низу екрана
@@ -4659,6 +4678,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       </div>
       <div class="calc-hint" id="calc-hint"></div>
       <span class="hero-cue" aria-hidden="true"></span>
+      <button class="hero-cue-hit" type="button" aria-label="Гортати далі"></button>
 
       <p class="bridge reveal-on-scroll" id="bridge-text" style="display:none;">
         Це лише <span class="accent">одне число</span> з твого коду.
