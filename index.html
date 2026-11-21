@@ -3,38 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FXX3ESVK2P"></script>
 <script>
+  // аналітика вмикається лише на справжньому домені — чернетки й тести не псують статистику
+  window.VN_LIVE = /(^|\.)vnumero\.life$/.test(location.hostname);
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-FXX3ESVK2P');
+  if (window.VN_LIVE){
+    var _ga = document.createElement('script'); _ga.async = true;
+    _ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-FXX3ESVK2P';
+    document.head.appendChild(_ga);
+    gtag('js', new Date());
+    gtag('config', 'G-FXX3ESVK2P');
+  }
 </script>
 <!-- Microsoft Clarity -->
 <script>
-  (function(c,l,a,r,i,t,y){
+  if (window.VN_LIVE) (function(c,l,a,r,i,t,y){
     c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
     t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "z2wh2vx2y1");
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VNUMERO — Нумерологія, персональні прогнози та розбори</title>
+<title>VNUMERO — карма, збіги та цифрова психологія. Персональні розбори</title>
 
-  <meta name="description" content="VNUMERO — персональна нумерологія за датою народження та ім’ям. Розрахуй число долі, отримуй персональні прогнози та замовляй нумерологічні розбори про гроші, стосунки й важливі періоди життя.">
+  <meta name="description" content="Персональні розбори за датою народження: яким буде твій 2027 по місяцях, карта кармічних уроків, мама і дитина, фінансовий код, карта кохання. Готую особисто.">
   <link rel="canonical" href="https://vnumero.life/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="uk_UA">
   <meta property="og:site_name" content="VNUMERO">
-  <meta property="og:title" content="VNUMERO — нумерологія твого життя">
-  <meta property="og:description" content="Персональні прогнози, число долі та нумерологічні розбори за твоєю датою народження та ім’ям.">
+  <meta property="og:title" content="VNUMERO — твоя дата народження знає більше">
+  <meta property="og:description" content="Яким буде твій 2027, кармічні уроки, гроші, кохання і зв’язок з дитиною — персональні розбори за датою народження.">
   <meta property="og:url" content="https://vnumero.life/">
   <meta property="og:image" content="https://vnumero.life/images/og-vnumero.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VNUMERO — нумерологія твого життя">
-  <meta name="twitter:description" content="Персональні прогнози, число долі та нумерологічні розбори за твоєю датою народження та ім’ям.">
+  <meta name="twitter:title" content="VNUMERO — твоя дата народження знає більше">
+  <meta name="twitter:description" content="Яким буде твій 2027, кармічні уроки, гроші, кохання і зв’язок з дитиною — персональні розбори за датою народження.">
   <meta name="twitter:image" content="https://vnumero.life/images/og-vnumero.jpg">
 
 <script type="application/ld+json">
@@ -87,7 +93,7 @@
       "name": "У якому вигляді я отримаю розбір?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Персональну карту та мій аудіокоментар — у Telegram, Viber або WhatsApp, як тобі зручніше. Аудіо можна переслухати будь-коли, тому нічого записувати не треба."
+        "text": "PDF-розбір і мій особистий голосовий коментар — у Telegram, Viber або WhatsApp, як тобі зручніше."
       }
     },
     {
@@ -95,7 +101,7 @@
       "name": "Скільки чекати після оплати?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Тематичні розбори та Карту кармічних уроків — до 5 робочих днів. «Код нового етапу» — до 7 робочих днів, бо це найоб'ємніша робота."
+        "text": "Усі розбори — протягом 5 робочих днів."
       }
     },
     {
@@ -103,15 +109,15 @@
       "name": "Що потрібно від мене?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Ім'я, точна дата народження і номер телефону — розбір надішлю в Telegram, Viber або WhatsApp, як тобі зручніше. Для «Сумісності пари» — дати обох, для «Розбору дитини» — ім'я та дата народження дитини. Якщо для розбору знадобиться уточнення, я напишу особисто."
+        "text": "Ім'я, точна дата народження і номер телефону. Для «Мами і дитини» — ще ім'я та дата народження дитини, для сумісності в «Карті кохання» — дата народження партнера."
       }
     },
     {
       "@type": "Question",
-      "name": "Чим онлайн помічник відрізняється від розбору?",
+      "name": "Чим безкоштовний розбір у Telegram відрізняється від персонального?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Асистент у Telegram — це твоя щоденна подорож: перші 3 дні він розкриває твій нумерологічний код, а далі щоранку надсилає прогноз і допомагає діяти вчасно. Персональний розбір — глибока робота, яку я готую особисто по одній темі чи по цілому періоду життя, один раз і надовго."
+        "text": "У Telegram бот автоматично показує базу твого коду — кілька ключових чисел і задачу року. Персональний розбір — глибока робота, яку я готую особисто по одній темі або на цілий рік, один раз і надовго."
       }
     },
     {
@@ -4489,6 +4495,67 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     cards.forEach(function(c){ io.observe(c); });
   });
 </script>
+
+<style>
+/* ═══ НОВА КОНЦЕПЦІЯ: банер 2027, флагман, опції ═══ */
+.vn-2027-banner{ display:inline-flex; align-items:center; gap:8px; margin:0 auto 26px; padding:9px 18px; border-radius:999px;
+  font-family:var(--sans); font-size:12.5px; letter-spacing:.06em; color:var(--gold); text-decoration:none;
+  border:1px solid rgba(201,169,97,.45); background:rgba(201,169,97,.07); transition:background .3s ease, border-color .3s ease; }
+.vn-2027-banner:hover{ background:rgba(201,169,97,.16); border-color:rgba(241,214,153,.8); }
+.vn-2027-star{ color:#f1d699; }
+@media (prefers-reduced-motion: no-preference){ .vn-2027-star{ animation:vnTwinkle 2.4s ease-in-out infinite; } }
+.hero-panel{ text-align:center; }
+.hero-panel .panel-title{ text-wrap:balance; }
+
+#readings-panel .vn-flag-wrap{ max-width:960px; margin:0 auto 28px; scroll-margin-top:24px; }
+#readings-panel .vn-flag{ display:grid !important; grid-template-columns:230px 1fr; column-gap:44px; align-items:center;
+  padding:44px 44px 40px !important; border-color:rgba(201,169,97,.6) !important;
+  background:radial-gradient(90% 120% at 0% 0%, rgba(201,169,97,.16), transparent 60%), rgba(255,255,255,.02) !important;
+  box-shadow:0 0 0 1px rgba(201,169,97,.10), 0 24px 60px rgba(0,0,0,.4); }
+#readings-panel .vn-flag-ico{ display:grid; place-items:center; width:230px; height:230px; border-radius:50%; color:var(--gold);
+  background:radial-gradient(circle, rgba(201,169,97,.20), transparent 68%); }
+#readings-panel .vn-flag-ico svg{ width:200px; height:200px; overflow:visible; }
+#readings-panel .vn-flag-year{ font-family:var(--serif); font-size:26px; font-weight:400; letter-spacing:.08em; fill:#f1d699; stroke:none; }
+#readings-panel .vn-flag .b-spark{ filter:drop-shadow(0 0 4px rgba(255,225,150,1)) drop-shadow(0 0 9px rgba(233,190,100,.85)); }
+#readings-panel .vn-flag-body{ display:flex; flex-direction:column; align-items:flex-start; text-align:left; }
+#readings-panel .vn-flag-badge{ font-family:var(--sans); font-size:10.5px; letter-spacing:.22em; text-transform:uppercase; color:#0c0a07;
+  background:linear-gradient(135deg, #f1d699, #c9a961); padding:6px 12px; border-radius:999px; margin-bottom:16px; }
+#readings-panel .vn-flag h3{ font-family:var(--serif); font-weight:400; font-size:40px !important; line-height:1.08 !important; margin:0 0 8px !important; color:var(--ivory); }
+#readings-panel .vn-flag .offer-key{ display:block; font-family:var(--serif); font-style:italic; font-size:21px !important; color:var(--gold); margin:0 0 16px; }
+#readings-panel .vn-flag-desc{ display:block; font-size:14.5px; line-height:1.7; color:rgba(243,238,226,.78); margin-bottom:18px; }
+#readings-panel .vn-flag-list{ display:flex; flex-direction:column; gap:9px; margin-bottom:18px; width:100%; }
+#readings-panel .vn-flag-list > span{ display:flex; gap:14px; align-items:baseline; font-size:14.5px; line-height:1.5; color:var(--ivory); }
+#readings-panel .vn-flag-list b{ font-family:var(--serif); font-weight:500; font-size:17px; color:var(--gold); min-width:24px; }
+#readings-panel .vn-flag-note{ display:block; font-size:13px; color:var(--gold-soft); margin-bottom:20px; }
+#readings-panel .vn-flag-cta{ font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#f1d699; }
+@media (prefers-reduced-motion: no-preference){
+  #readings-panel .vn-flag.vn-in .vn-flag-ico{ animation:vnGlow 4.5s ease-in-out infinite; }
+}
+@media (max-width: 760px){
+  #readings-panel .vn-flag{ grid-template-columns:1fr; padding:32px 22px 28px !important; row-gap:10px; }
+  #readings-panel .vn-flag-ico{ width:170px; height:170px; margin:0 auto; }
+  #readings-panel .vn-flag-ico svg{ width:150px; height:150px; }
+  #readings-panel .vn-flag-body{ align-items:center; text-align:center; }
+  #readings-panel .vn-flag h3{ font-size:31px !important; }
+  #readings-panel .vn-flag .offer-key{ font-size:19px !important; }
+  #readings-panel .vn-flag-list > span{ text-align:left; font-size:14px; }
+  #readings-panel .vn-flag-desc{ font-size:14px; }
+}
+
+/* опція в замовленні */
+.vn-opt{ display:flex; align-items:center; gap:12px; margin:-6px 0 22px; padding:14px 16px; border-radius:6px; cursor:pointer;
+  border:1px dashed rgba(201,169,97,.5); background:rgba(201,169,97,.05); }
+.vn-opt input{ position:absolute; opacity:0; pointer-events:none; }
+.vn-opt-box{ flex:0 0 20px; width:20px; height:20px; border-radius:4px; border:1px solid var(--gold); display:grid; place-items:center; }
+.vn-opt input:checked + .vn-opt-box{ background:var(--gold); }
+.vn-opt input:checked + .vn-opt-box::after{ content:'✓'; color:#0c0a07; font-size:13px; font-weight:700; }
+.vn-opt-txt b{ font-weight:500; color:var(--ivory); font-size:14px; }
+.vn-opt-txt i{ font-style:normal; color:var(--gold); font-size:14px; margin-left:4px; }
+.vn-opt-note{ color:var(--gold); }
+.final-cta .vn-final-sub{ max-width:460px; margin:0 auto 28px; text-align:center; }
+/* вільний блок без другого кроку: нитка не потрібна */
+#assistant-panel .journey-thread{ display:none; }
+</style>
 </head>
 <body>
 <div class="vn-grain" aria-hidden="true"></div>
@@ -4535,6 +4602,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           <span id="order-price">—</span>
         </div>
         <p class="modal-term" id="order-term" style="text-align:left;margin:-12px 0 20px;"></p>
+        <label class="vn-opt" id="order-opt" style="display:none;"><input type="checkbox" id="order-opt-cb"><span class="vn-opt-box" aria-hidden="true"></span><span class="vn-opt-txt"><b id="order-opt-label"></b> <i id="order-opt-price"></i></span></label>
 
         <div class="order-form">
           <p class="order-required-note">* Обов’язкові поля</p>
@@ -4560,6 +4628,18 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
             <label for="order-dob2"><span id="label-dob2">ДАТА НАРОДЖЕННЯ ПАРТНЕРА</span> <span aria-hidden="true">*</span></label>
             <input type="text" id="order-dob2" class="vn-date" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="ДД.ММ.РРРР">
             <p class="order-hint" id="hint-dob2"></p>
+          </div>
+
+          <div class="order-field" id="field-name3" style="display:none;">
+            <label for="order-name3">ІМ'Я ДРУГОЇ ДИТИНИ <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-name3" autocomplete="off" placeholder="Іван">
+            <p class="order-hint" id="hint-name3"></p>
+          </div>
+
+          <div class="order-field" id="field-dob3" style="display:none;">
+            <label for="order-dob3">ДАТА НАРОДЖЕННЯ ДРУГОЇ ДИТИНИ <span aria-hidden="true">*</span></label>
+            <input type="text" id="order-dob3" class="vn-date" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="ДД.ММ.РРРР">
+            <p class="order-hint" id="hint-dob3"></p>
           </div>
 
           <div class="order-field">
@@ -4666,12 +4746,13 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     <div class="monogram">V</div>
     <div class="wordmark">VNUMERO</div>
     <div class="divider"></div>
-    <div class="tagline">ТВІЙ ПЕРСОНАЛЬНИЙ АСИСТЕНТ</div>
+    <div class="tagline">КАРМА · ЗБІГИ · ЦИФРОВА ПСИХОЛОГІЯ</div>
 
     <section class="panel reveal-on-scroll hero-panel">
+      <a class="vn-2027-banner" href="#year-2027"><span class="vn-2027-star" aria-hidden="true">✦</span> Прогноз на 2027 вже доступний <span aria-hidden="true">↓</span></a>
       <span class="hero-line" aria-hidden="true"></span>
       <div class="panel-eyebrow">СПРОБУЙ ЗАРАЗ</div>
-      <h1 class="panel-title">Дізнайся своє число долі</h1>
+      <h1 class="panel-title">Твоя дата народження знає про тебе більше, ніж ти думаєш</h1>
       <div class="field-row">
         <input type="text" id="dob-input" aria-label="Дата народження" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="ДД.ММ.РРРР">
         <button class="calc-btn" id="reveal-btn" type="button">Розкрити число</button>
@@ -4696,7 +4777,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       </div>
 
       <div class="yes-block">
-        <p class="yes-question">Хочеш побачити закономірності власного життя?</p>
+        <p class="yes-question">Це не випадковість. Це сценарій — і його можна побачити.</p>
         <a class="vn-next" id="yes-btn" href="#founder-panel">
           <span class="vn-next-txt">Тоді ось як це працює</span>
           <span class="vn-next-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
@@ -4710,9 +4791,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         <img src="images/author-2.webp" loading="lazy" decoding="async" alt="Володимир, творець VNUMERO" width="230" height="230">
       </div>
       <blockquote class="author-quote">
-        <p>Я — Володимир, творець <em>VNUMERO</em>. Усе почалося з простого інтересу до чисел і того, як вони можуть бути пов’язані з нашим життям.</p>
-        <p>Я дослідив 5 нумерологічних систем і зрозумів, що ці знання можна подати набагато простіше й цікавіше. Так з’явився VNUMERO — простір, де нумерологія допомагає по-новому поглянути на себе та своє життя.</p>
-        <p>Моя мета — допомогти тобі краще пізнати себе, помітити закономірності у власному житті та впевненіше обирати свій шлях.</p>
+        <p>Я — Володимир, творець <em>VNUMERO</em>. Я довго помічав, що в житті людей повторюються ті самі сценарії: ті самі помилки в стосунках, ті самі провали з грошима, ті самі «випадковості». Збігом це не буває.</p>
+        <p>Я дослідив 5 систем, які працюють з датою народження, і поєднав їх в один метод. Він показує не «характер за числом», а механіку: що з тобою відбувається, чому — і що з цим робити.</p>
+        <p>Без рожевих окулярів і обіцянок дива. Прямо, по суті — як є.</p>
       </blockquote>
 
       <p class="systems-label">СИСТЕМИ, З ЯКИМИ ПРАЦЮЮ</p>
@@ -4725,76 +4806,39 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       </div>
     </section>
 
-    <section class="panel reveal-on-scroll" id="assistant-panel">
-      <div class="panel-eyebrow">ТВІЙ АСИСТЕНТ У TELEGRAM</div>
-      <h2 class="panel-title">Подорож до себе починається тут</h2>
-      <p class="panel-body">
-        Асистент працює лише за твоїм <b class="hl">ім'ям</b> і
-        <b class="hl">датою народження</b> — кожне повідомлення написане саме для тебе.
-      </p>
-
-      <div class="journey" id="journey">
-        <div class="journey-thread" aria-hidden="true"><span></span></div>
-
-        <div class="journey-step">
-          <div class="journey-mark" aria-hidden="true">I</div>
-          <div class="journey-body">
-            <p class="journey-when">Перші три дні <span class="journey-free">безкоштовно</span></p>
-            <h3 class="journey-title">Зрозумій себе</h3>
-            <ul class="journey-list">
-              <li><b>Число душі</b> — чого ти насправді прагнеш</li>
-              <li><b>Число долі</b> — твій шлях і сильні сторони</li>
-              <li><b>Сфера, яка тебе зараз хвилює</b></li>
-              <li><b>Твій особистий період</b> і його можливості</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="journey-step journey-step--next">
-          <div class="journey-mark" aria-hidden="true">II</div>
-          <div class="journey-body">
-            <p class="journey-when">Далі</p>
-            <h3 class="journey-title">Зміни своє життя</h3>
-            <p class="journey-text">Щоранку прогноз, глибші розбори й підтримка — щоб діяти вчасно і не повторювати старих помилок.</p>
-          </div>
-        </div>
-      </div>
-
-      <p class="reviews-label">Що кажуть ті, хто вже почав</p>
-      <div class="reviews-slider" id="reviews-slider" aria-label="Відгуки користувачів VNUMERO">
-        <div class="reviews-viewport">
-          <div class="review-slide active" data-review-slide="0" aria-hidden="false">
-          <img src="images/review-1.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 1" width="1028" height="290" draggable="false">
-        </div><div class="review-slide" data-review-slide="1" aria-hidden="true">
-          <img src="images/review-2.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 2" width="1400" height="484" draggable="false">
-        </div><div class="review-slide" data-review-slide="2" aria-hidden="true">
-          <img src="images/review-3.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 3" width="1400" height="617" draggable="false">
-        </div><div class="review-slide" data-review-slide="3" aria-hidden="true">
-          <img src="images/review-4.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 4" width="1400" height="552" draggable="false">
-        </div><div class="review-slide" data-review-slide="4" aria-hidden="true">
-          <img src="images/review-5.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 5" width="1400" height="468" draggable="false">
-        </div><div class="review-slide" data-review-slide="5" aria-hidden="true">
-          <img src="images/review-6.webp" loading="lazy" decoding="async" alt="Відгук користувача VNUMERO 6" width="1400" height="468" draggable="false">
-        </div>
-        </div>
-        <button class="reviews-arrow reviews-prev" type="button" aria-label="Попередній відгук">‹</button>
-        <button class="reviews-arrow reviews-next" type="button" aria-label="Наступний відгук">›</button>
-        <div class="reviews-dots" role="tablist" aria-label="Перемикання відгуків">
-          <button type="button" class="reviews-dot active" data-review-dot="0" aria-label="Відгук 1" aria-selected="true"></button><button type="button" class="reviews-dot" data-review-dot="1" aria-label="Відгук 2" aria-selected="false"></button><button type="button" class="reviews-dot" data-review-dot="2" aria-label="Відгук 3" aria-selected="false"></button><button type="button" class="reviews-dot" data-review-dot="3" aria-label="Відгук 4" aria-selected="false"></button><button type="button" class="reviews-dot" data-review-dot="4" aria-label="Відгук 5" aria-selected="false"></button><button type="button" class="reviews-dot" data-review-dot="5" aria-label="Відгук 6" aria-selected="false"></button>
-        </div>
-      </div>
-
-      <div class="assistant-start">
-        <p class="assistant-start-title">Почни з першого кроку</p>
-        <a class="cta-link assistant-cta" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Почати подорож у Telegram</a>
-        <p class="price-note assistant-price"><span class="assistant-free">Перші 3 дні — безкоштовно, без картки</span><br>далі 399 грн / місяць</p>
-      </div>
-    </section>
-
     <section class="panel reveal-on-scroll" id="readings-panel">
-      <div class="panel-eyebrow">ГЛИБШІ РОЗБОРИ</div>
-      <h2 class="panel-title">Коли потрібна не порада на день</h2>
-      <p class="segmenter">Онлайн асистент працює з тобою щодня. Але коли потрібна відповідь на важливий період життя — є окремі розбори. Кожен готую особисто: розрахунок, карта і мій аудіокоментар.</p>
+      <div class="panel-eyebrow">ПЕРСОНАЛЬНІ РОЗБОРИ</div>
+      <h2 class="panel-title">Кожен розбір я готую особисто</h2>
+      <p class="segmenter">Розрахунок за твоєю датою народження, PDF-розбір і мій голосовий коментар. Не шаблон і не штучний інтелект — лише твій код і пряма відповідь.</p>
+
+      <div class="vn-flag-wrap" id="year-2027">
+        <button class="offer-card reading-detail-btn vn-big vn-flag" type="button" data-reading="year2027">
+          <span class="vn-flag-ico" aria-hidden="true">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+              <circle class="b-draw" pathLength="1" cx="60" cy="60" r="50"/>
+              <circle class="b-draw b-q" pathLength="1" cx="60" cy="60" r="41" stroke-dasharray="0.01 0.0733"/>
+              <path class="b-draw b-now" pathLength="1" d="M60.00 10.00L60.00 16.00"/><path class="b-draw" pathLength="1" d="M85.00 16.70L82.00 21.89"/><path class="b-draw" pathLength="1" d="M103.30 35.00L98.11 38.00"/><path class="b-draw" pathLength="1" d="M110.00 60.00L104.00 60.00"/><path class="b-draw" pathLength="1" d="M103.30 85.00L98.11 82.00"/><path class="b-draw" pathLength="1" d="M85.00 103.30L82.00 98.11"/><path class="b-draw" pathLength="1" d="M60.00 110.00L60.00 104.00"/><path class="b-draw" pathLength="1" d="M35.00 103.30L38.00 98.11"/><path class="b-draw" pathLength="1" d="M16.70 85.00L21.89 82.00"/><path class="b-draw" pathLength="1" d="M10.00 60.00L16.00 60.00"/><path class="b-draw" pathLength="1" d="M16.70 35.00L21.89 38.00"/><path class="b-draw" pathLength="1" d="M35.00 16.70L38.00 21.89"/>
+              <text class="vn-flag-year" x="60" y="67" text-anchor="middle">2027</text>
+              <circle class="b-spark" r="3" fill="#fff1c9" stroke="none"><animateMotion dur="12s" repeatCount="indefinite" path="M60 10a50 50 0 1 1 0 100a50 50 0 1 1 0-100"/></circle>
+            </svg>
+          </span>
+          <span class="vn-flag-body">
+            <span class="vn-flag-badge">Флагман сезону</span>
+            <h3>Яким буде твій 2027?</h3>
+            <span class="offer-key">Прогноз на кожен місяць</span>
+            <span class="vn-flag-desc">Розбір твого 2027 року місяць за місяцем: куди рухатись, що складеться легко, а де будуть випробування — і як їх пройти. Плюс твій особистий календар змін на весь рік.</span>
+            <span class="vn-flag-list">
+              <span><b>01</b>На що варто спрямувати сили цього року</span>
+              <span><b>02</b>Кохання, фінанси, удача — що чекає у 2027</span>
+              <span><b>03</b>Що складатиметься легко — щомісяця</span>
+              <span><b>04</b>Можливі труднощі й як їх пройти</span>
+              <span><b>05</b>Індивідуальний календар змін на весь рік</span>
+            </span>
+            <span class="vn-flag-note">Розрахунок індивідуальний — за твоєю датою народження.</span>
+            <span class="offer-cta vn-flag-cta">Хочу свій 2027 →</span>
+          </span>
+        </button>
+      </div>
 
       <div class="offer-grid">
         <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="karma">
@@ -4803,10 +4847,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           <p>Кармічні задачі, закладені у твоїй даті народження: повторювані сценарії у виборі, грошах, коханні та стосунках — і уроки, які важливо пройти.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
-        <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="period">
-          <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path class="b-draw b-q" pathLength="1" d="M13.2 3.6A8.5 8.5 0 0 1 20.4 10.8"/><path class="b-draw b-q b-now" pathLength="1" d="M20.4 13.2A8.5 8.5 0 0 1 13.2 20.4"/><path class="b-draw b-q" pathLength="1" d="M10.8 20.4A8.5 8.5 0 0 1 3.6 13.2"/><path class="b-draw b-q" pathLength="1" d="M3.6 10.8A8.5 8.5 0 0 1 10.8 3.6"/><circle class="b-draw" pathLength="1" cx="12" cy="12" r="2.2"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="9s" repeatCount="indefinite" path="M12 3.5a8.5 8.5 0 1 1 0 17a8.5 8.5 0 1 1 0-17"/></circle></svg></span><h3>Код нового етапу</h3></span>
-          <p class="offer-key">«Де я зараз і куди рухатись далі?»</p>
-          <p>Твоя дата народження показує 4 великі цикли життя. Ти побачиш, який проживаєш зараз, що досі тримає тебе в минулому — і де твоя точка росту.</p>
+        <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="momchild">
+          <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle class="b-draw" pathLength="1" cx="8.3" cy="7" r="2.7"/><path class="b-draw" pathLength="1" d="M3.4 21v-3.1a4.9 4.9 0 0 1 9.8 0V21"/><circle class="b-draw" pathLength="1" cx="17.2" cy="11.6" r="1.9"/><path class="b-draw" pathLength="1" d="M14 21v-1.7a3.2 3.2 0 0 1 6.4 0V21"/><path class="b-draw b-q" pathLength="1" d="M10.6 5.1C13.4 2.6 17.2 4.6 17.2 9.4"/><circle class="b-spark" r="1.5" fill="#fff1c9" stroke="none"><animateMotion dur="4s" repeatCount="indefinite" path="M10.6 5.1C13.4 2.6 17.2 4.6 17.2 9.4C17.2 4.6 13.4 2.6 10.6 5.1"/></circle></svg></span><h3>Мама і дитина</h3></span>
+          <p class="offer-key">«Чого ви вчите одне одного?»</p>
+          <p>Чому дитина прийшла саме до тебе, у чому ви схожі, звідки ваші конфлікти — і як допомогти їй розкритися. Розрахунок за вашими двома датами народження.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
       </div>
@@ -4814,15 +4858,44 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       <div class="vn-req-head">
         <div class="panel-eyebrow">ЗА КОНКРЕТНИМ ЗАПИТОМ</div>
         <h3 class="vn-req-title">Одна тема — один глибокий розбір</h3>
-        <p class="vn-req-sub">Гроші, кохання, стосунки, дитина чи твій новий рік життя — обери, що зараз найважливіше.</p>
+        <p class="vn-req-sub">Гроші, кохання чи жива розмова зі мною — обери, що зараз найважливіше.</p>
       </div>
       <div class="readings-list vn-req-list">
         <button type="button" class="reading-detail-btn vn-req" data-reading="finance"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-coin"><circle pathLength="1" cx="12" cy="12" r="8.5"/><path pathLength="1" d="M14.8 9.2c-.5-.9-1.6-1.5-2.8-1.5-1.6 0-2.8.9-2.8 2.1 0 2.8 5.6 1.5 5.6 4.3 0 1.2-1.2 2.1-2.8 2.1-1.3 0-2.4-.6-2.9-1.6M12 6v1.7M12 16.3V18"/></g></svg></span><span class="vn-req-body"><b>Фінансовий код</b><i>Де твої найбільші гроші</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
-        <button type="button" class="reading-detail-btn vn-req" data-reading="love"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-heart"><path pathLength="1" d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.6 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></g></svg></span><span class="vn-req-body"><b>Карта кохання</b><i>Для тих, хто зараз сам</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
-        <button type="button" class="reading-detail-btn vn-req" data-reading="partners"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle pathLength="1" class="a-ring-l" cx="9" cy="13" r="5"/><circle pathLength="1" class="a-ring-r" cx="15" cy="13" r="5"/><path pathLength="1" class="a-spark" d="M12 3.2v2.6M9.6 4.4l1 1.4M14.4 4.4l-1 1.4"/></svg></span><span class="vn-req-body"><b>Сумісність пари</b><i>Для тих, хто у стосунках</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
-        <button type="button" class="reading-detail-btn vn-req" data-reading="solar"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle pathLength="1" cx="12" cy="12" r="4"/><g class="a-rays"><path pathLength="1" d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></g></svg></span><span class="vn-req-body"><b>Соляр <svg class="gift-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="10" width="18" height="11" rx="1.5"/><path d="M2 6.8h20v3.2H2z"/><path d="M12 6.8V21"/><path d="M12 6.8S10.6 3 8.4 3a2 2 0 0 0 0 3.8H12zM12 6.8S13.4 3 15.6 3a2 2 0 0 1 0 3.8H12z"/></svg></b><i>Прогноз на твій День народження</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
-        <button type="button" class="reading-detail-btn vn-req" data-reading="child"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-child"><circle pathLength="1" cx="12" cy="7" r="3"/><path pathLength="1" d="M6.5 21v-3.5a5.5 5.5 0 0 1 11 0V21"/></g><path pathLength="1" class="a-star" d="M19 3.5l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z"/></svg></span><span class="vn-req-body"><b>Розбір дитини</b><i>Таланти й підхід до виховання</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
+        <button type="button" class="reading-detail-btn vn-req" data-reading="love"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><g class="a-heart"><path pathLength="1" d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.6 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></g></svg></span><span class="vn-req-body"><b>Карта кохання</b><i>Чому приходять не ті — і коли прийде твоя людина</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
         <button type="button" class="reading-detail-btn vn-req" data-reading="consultation"><span class="vn-req-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M4 5.5h16v10H9l-5 4z"/><circle class="a-dot a-d1" cx="8.5" cy="10.5" r=".9" fill="currentColor"/><circle class="a-dot a-d2" cx="12" cy="10.5" r=".9" fill="currentColor"/><circle class="a-dot a-d3" cx="15.5" cy="10.5" r=".9" fill="currentColor"/></svg></span><span class="vn-req-body"><b>Особиста консультація</b><i>Жива розмова зі мною</i></span><span class="vn-req-arrow" aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="panel reveal-on-scroll" id="assistant-panel">
+      <div class="panel-eyebrow">ПОЧНИ БЕЗКОШТОВНО</div>
+      <h2 class="panel-title">Твій перший розбір — у Telegram</h2>
+      <p class="panel-body">
+        Ще не готовий до повного розбору? Почни з малого. За твоїм <b class="hl">ім'ям</b> і
+        <b class="hl">датою народження</b> бот за 3 дні покаже, що вже закладено у твоєму коді.
+      </p>
+
+      <div class="journey" id="journey">
+        <div class="journey-thread" aria-hidden="true"><span></span></div>
+        <div class="journey-step">
+          <div class="journey-mark" aria-hidden="true">I</div>
+          <div class="journey-body">
+            <p class="journey-when">3 дні <span class="journey-free">безкоштовно</span></p>
+            <h3 class="journey-title">Зрозумій себе</h3>
+            <ul class="journey-list">
+              <li><b>Число душі</b> — чого ти насправді прагнеш</li>
+              <li><b>Число долі</b> — твій шлях і сильні сторони</li>
+              <li><b>Сфера, яка тебе зараз хвилює</b></li>
+              <li><b>Задача твого року</b> — що він від тебе вимагає</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="assistant-start">
+        <p class="assistant-start-title">Почни з першого кроку</p>
+        <a class="cta-link assistant-cta" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Отримати безкоштовно</a>
+        <p class="price-note assistant-price"><span class="assistant-free">Без оплати і без підписок</span></p>
       </div>
     </section>
 
@@ -4836,19 +4909,19 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         </details>
         <details class="faq-item">
           <summary>У якому вигляді я отримаю розбір?</summary>
-          <p>Персональну карту та мій аудіокоментар — у Telegram, Viber або WhatsApp, як тобі зручніше. Аудіо можна переслухати будь-коли, тому нічого записувати не треба.</p>
+          <p>PDF-розбір і мій особистий голосовий коментар — у Telegram, Viber або WhatsApp, як тобі зручніше. Коментар можна переслухати будь-коли, тому нічого записувати не треба.</p>
         </details>
         <details class="faq-item">
           <summary>Скільки чекати після оплати?</summary>
-          <p>Тематичні розбори та Карту кармічних уроків — до 5 робочих днів. «Код нового етапу» — до 7 робочих днів, бо це найоб'ємніша робота.</p>
+          <p>Усі розбори — протягом 5 робочих днів. Консультацію призначаємо на зручний для тебе час.</p>
         </details>
         <details class="faq-item">
           <summary>Що потрібно від мене?</summary>
-          <p>Ім'я, точна дата народження і номер телефону — розбір надішлю в Telegram, Viber або WhatsApp, як тобі зручніше. Для «Сумісності пари» — дати обох, для «Розбору дитини» — ім'я та дата народження дитини. Якщо для розбору знадобиться уточнення, я напишу особисто.</p>
+          <p>Ім'я, точна дата народження і номер телефону. Для «Мами і дитини» — ще ім'я та дата народження дитини, для сумісності в «Карті кохання» — дата народження партнера. Якщо знадобиться уточнення, я напишу особисто.</p>
         </details>
         <details class="faq-item">
-          <summary>Чим онлайн помічник відрізняється від розбору?</summary>
-          <p>Асистент у Telegram — це твоя щоденна подорож: перші 3 дні він розкриває твій нумерологічний код, а далі щоранку надсилає прогноз і допомагає діяти вчасно. Персональний розбір — глибока робота, яку я готую особисто по одній темі чи по цілому періоду життя, один раз і надовго.</p>
+          <summary>Чим безкоштовний розбір у Telegram відрізняється від персонального?</summary>
+          <p>У Telegram бот автоматично показує базу твого коду — кілька ключових чисел і задачу року. Персональний розбір — глибока робота, яку я готую особисто по одній темі або на цілий рік, один раз і надовго.</p>
         </details>
         <details class="faq-item">
           <summary>Чи можна повернути оплату?</summary>
@@ -4858,12 +4931,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     </section>
 
     <section class="panel reveal-on-scroll final-cta">
-      <h2 class="panel-title">Почни користуватись онлайн асистентом уже зараз</h2>
-      <div class="try-badge">
-        <span class="try-badge-main">3 дні безкоштовно</span>
-        <span class="try-badge-sub">Без картки. Скасувати можна будь-коли.</span>
-      </div>
-      <a class="cta-link" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Почати в Telegram</a>
+      <h2 class="panel-title">Яким буде твій 2027?</h2>
+      <p class="panel-body vn-final-sub">Дізнайся, поки рік не почався — і зустрінь його підготовленим.</p>
+      <button class="cta-link" id="final-2027" type="button">Отримати прогноз на 2027</button>
     </section>
   </main>
 
@@ -5021,20 +5091,20 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   }
 
   const readingDetails = {
-    period: {
-      title: 'Код нового етапу',
-      intro: 'Твоя дата народження показує 4 великі цикли життя — і кожен має свої можливості, випробування та завдання. Розбір показує, де ти зараз і куди рухатись далі.',
+    year2027: {
+      title: 'Яким буде твій 2027?',
+      intro: 'Розбір твого 2027 року місяць за місяцем: куди рухатись, що складеться легко, а де будуть випробування — і як їх пройти. Плюс твій особистий календар змін на весь рік. Розрахунок індивідуальний — за твоєю датою народження.',
       points: [
-        'У якому циклі ти зараз — і що це означає на практиці',
-        'Що не зробив у минулих циклах і як це виправити',
-        'Куди спрямовувати себе найближчі роки',
-        'Що чекає по фінансах, стосунках і можливостях',
-        'Як обійти складнощі, які закладені в цьому періоді'
+        'На що варто спрямувати сили цього року',
+        'Кохання, фінанси, удача — що чекає у 2027',
+        'Що складатиметься легко — щомісяця',
+        'Можливі труднощі й як їх пройти',
+        'Індивідуальний календар змін на весь рік'
       ],
-      price: { new: '2777 грн', note: 'до 7 робочих днів' },
-      format: 'PDF + персональне відео з поясненнями',
+      price: { new: '1999 грн', note: 'протягом 5 робочих днів' },
+      format: 'PDF-розбір + особистий голосовий коментар',
       ctaText: 'Замовити розбір',
-      orderMessage: 'Вітаю! Хочу замовити розбір «Код нового етапу» — 2777 грн.'
+      orderMessage: 'Вітаю! Хочу замовити розбір «Яким буде твій 2027?» — 1999 грн.'
     },
     karma: {
       title: 'Карта кармічних уроків',
@@ -5045,82 +5115,56 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         'Як вони проявляються у виборі, грошах, коханні та стосунках',
         'Головні уроки, які важливо усвідомити й пройти'
       ],
-      price: { new: '999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
+      price: { new: '999 грн', note: 'протягом 5 робочих днів' },
+      format: 'PDF-розбір + особистий голосовий коментар',
       ctaText: 'Замовити карту',
       orderMessage: 'Вітаю! Хочу замовити «Карту кармічних уроків» — 999 грн.'
     },
+    momchild: {
+      title: 'Мама і дитина',
+      intro: 'Розбір зв’язку між тобою і твоєю дитиною: чому вона прийшла саме до тебе, у чому ви схожі, звідки ваші конфлікти — і як допомогти їй розкритися. Розрахунок індивідуальний — за вашими двома датами народження.',
+      points: [
+        'Урок вашого зв’язку — чого ви вчите одне одного',
+        'Характер і таланти дитини — що в ній закладено',
+        'Де ви дзеркалите одне одного — і звідки конфлікти',
+        'Як говорити з дитиною, щоб вона чула',
+        'Як підтримати її сильні сторони і не зламати їх'
+      ],
+      price: { new: '2999 грн', note: 'протягом 5 робочих днів' },
+      option: { label: '+ ще одна дитина', short: 'ще одна дитина', add: 1000 },
+      format: 'PDF-розбір + особистий голосовий коментар',
+      ctaText: 'Замовити розбір',
+      orderMessage: 'Вітаю! Хочу замовити розбір «Мама і дитина» — 2999 грн.'
+    },
     finance: {
       title: 'Фінансовий код',
-      intro: 'Що з твоїми фінансами зараз, де твої найбільші гроші — і чому вони йдуть.',
+      intro: 'Де твої гроші насправді — і що не дає їм у тебе залишатися.',
       points: [
-        'Що чекає твої фінанси в цьому періоді',
-        'Що саме приносить тобі найбільший дохід',
-        'Чому гроші «витікають» і як це зупинити',
-        'Коли вкладати, а коли притримати гроші'
+        'Де твої найбільші гроші',
+        'Що виснажує твій гаманець',
+        'Що заважає грошам прийти — і як це змінити',
+        'Твої точки росту й масштабу',
+        'Поради щодо реалізації та фінансового зростання'
       ],
-      price: { new: '1999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
+      price: { new: '1999 грн', note: 'протягом 5 робочих днів' },
+      format: 'PDF-розбір + особистий голосовий коментар',
       ctaText: 'Замовити розбір',
       orderMessage: 'Вітаю! Хочу замовити розбір «Фінансовий код» — 1999 грн.'
     },
     love: {
       title: 'Карта кохання',
-      intro: 'Для тих, хто зараз сам. Розбір показує, де і з ким у тебе найкраща сумісність, як саме прийде кохання — і що досі заважало.',
+      intro: 'Чому поруч опиняються не ті люди — і як прийде твоя. А якщо ти вже у стосунках, додай сумісність з партнером.',
       points: [
         'Сприятливі періоди для нової зустрічі',
         'Типовий сценарій знайомства, який резонує з твоїм числом',
         'З ким у тебе природна сумісність, а з ким — ні',
         'Які проблеми повторюються у стосунках і чому'
       ],
-      price: { new: '1999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
+      price: { new: '1999 грн', note: 'протягом 5 робочих днів' },
+      option: { label: '+ сумісність з партнером', short: 'сумісність з партнером', add: 1000 },
+      format: 'PDF-розбір + особистий голосовий коментар',
       ctaText: 'Замовити розбір',
       orderMessage: 'Вітаю! Хочу замовити розбір «Карта кохання» — 1999 грн.'
-    },
-    partners: {
-      title: 'Сумісність пари',
-      intro: 'Для тих, хто вже у стосунках. Розбір показує, де ваша спільна сила, а де природні точки тертя, які варто усвідомлено опрацювати.',
-      points: [
-        'Сильні сторони ваших стосунків',
-        'Зони природного тертя й чому вони виникають',
-        'Як комунікувати з урахуванням ваших чисел',
-        'Практичні поради для зміцнення стосунків',
-        'Потрібні дати народження обох партнерів'
-      ],
-      price: { new: '1999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
-      ctaText: 'Замовити розбір',
-      orderMessage: 'Вітаю! Хочу замовити розбір «Сумісність пари» — 1999 грн.'
-    },
-    solar: {
-      title: 'Соляр',
-      intro: 'Прогноз на твій День народження — на весь новий рік життя, від дня народження до дня народження.',
-      points: [
-        'Відеоролик з детальним описом того, чого чекати у новому році життя',
-        'Рекомендації, чого варто остерігатись у цей період',
-        'Куди спрямовувати енергію, щоб рік спрацював на тебе',
-        'Розбір кожної сфери життя на рік: гроші, реалізація, стосунки',
-        'Сприятливі періоди для важливих рішень протягом року'
-      ],
-      price: { new: '1999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
-      ctaText: 'Замовити розбір',
-      orderMessage: 'Вітаю! Хочу замовити розбір «Соляр» — 1999 грн.'
-    },
-    child: {
-      title: 'Розбір дитини',
-      intro: 'Розбір дитячого нумерологічного коду показує природні таланти, сильні сторони характеру та схильності твоєї дитини — без здогадок і спроб.',
-      points: [
-        'Природні таланти та сильні сторони характеру',
-        'Як дитина сприймає інформацію й навчається найкраще',
-        'Підхід у спілкуванні без зайвих конфліктів',
-        'Поради на найближчий рік з урахуванням віку дитини'
-      ],
-      price: { new: '1999 грн', note: 'до 5 робочих днів' },
-      format: 'Аудіо + PDF',
-      ctaText: 'Замовити розбір',
-      orderMessage: 'Вітаю! Хочу замовити «Розбір дитини» — 1999 грн.'
     },
     consultation: {
       title: 'Особиста консультація',
@@ -5136,6 +5180,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       orderMessage: 'Вітаю! Хочу записатись на особисту консультацію.'
     }
   };
+
+  // ЧЕРНЕТКА: форма замовлення перевіряє поля, але нічого не надсилає і не веде на оплату.
+  const VN_DRAFT = true;
 
   const MANAGER_TELEGRAM = 'vnumero_manager';
 
@@ -5158,13 +5205,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   const MONO_PAY = true;
 
   const PAYMENT_LINKS = {
+    year2027:     '',
     karma:        '',
-    period:       '',
+    momchild:     '',
     finance:      '',
     love:         '',
-    partners:     '',
-    solar:        '',
-    child:        '',
     consultation: ''
   };
   /* ========================================================== */
@@ -5209,6 +5254,13 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       : 'Готую особисто.';
     const until = data.price.until ? data.price.until + ' · ' : '';
     readingModalTerm.textContent = data.price.note ? until + 'Термін: ' + data.price.note : until.replace(' · ', '');
+    if (data.option){
+      const o = document.createElement('span');
+      o.className = 'vn-opt-note';
+      o.textContent = 'Можна додати: ' + data.option.label.replace(/^\+\s*/, '') + ' — +' + data.option.add + ' грн';
+      readingModalTerm.appendChild(document.createElement('br'));
+      readingModalTerm.appendChild(o);
+    }
     readingModalCta.textContent = data.ctaText;
     readingModalCta.href = `https://t.me/${MANAGER_TELEGRAM}?text=${encodeURIComponent(data.orderMessage)}`;
     currentReadingKey = key;
@@ -5348,6 +5400,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
                 name2:"ІМ'Я ПАРТНЕРА", name2ph:'Олександр', dob2:'ДАТА НАРОДЖЕННЯ ПАРТНЕРА',
                 confirm:'Я перевірив/-ла обидві дати народження і телефон — дані правильні',
                 who2:'партнера', datesWord:'вказаними датами народження' },
+    momchild: { name:"ТВОЄ ІМ'Я", dob:'ТВОЯ ДАТА НАРОДЖЕННЯ', showDob:true,
+                name2:"ІМ'Я ДИТИНИ", name2ph:'Марія', dob2:'ДАТА НАРОДЖЕННЯ ДИТИНИ',
+                confirm:'Я перевірив/-ла дати народження і телефон — дані правильні',
+                who2:'дитини', datesWord:'вашими датами народження' },
     child:    { name:"ТВОЄ ІМ'Я", showDob:true, dobOptional:true, dobAfter:true,
                 dob:'ТВОЯ ДАТА НАРОДЖЕННЯ — ЗА БАЖАННЯМ',
                 dobHint:'Допоможе мені підготувати персональні рекомендації: як саме тобі взаємодіяти зі своєю дитиною',
@@ -5358,7 +5414,35 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   const ORDER_FORM_DEFAULT = { name:"ТВОЄ ІМ'Я", dob:'ДАТА НАРОДЖЕННЯ', showDob:true,
                 confirm:'Я перевірив/-ла дату народження і телефон — дані правильні',
                 datesWord:'вказаною датою народження' };
-  function formCfg(){ return ORDER_FORMS[orderKey] || ORDER_FORM_DEFAULT; }
+  // Опція в замовленні: «+ сумісність з партнером» (Карта кохання) або «+ ще одна дитина» (Мама і дитина)
+  let optOn = false;
+  const optBox = document.getElementById('order-opt');
+  const optCb = document.getElementById('order-opt-cb');
+  function vnPriceNum(){ const d = readingDetails[orderKey]; return (parseInt(d.price.new, 10) || 0) + (optOn && d.option ? d.option.add : 0); }
+  function vnPriceText(){ return vnPriceNum() + ' грн'; }
+  function vnSyncOption(){
+    const d = readingDetails[orderKey] || {};
+    orderPriceEl.textContent = vnPriceText();
+    const kid2 = orderKey === 'momchild' && optOn;
+    document.getElementById('field-name3').style.display = kid2 ? 'block' : 'none';
+    document.getElementById('field-dob3').style.display = kid2 ? 'block' : 'none';
+    applyOrderForm();
+  }
+  function vnSetupOption(d){
+    optOn = false; optCb.checked = false;
+    optBox.style.display = d.option ? 'flex' : 'none';
+    if (d.option){
+      document.getElementById('order-opt-label').textContent = d.option.label;
+      document.getElementById('order-opt-price').textContent = '+' + d.option.add + ' грн';
+    }
+    vnSyncOption();
+  }
+  optCb.addEventListener('change', () => { optOn = optCb.checked; vnSyncOption(); });
+
+  function formCfg(){
+    const k = (orderKey === 'love' && optOn) ? 'partners' : orderKey;
+    return ORDER_FORMS[k] || ORDER_FORM_DEFAULT;
+  }
 
   function applyOrderForm(){
     const c = formCfg();
@@ -5392,7 +5476,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     orderProduct.textContent = data.title;
     orderPriceEl.textContent = data.price.new;
     orderTermEl.textContent = data.price.note ? 'Термін виконання: ' + data.price.note : '';
-    applyOrderForm();
+    vnSetupOption(data);
 
     orderSubmit.textContent = submitLabel();
     orderStepForm.style.display = 'block';
@@ -5475,11 +5559,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       setHint('hint-dob', orderDob.value ? 'Перевір дату: день.місяць.рік, наприклад 14.03.1990' : 'Вкажи дату народження', 'err'); ok = false;
     }
     if (c.name2 && !orderName2.value.trim()){
-      setHint('hint-name2', orderKey === 'child' ? 'Вкажи ім\'я дитини' : 'Вкажи ім\'я партнера', 'err'); ok = false;
+      setHint('hint-name2', c.who2 === 'дитини' ? 'Вкажи ім\'я дитини' : 'Вкажи ім\'я партнера', 'err'); ok = false;
     }
     if (c.name2 && !dateOk(orderDob2.value)){
       setHint('hint-dob2', orderDob2.value ? 'Перевір дату: день.місяць.рік, наприклад 12.05.2018'
-        : (orderKey === 'child' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
+        : (c.who2 === 'дитини' ? 'Вкажи дату народження дитини' : 'Для розбору пари потрібні обидві дати'), 'err'); ok = false;
     }
     tidyPhone();
     if (!orderPhone.value.trim()){
@@ -5490,6 +5574,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     const tg = orderTg.value.trim().replace(/^@/, '');
     if (orderMessenger() === 'Telegram' && tg && !/^[A-Za-z0-9_]{3,32}$/.test(tg)){
       setHint('hint-tg', 'Нік пишеться латиницею без пробілів, наприклад @anna_k. Або залиш поле порожнім', 'err'); ok = false;
+    }
+    if (orderKey === 'momchild' && optOn){
+      if (!document.getElementById('order-name3').value.trim()){ setHint('hint-name3', 'Вкажи ім\'я другої дитини', 'err'); ok = false; }
+      if (!dateOk(document.getElementById('order-dob3').value)){ setHint('hint-dob3', 'Вкажи дату народження другої дитини', 'err'); ok = false; }
     }
     if (!orderConfirm.checked){
       setHint('hint-confirm', 'Підтверди, що дані вказані правильно', 'err'); ok = false;
@@ -5507,6 +5595,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   function fmtDate(v){ return v || ''; }   // у формі дата вже ДД.ММ.РРРР
   function orderDetails(){
     const name = orderName.value.trim(), n2 = orderName2.value.trim();
+    if (orderKey === 'love' && optOn) return 'Карта кохання + сумісність: ' + name + ' (' + fmtDate(orderDob.value) + ') + ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
+    if (orderKey === 'momchild'){
+      const n3 = document.getElementById('order-name3').value.trim(), d3 = document.getElementById('order-dob3').value;
+      return 'Мама: ' + name + ' (' + fmtDate(orderDob.value) + '); дитина: ' + n2 + ' (' + fmtDate(orderDob2.value) + ')' + (optOn ? '; друга дитина: ' + n3 + ' (' + fmtDate(d3) + ')' : '');
+    }
     if (orderKey === 'partners') return name + ' (' + fmtDate(orderDob.value) + ') + ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
     if (orderKey === 'child')    return 'Замовник: ' + name + (orderDob.value ? ' (' + fmtDate(orderDob.value) + ')' : '') + '; дитина: ' + n2 + ' (' + fmtDate(orderDob2.value) + ')';
     return name + ' (' + fmtDate(orderDob.value) + ')';
@@ -5514,6 +5607,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
   orderSubmit.addEventListener('click', async () => {
     if (!validateOrder()) return;
+    if (VN_DRAFT){
+      orderSubmit.textContent = 'Чернетка: оплата вимкнена';
+      setTimeout(() => { orderSubmit.textContent = submitLabel(); }, 2500);
+      return;
+    }
 
     const data = readingDetails[orderKey];
     const messenger = orderMessenger();
@@ -5530,7 +5628,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     const payload = {
       product: data.title,
       productKey: orderKey,
-      price: data.price.new,
+      price: vnPriceText(),
+      option: optOn && data.option ? data.option.short : '',
+      name3: (orderKey === 'momchild' && optOn) ? document.getElementById('order-name3').value.trim() : '',
+      dob3: (orderKey === 'momchild' && optOn) ? toIso(document.getElementById('order-dob3').value) : '',
       name: orderName.value.trim(),
       dob: formCfg().showDob ? toIso(orderDob.value) : '',
       name2: formCfg().name2 ? orderName2.value.trim() : '',
@@ -5701,6 +5802,19 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
           else show('Не вдалося перевірити оплату', 'Якщо гроші списано — все гаразд, я напишу тобі в ' + via + '. Номер замовлення — ' + order + '.', true);
         });
     })();
+  })();
+
+  // фінальна кнопка внизу відкриває розбір 2027
+  (function(){ const b = document.getElementById('final-2027'); if (b) b.addEventListener('click', () => openReadingModal('year2027')); })();
+  // трафік з відео про дитину (utm_campaign=child): «Мама і дитина» — перша серед карток під флагманом
+  (function(){
+    try {
+      const c = (new URLSearchParams(location.search).get('utm_campaign') || '').toLowerCase();
+      if (c !== 'child') return;
+      const g = document.querySelector('#readings-panel .offer-grid');
+      const m = g && g.querySelector('[data-reading="momchild"]');
+      if (m) g.insertBefore(m, g.firstChild);
+    } catch (e) {}
   })();
 
   document.querySelectorAll('.reading-detail-btn').forEach(btn => {
