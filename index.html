@@ -4521,7 +4521,14 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 #readings-panel .vn-flag-list > span{ display:flex; gap:14px; align-items:baseline; font-size:14.5px; line-height:1.5; color:var(--ivory); }
 #readings-panel .vn-flag-list b{ font-family:var(--serif); font-weight:500; font-size:17px; color:var(--gold); min-width:24px; }
 #readings-panel .vn-flag-note{ display:block; font-size:13px; color:var(--gold-soft); margin-bottom:20px; }
-#readings-panel .vn-flag-cta{ font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:#f1d699; }
+#readings-panel .vn-flag-buy{ display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; margin:2px 0 22px; }
+#readings-panel .vn-flag-price{ font-family:var(--serif); font-size:34px; line-height:1; color:#f1d699; }
+#readings-panel .vn-flag-term{ font-size:13px; color:rgba(243,238,226,.7); }
+#readings-panel .vn-flag-btn{ display:inline-block; pointer-events:none; }
+@media (max-width: 760px){
+  #readings-panel .vn-flag-buy{ justify-content:center; flex-direction:column; align-items:center; gap:8px; }
+  #readings-panel .vn-flag-btn{ display:block; width:100%; }
+}
 @media (prefers-reduced-motion: no-preference){
   #readings-panel .vn-flag.vn-in .vn-flag-ico{ animation:vnGlow 4.5s ease-in-out infinite; }
 }
@@ -4830,7 +4837,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       <h2 class="panel-title">Кожен розбір я готую особисто</h2>
 
       <div class="vn-flag-wrap" id="year-2027">
-        <button class="offer-card reading-detail-btn vn-big vn-flag" type="button" data-reading="year2027">
+        <button class="offer-card vn-big vn-flag" type="button" data-reading="year2027" id="flag-2027">
           <span class="vn-snow" aria-hidden="true"><i class="vn-flake" style="--x:33.1%;--d:10.2s;--dl:-11.1s;--dx:-26px;--fs:15px">❅</i><i style="--x:11.0%;--d:13.7s;--dl:-15.5s;--dx:-17px;--s:2.2px"></i><i style="--x:42.1%;--d:10.9s;--dl:-9.4s;--dx:-26px;--s:3.4px"></i><i style="--x:93.0%;--d:14.0s;--dl:-9.9s;--dx:-26px;--s:3.5px"></i><i class="vn-flake" style="--x:6.8%;--d:10.8s;--dl:-9.5s;--dx:-22px;--fs:13px">❅</i><i style="--x:15.8%;--d:9.9s;--dl:-5.2s;--dx:19px;--s:2.5px"></i><i style="--x:57.8%;--d:14.1s;--dl:-6.3s;--dx:3px;--s:2.2px"></i><i style="--x:7.7%;--d:10.6s;--dl:-11.6s;--dx:-4px;--s:2.8px"></i><i class="vn-flake" style="--x:58.2%;--d:12.6s;--dl:-5.1s;--dx:18px;--fs:15px">❅</i><i style="--x:76.9%;--d:9.7s;--dl:-5.1s;--dx:-0px;--s:2.9px"></i><i style="--x:45.1%;--d:13.9s;--dl:-1.2s;--dx:1px;--s:2.4px"></i><i style="--x:34.8%;--d:16.5s;--dl:-7.2s;--dx:28px;--s:2.2px"></i><i class="vn-flake" style="--x:55.6%;--d:15.3s;--dl:-13.9s;--dx:-10px;--fs:13px">❅</i><i style="--x:59.1%;--d:13.6s;--dl:-7.8s;--dx:20px;--s:4.4px"></i><i style="--x:47.5%;--d:14.3s;--dl:-1.0s;--dx:12px;--s:3.6px"></i><i style="--x:97.3%;--d:15.6s;--dl:-4.8s;--dx:-7px;--s:3.7px"></i><i class="vn-flake" style="--x:4.2%;--d:12.7s;--dl:-2.9s;--dx:-23px;--fs:11px">❅</i><i style="--x:22.9%;--d:11.3s;--dl:-12.6s;--dx:-6px;--s:4.3px"></i><i style="--x:49.7%;--d:10.3s;--dl:-6.8s;--dx:-13px;--s:2.3px"></i><i style="--x:43.3%;--d:13.4s;--dl:-12.0s;--dx:29px;--s:3.7px"></i><i class="vn-flake" style="--x:38.5%;--d:10.8s;--dl:-1.4s;--dx:-21px;--fs:15px">❅</i><i style="--x:24.4%;--d:12.9s;--dl:-10.0s;--dx:-14px;--s:2.0px"></i></span>
           <span class="vn-flag-ico" aria-hidden="true">
             <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
@@ -4845,7 +4852,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
             <span class="vn-flag-badge"><span aria-hidden="true">❄</span> Хіт сезону</span>
             <h3>Яким буде твій 2027?</h3>
             <span class="offer-key">Прогноз на кожен місяць</span>
-            <span class="vn-flag-desc">Розбір твого 2027 року місяць за місяцем: куди рухатись, що складеться легко, а де будуть випробування — і як їх пройти. Плюс твій особистий календар змін на весь рік.</span>
+            <span class="vn-flag-desc">Твій рік місяць за місяцем: куди рухатись, що складеться легко і як пройти випробування.</span>
             <span class="vn-flag-list">
               <span><b>01</b>На що варто спрямувати сили цього року</span>
               <span><b>02</b>Кохання, фінанси, удача — що чекає у 2027</span>
@@ -4853,8 +4860,12 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
               <span><b>04</b>Можливі труднощі й як їх пройти</span>
               <span><b>05</b>Індивідуальний календар змін на весь рік</span>
             </span>
-            <span class="vn-flag-note">Розрахунок індивідуальний — за твоєю датою народження.</span>
-            <span class="offer-cta vn-flag-cta">Хочу свій 2027 →</span>
+            <span class="vn-flag-note">Розрахунок індивідуальний — за твоєю датою народження.<br>PDF-розбір + особистий голосовий коментар.</span>
+            <span class="vn-flag-buy">
+              <span class="vn-flag-price">1999 грн</span>
+              <span class="vn-flag-term">Готовність — протягом 5 робочих днів</span>
+            </span>
+            <span class="cta-link vn-flag-btn">Хочу свій 2027</span>
           </span>
         </button>
       </div>
@@ -5799,7 +5810,8 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   })();
 
   // фінальна кнопка внизу відкриває розбір 2027
-  (function(){ const b = document.getElementById('final-2027'); if (b) b.addEventListener('click', () => openReadingModal('year2027')); })();
+  // картка-хіт уже показує все — одразу форма замовлення, без проміжного вікна
+  ['final-2027', 'flag-2027'].forEach(id => { const b = document.getElementById(id); if (b) b.addEventListener('click', () => openOrderModal('year2027')); });
   // трафік з відео про дитину (utm_campaign=child): «Мама і дитина» — перша серед карток під флагманом
   (function(){
     try {
