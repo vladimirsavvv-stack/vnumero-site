@@ -114,14 +114,6 @@
     },
     {
       "@type": "Question",
-      "name": "Чим безкоштовний розбір у Telegram відрізняється від персонального?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "У Telegram бот автоматично показує базу твого коду — кілька ключових чисел і задачу року. Персональний розбір — глибока робота, яку я готую особисто по одній темі або на цілий рік, один раз і надовго."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "Чи можна повернути оплату?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -4553,6 +4545,31 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 .vn-opt-txt i{ font-style:normal; color:var(--gold); font-size:14px; margin-left:4px; }
 .vn-opt-note{ color:var(--gold); }
 .final-cta .vn-final-sub{ max-width:460px; margin:0 auto 28px; text-align:center; }
+/* сніг і «Хіт сезону» */
+#readings-panel .vn-flag{ position:relative; overflow:hidden; }
+#readings-panel .vn-flag-ico, #readings-panel .vn-flag-body{ position:relative; z-index:1; }
+.vn-snow{ position:absolute; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.vn-snow i{ position:absolute; top:-12px; left:var(--x); width:var(--s); height:var(--s); border-radius:50%;
+  background:radial-gradient(circle, #fff8e4 0%, rgba(241,214,153,.55) 45%, rgba(241,214,153,0) 72%); opacity:0;
+  animation:vnSnow var(--d) linear var(--dl) infinite; }
+.vn-snow i.vn-flake{ width:auto; height:auto; background:none; font-style:normal; font-size:var(--fs); line-height:1;
+  color:rgba(241,214,153,.6); text-shadow:0 0 8px rgba(241,214,153,.5); }
+@keyframes vnSnow{
+  0%{ top:-12px; transform:translateX(0) rotate(0deg); opacity:0; }
+  12%{ opacity:.9; }
+  85%{ opacity:.7; }
+  100%{ top:102%; transform:translateX(var(--dx)) rotate(160deg); opacity:0; }
+}
+@media (prefers-reduced-motion: reduce){ .vn-snow{ display:none; } }
+#readings-panel .vn-flag-badge{ background:linear-gradient(110deg, #c9a961 0%, #f6e3b0 45%, #c9a961 60%, #e9cf8f 100%) !important;
+  background-size:220% 100% !important; }
+@media (prefers-reduced-motion: no-preference){ #readings-panel .vn-flag-badge{ animation:vnShine 3.8s ease-in-out infinite; } }
+@keyframes vnShine{ 0%,100%{ background-position:100% 0; } 50%{ background-position:0 0; } }
+
+/* канал */
+#channel-panel{ text-align:center; }
+#channel-panel .vn-ch-body{ max-width:520px; margin:0 auto 28px; }
+#channel-panel .vn-ch-note{ margin-top:14px; }
 /* вільний блок без другого кроку: нитка не потрібна */
 #assistant-panel .journey-thread{ display:none; }
 </style>
@@ -4778,8 +4795,8 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
       <div class="yes-block">
         <p class="yes-question">Це не випадковість. Це сценарій — і його можна побачити.</p>
-        <a class="vn-next" id="yes-btn" href="#founder-panel">
-          <span class="vn-next-txt">Тоді ось як це працює</span>
+        <a class="vn-next" id="yes-btn" href="#readings-panel">
+          <span class="vn-next-txt">Як його побачити</span>
           <span class="vn-next-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>
         </a>
       </div>
@@ -4791,9 +4808,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         <img src="images/author-2.webp" loading="lazy" decoding="async" alt="Володимир, творець VNUMERO" width="230" height="230">
       </div>
       <blockquote class="author-quote">
-        <p>Я — Володимир, творець <em>VNUMERO</em>. Я довго помічав, що в житті людей повторюються ті самі сценарії: ті самі помилки в стосунках, ті самі провали з грошима, ті самі «випадковості». Збігом це не буває.</p>
-        <p>Я дослідив 5 систем, які працюють з датою народження, і поєднав їх в один метод. Він показує не «характер за числом», а механіку: що з тобою відбувається, чому — і що з цим робити.</p>
-        <p>Без рожевих окулярів і обіцянок дива. Прямо, по суті — як є.</p>
+        <p>Я — Володимир, творець <em>VNUMERO</em>. Усе почалося з простого інтересу до чисел і того, як вони можуть бути пов’язані з нашим життям.</p>
+        <p>Я дослідив 5 нумерологічних систем і зрозумів, що ці знання можна подати набагато простіше й цікавіше. Так з’явився VNUMERO — простір, де нумерологія допомагає по-новому поглянути на себе та своє життя.</p>
+        <p>Моя мета — допомогти тобі краще пізнати себе, помітити закономірності у власному житті та впевненіше обирати свій шлях.</p>
       </blockquote>
 
       <p class="systems-label">СИСТЕМИ, З ЯКИМИ ПРАЦЮЮ</p>
@@ -4809,10 +4826,10 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     <section class="panel reveal-on-scroll" id="readings-panel">
       <div class="panel-eyebrow">ПЕРСОНАЛЬНІ РОЗБОРИ</div>
       <h2 class="panel-title">Кожен розбір я готую особисто</h2>
-      <p class="segmenter">Розрахунок за твоєю датою народження, PDF-розбір і мій голосовий коментар. Не шаблон і не штучний інтелект — лише твій код і пряма відповідь.</p>
 
       <div class="vn-flag-wrap" id="year-2027">
         <button class="offer-card reading-detail-btn vn-big vn-flag" type="button" data-reading="year2027">
+          <span class="vn-snow" aria-hidden="true"><i class="vn-flake" style="--x:33.1%;--d:10.2s;--dl:-11.1s;--dx:-26px;--fs:15px">❅</i><i style="--x:11.0%;--d:13.7s;--dl:-15.5s;--dx:-17px;--s:2.2px"></i><i style="--x:42.1%;--d:10.9s;--dl:-9.4s;--dx:-26px;--s:3.4px"></i><i style="--x:93.0%;--d:14.0s;--dl:-9.9s;--dx:-26px;--s:3.5px"></i><i class="vn-flake" style="--x:6.8%;--d:10.8s;--dl:-9.5s;--dx:-22px;--fs:13px">❅</i><i style="--x:15.8%;--d:9.9s;--dl:-5.2s;--dx:19px;--s:2.5px"></i><i style="--x:57.8%;--d:14.1s;--dl:-6.3s;--dx:3px;--s:2.2px"></i><i style="--x:7.7%;--d:10.6s;--dl:-11.6s;--dx:-4px;--s:2.8px"></i><i class="vn-flake" style="--x:58.2%;--d:12.6s;--dl:-5.1s;--dx:18px;--fs:15px">❅</i><i style="--x:76.9%;--d:9.7s;--dl:-5.1s;--dx:-0px;--s:2.9px"></i><i style="--x:45.1%;--d:13.9s;--dl:-1.2s;--dx:1px;--s:2.4px"></i><i style="--x:34.8%;--d:16.5s;--dl:-7.2s;--dx:28px;--s:2.2px"></i><i class="vn-flake" style="--x:55.6%;--d:15.3s;--dl:-13.9s;--dx:-10px;--fs:13px">❅</i><i style="--x:59.1%;--d:13.6s;--dl:-7.8s;--dx:20px;--s:4.4px"></i><i style="--x:47.5%;--d:14.3s;--dl:-1.0s;--dx:12px;--s:3.6px"></i><i style="--x:97.3%;--d:15.6s;--dl:-4.8s;--dx:-7px;--s:3.7px"></i><i class="vn-flake" style="--x:4.2%;--d:12.7s;--dl:-2.9s;--dx:-23px;--fs:11px">❅</i><i style="--x:22.9%;--d:11.3s;--dl:-12.6s;--dx:-6px;--s:4.3px"></i><i style="--x:49.7%;--d:10.3s;--dl:-6.8s;--dx:-13px;--s:2.3px"></i><i style="--x:43.3%;--d:13.4s;--dl:-12.0s;--dx:29px;--s:3.7px"></i><i class="vn-flake" style="--x:38.5%;--d:10.8s;--dl:-1.4s;--dx:-21px;--fs:15px">❅</i><i style="--x:24.4%;--d:12.9s;--dl:-10.0s;--dx:-14px;--s:2.0px"></i></span>
           <span class="vn-flag-ico" aria-hidden="true">
             <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
               <circle class="b-draw" pathLength="1" cx="60" cy="60" r="50"/>
@@ -4823,7 +4840,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
             </svg>
           </span>
           <span class="vn-flag-body">
-            <span class="vn-flag-badge">Флагман сезону</span>
+            <span class="vn-flag-badge"><span aria-hidden="true">❄</span> Хіт сезону</span>
             <h3>Яким буде твій 2027?</h3>
             <span class="offer-key">Прогноз на кожен місяць</span>
             <span class="vn-flag-desc">Розбір твого 2027 року місяць за місяцем: куди рухатись, що складеться легко, а де будуть випробування — і як їх пройти. Плюс твій особистий календар змін на весь рік.</span>
@@ -4844,13 +4861,13 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="karma">
           <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path class="b-draw" pathLength="1" d="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/><circle class="b-spark" r="1.7" fill="#fff1c9" stroke="none"><animateMotion dur="5s" repeatCount="indefinite" path="M12 12c-2-2.6-3.6-4-5.5-4a4 4 0 0 0 0 8c1.9 0 3.5-1.4 5.5-4s3.6-4 5.5-4a4 4 0 0 1 0 8c-1.9 0-3.5-1.4-5.5-4z"/></circle></svg></span><h3>Карта кармічних уроків</h3></span>
           <p class="offer-key">«Чому те саме повторюється знову і знову?»</p>
-          <p>Кармічні задачі, закладені у твоїй даті народження: повторювані сценарії у виборі, грошах, коханні та стосунках — і уроки, які важливо пройти.</p>
+          <p>Які уроки тобі належить пройти, які родові програми в тобі закладені і хто твої кармічні вчителі — батьки, діти, партнер. І головне: як змінити сценарій життя на свою користь.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
         <button class="offer-card reading-detail-btn vn-big" type="button" data-reading="momchild">
           <span class="vn-big-head"><span class="vn-big-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle class="b-draw" pathLength="1" cx="8.3" cy="7" r="2.7"/><path class="b-draw" pathLength="1" d="M3.4 21v-3.1a4.9 4.9 0 0 1 9.8 0V21"/><circle class="b-draw" pathLength="1" cx="17.2" cy="11.6" r="1.9"/><path class="b-draw" pathLength="1" d="M14 21v-1.7a3.2 3.2 0 0 1 6.4 0V21"/><path class="b-draw b-q" pathLength="1" d="M10.6 5.1C13.4 2.6 17.2 4.6 17.2 9.4"/><circle class="b-spark" r="1.5" fill="#fff1c9" stroke="none"><animateMotion dur="4s" repeatCount="indefinite" path="M10.6 5.1C13.4 2.6 17.2 4.6 17.2 9.4C17.2 4.6 13.4 2.6 10.6 5.1"/></circle></svg></span><h3>Мама і дитина</h3></span>
           <p class="offer-key">«Чого ви вчите одне одного?»</p>
-          <p>Чому дитина прийшла саме до тебе, у чому ви схожі, звідки ваші конфлікти — і як допомогти їй розкритися. Розрахунок за вашими двома датами народження.</p>
+          <p>Чому дитина прийшла саме до тебе, які в неї таланти і як говорити з нею, щоб вона чула. Плюс персональні інструкції: виховання, настрій, хобі — і куди її спрямувати.</p>
           <span class="offer-cta">Детальніше →</span>
         </button>
       </div>
@@ -4867,36 +4884,12 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       </div>
     </section>
 
-    <section class="panel reveal-on-scroll" id="assistant-panel">
-      <div class="panel-eyebrow">ПОЧНИ БЕЗКОШТОВНО</div>
-      <h2 class="panel-title">Твій перший розбір — у Telegram</h2>
-      <p class="panel-body">
-        Ще не готовий до повного розбору? Почни з малого. За твоїм <b class="hl">ім'ям</b> і
-        <b class="hl">датою народження</b> бот за 3 дні покаже, що вже закладено у твоєму коді.
-      </p>
-
-      <div class="journey" id="journey">
-        <div class="journey-thread" aria-hidden="true"><span></span></div>
-        <div class="journey-step">
-          <div class="journey-mark" aria-hidden="true">I</div>
-          <div class="journey-body">
-            <p class="journey-when">3 дні <span class="journey-free">безкоштовно</span></p>
-            <h3 class="journey-title">Зрозумій себе</h3>
-            <ul class="journey-list">
-              <li><b>Число душі</b> — чого ти насправді прагнеш</li>
-              <li><b>Число долі</b> — твій шлях і сильні сторони</li>
-              <li><b>Сфера, яка тебе зараз хвилює</b></li>
-              <li><b>Задача твого року</b> — що він від тебе вимагає</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="assistant-start">
-        <p class="assistant-start-title">Почни з першого кроку</p>
-        <a class="cta-link assistant-cta" href="https://t.me/vnumero_bot" target="_blank" rel="noopener">Отримати безкоштовно</a>
-        <p class="price-note assistant-price"><span class="assistant-free">Без оплати і без підписок</span></p>
-      </div>
+    <section class="panel reveal-on-scroll" id="channel-panel">
+      <div class="panel-eyebrow">БЕЗКОШТОВНО</div>
+      <h2 class="panel-title">Канал VNUMERO у Telegram</h2>
+      <p class="panel-body vn-ch-body">Карма, збіги, знаки і цифрова психологія — коротко, прямо і щодня. Підписуйся, щоб першим бачити нові прогнози й розбори.</p>
+      <a class="cta-link vn-ch-cta" href="https://t.me/vnumero" target="_blank" rel="noopener">Підписатися на канал</a>
+      <p class="price-note vn-ch-note">Безкоштовно · без реклами</p>
     </section>
 
     <section class="panel reveal-on-scroll">
@@ -4918,10 +4911,6 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         <details class="faq-item">
           <summary>Що потрібно від мене?</summary>
           <p>Ім'я, точна дата народження і номер телефону. Для «Мами і дитини» — ще ім'я та дата народження дитини, для сумісності в «Карті кохання» — дата народження партнера. Якщо знадобиться уточнення, я напишу особисто.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Чим безкоштовний розбір у Telegram відрізняється від персонального?</summary>
-          <p>У Telegram бот автоматично показує базу твого коду — кілька ключових чисел і задачу року. Персональний розбір — глибока робота, яку я готую особисто по одній темі або на цілий рік, один раз і надовго.</p>
         </details>
         <details class="faq-item">
           <summary>Чи можна повернути оплату?</summary>
@@ -5110,10 +5099,12 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
       title: 'Карта кармічних уроків',
       intro: 'Розбір показує, які кармічні задачі закладені у твоїй даті народження — і чому схожі ситуації повторюються знову й знову.',
       points: [
-        'Твої кармічні числа та їхні сильні й тіньові прояви',
-        'Повторювані сценарії, які тягнуться крізь усе життя',
-        'Як вони проявляються у виборі, грошах, коханні та стосунках',
-        'Головні уроки, які важливо усвідомити й пройти'
+        'Які кармічні уроки тобі належить пройти',
+        'У чому можуть бути складнощі — і чому вони повторюються',
+        'Які родові програми в тобі закладені',
+        'Твої кармічні вчителі: батьки, діти, партнер',
+        'Як змінити сценарій життя в бажаний бік',
+        'Практичні рекомендації — що робити вже зараз'
       ],
       price: { new: '999 грн', note: 'протягом 5 робочих днів' },
       format: 'PDF-розбір + особистий голосовий коментар',
@@ -5127,8 +5118,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         'Урок вашого зв’язку — чого ви вчите одне одного',
         'Характер і таланти дитини — що в ній закладено',
         'Де ви дзеркалите одне одного — і звідки конфлікти',
-        'Як говорити з дитиною, щоб вона чула',
-        'Як підтримати її сильні сторони і не зламати їх'
+        'Як спілкуватися з дитиною з урахуванням її віку',
+        'Персональні інструкції: виховання, настрій, хобі',
+        'Куди спрямувати дитину — і як уберегти її від хибних кроків'
       ],
       price: { new: '2999 грн', note: 'протягом 5 робочих днів' },
       option: { label: '+ ще одна дитина', short: 'ще одна дитина', add: 1000 },
@@ -5138,13 +5130,14 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     },
     finance: {
       title: 'Фінансовий код',
-      intro: 'Де твої гроші насправді — і що не дає їм у тебе залишатися.',
+      intro: 'Де твої гроші насправді, який фінансовий період у тебе зараз — і що не дає грошам у тебе залишатися.',
       points: [
+        'Твій особистий фінансовий період — що він дає зараз і що чекає далі',
         'Де твої найбільші гроші',
         'Що виснажує твій гаманець',
         'Що заважає грошам прийти — і як це змінити',
         'Твої точки росту й масштабу',
-        'Поради щодо реалізації та фінансового зростання'
+        'Персональні рекомендації: робота і її зміна, інвестиції, бізнес'
       ],
       price: { new: '1999 грн', note: 'протягом 5 робочих днів' },
       format: 'PDF-розбір + особистий голосовий коментар',
@@ -5938,7 +5931,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
 
   const yesBtn = document.getElementById('yes-btn');
   if (yesBtn) yesBtn.addEventListener('click', (e) => {
-    const founderSection = document.getElementById('founder-panel');
+    const founderSection = document.getElementById('readings-panel');
     if (founderSection){ e.preventDefault(); founderSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   });
 
@@ -6534,7 +6527,8 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   }
   // Рахуємо лише кнопки бота: вони завжди на сторінці в тому самому порядку
   // (посилання на менеджера у вікнах замовлення з'являються динамічно).
-  function tgLinks(){ return Array.prototype.slice.call(document.querySelectorAll('a[href*="t.me/vnumero_bot"]')); }
+  var TG_SEL = 'a[href*="t.me/vnumero_bot"], a[href="https://t.me/vnumero"]';
+  function tgLinks(){ return Array.prototype.slice.call(document.querySelectorAll(TG_SEL)); }
   var lastIdx = -1;
 
   var plane = '<svg viewBox="0 0 24 24" fill="none" stroke="#0c0a07" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M21.5 3.5 2.8 10.7c-.7.3-.7 1.3.1 1.5l4.6 1.4 1.8 5.6c.2.7 1.1.9 1.6.3l2.6-2.7 4.7 3.5c.6.4 1.4.1 1.6-.6L22.7 4.7c.2-.8-.5-1.5-1.2-1.2Z"/><path d="m7.5 13.6 9.8-6.4-7.4 8.2"/></svg>';
@@ -6633,9 +6627,11 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   // запасні шляхи.
   var tgBtn;
   document.addEventListener('click', function(e){
-    var a = e.target.closest && e.target.closest('a[href*="t.me/vnumero_bot"]');
+    var a = e.target.closest && e.target.closest(TG_SEL);
     if(!a || sheet.contains(a)) return;
     e.preventDefault();
+    var handle = /vnumero_bot/.test(a.href) ? '@vnumero_bot' : '@vnumero';
+    BOT = handle; sheet.querySelector('.inapp-handle').textContent = handle;
     lastIdx = tgLinks().indexOf(a);
     if(tgBtn) tgBtn.href = appLink(a) || a.href;
     // «··· → Відкрити в браузері» бере поточну адресу: позначаємо в ній кнопку,
@@ -6689,8 +6685,9 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
   if(!/tiktok|instagram/.test(src) || q.get('pay') || q.get('order')) return;
 
   function show(){
-    var a = document.querySelector('a[href*="t.me/vnumero_bot"]');
+    var a = document.querySelector('a[href*="t.me/vnumero_bot"], a[href="https://t.me/vnumero"]');
     if(!a) return;
+    var isBot = /vnumero_bot/.test(a.href);
     var box = document.createElement('div');
     box.className = 'vn-tgready';
     box.setAttribute('role', 'dialog');
@@ -6700,7 +6697,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
         '<button class="vn-tgready-x" type="button" aria-label="Закрити">✕</button>' +
         '<div class="vn-tgready-ico">✓</div>' +
         '<h4 class="vn-tgready-title">Готово</h4>' +
-        '<p class="vn-tgready-sub">Бот відкриється одразу</p>' +
+        '<p class="vn-tgready-sub">' + (isBot ? 'Бот' : 'Канал') + ' відкриється одразу</p>' +
         '<a class="vn-tgready-btn" href="' + a.href + '" target="_blank" rel="noopener">✈️ Відкрити Telegram</a>' +
       '</div>';
     document.body.appendChild(box);
@@ -6737,7 +6734,7 @@ main .field-row #reveal-btn{ box-shadow: inset 0 1px 0 rgba(255,248,225,.5), ins
     history.replaceState(null, '', u.pathname + u.search + u.hash);
   }catch(e){}
   function go(){
-    var a = document.querySelectorAll('a[href*="t.me/vnumero_bot"]')[idx];
+    var a = document.querySelectorAll('a[href*="t.me/vnumero_bot"], a[href="https://t.me/vnumero"]')[idx];
     if(!a || !a.offsetParent) return;          // кнопка прихована — нічого не робимо
     a.scrollIntoView({block:'center', behavior:'smooth'});
     setTimeout(function(){
